@@ -1,4 +1,4 @@
-/* Styling navbar beranda */
+/* <---Styling navbar beranda---> */
 .navbar-beranda{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -29,3 +29,62 @@
 .bt-masuk:hover{
     background:#6d3d9a;
 }
+/* <---Styling navbar beranda---> */
+
+/* <---Styling container hari---> */
+.container-detail{
+    margin: 40px;
+    margin-left: 100px;
+}
+
+.container-hari-top{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bt-detail{
+    width: 550px;
+    text-align: left;
+    background: #A06ECE;
+    border: none;
+}
+
+.bt-pencarian{
+    background: #73CA5C;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.bt-hari{
+    background: #7126B5;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-pilih{
+    font-weight: bold;
+}
+
+.container-hari-center{
+    margin-top: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    border-bottom: solid 1px black;
+    padding-bottom: 30px;
+}
+
+.hari{
+    border-right: solid 1px black;
+    padding-right: 10px;
+}
+
+@media only screen and (max-width: 840px) {
+    .bt-pencarian{
+        margin-top: 10px;
+    }
+  }
+
+
