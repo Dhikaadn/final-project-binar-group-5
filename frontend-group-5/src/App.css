@@ -1,0 +1,31 @@
+/* Styling navbar beranda */
+.navbar-beranda{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.icon-search{
+    border-left: none;
+    background: #EEEEEE;
+    border-radius: 0px 15px 15px 0px;
+}
+
+
+.input-search-beranda{
+    border-right: none;
+    border-radius: 15px 0px 0px 15px;
+    background: #EEEEEE;
+}
+
+.container-input-beranda{
+    width: 450px;
+}
+
+.bt-masuk{
+    background: #7126B5;
+    color: white;
+    border: none;
+}
+
+.bt-masuk:hover{
+    background:#6d3d9a;
+}
