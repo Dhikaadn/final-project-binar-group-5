@@ -33,13 +33,17 @@
 
 /* <---Styling container hari---> */
 .container-detail{
-    margin: 40px;
-    margin-left: 100px;
+    /* margin: 40px; */
+    /* margin-left: 100px; */
+    padding: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 40px;
 }
 
 .container-hari-top{
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .bt-detail{
@@ -72,8 +76,6 @@
     flex-wrap: wrap;
     display: flex;
     gap: 10px;
-    border-bottom: solid 1px black;
-    padding-bottom: 30px;
 }
 
 .hari{
@@ -86,5 +88,20 @@
         margin-top: 10px;
     }
   }
+/* <---Styling container hari---> */
+
+/* Styling loading section in beranda */
+.LoadingBeranda{
+    text-align: center;
+}
+
+.text-loading{
+    color: #8A8A8A;
+}
+
+.text-loading-2{
+    color: #8A8A8A;
+    font-size: 30px;
+}
 
 

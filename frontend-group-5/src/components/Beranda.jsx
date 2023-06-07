@@ -2,6 +2,7 @@ import React from 'react';
 import { NavbarBeranda } from './NavbarBeranda';
 import Button from 'react-bootstrap/Button';
 import { BiArrowBack} from 'react-icons/bi';
+import { LoadingBeranda } from './LoadingBeranda';
 
 export const Beranda = () => {
   return (
@@ -69,6 +70,7 @@ export const Beranda = () => {
             </div>
           </div>
         </div>
+        <LoadingBeranda/>
     </div>
   )
 }
