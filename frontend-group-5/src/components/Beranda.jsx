@@ -2,8 +2,9 @@ import React from 'react';
 import { NavbarBeranda } from './NavbarBeranda';
 import Button from 'react-bootstrap/Button';
 import { BiArrowBack} from 'react-icons/bi';
-import { LoadingBeranda } from './LoadingBeranda';
-
+import {LoadingBeranda} from './LoadingBeranda';
+import {TiketFinished} from './TiketFinished';
+import { NoneSearch } from './NoneSearch';
 export const Beranda = () => {
   return (
     <div className='Beranda'>

@@ -103,5 +103,20 @@
     color: #8A8A8A;
     font-size: 30px;
 }
+/* Styling loading section in beranda */
+
+/* Styling none section in beranda */
+.NoneSearch{
+    text-align: center;
+}
+.text-coba{
+    color: #7126B5;
+}
+/* Styling none section in beranda */
+
+/* Styling finished ticket */
+.TiketFinished{
+    text-align: center;
+}
 
 
