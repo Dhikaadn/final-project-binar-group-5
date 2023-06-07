@@ -118,5 +118,71 @@
 .TiketFinished{
     text-align: center;
 }
+/* Styling finished ticket */
+
+/* Styling accordion */
+.accordion{
+    width: 800px;
+}
+
+.accordion-header{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.accordion-item{
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.ReadyTicket{
+    display: flex;
+    justify-content: center;
+}
+
+.container-jam-kota{
+    display: flex;
+    flex-direction: column;
+    margin-left: 55px;
+}
+
+.jam{
+    font-weight: bold;
+}
+
+.container-garis{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.container-detail-jadwal{
+    display: flex;
+    margin-top: 10px;
+}
+
+.garis-top{
+    border-bottom: solid 1px black;
+}
+
+.harga{
+    font-weight: bold;
+    color: #7126B5;
+}
+
+.container-harga{
+    margin-bottom: 10px;
+    text-align: center;
+    margin-left: 150px;
+}
+
+.bt-pilih{
+    background-color: #7126B5;
+    border: none;
+    width: 100px;
+}
 
 

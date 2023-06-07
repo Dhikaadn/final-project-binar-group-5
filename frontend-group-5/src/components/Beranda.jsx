@@ -5,6 +5,7 @@ import { BiArrowBack} from 'react-icons/bi';
 import {LoadingBeranda} from './LoadingBeranda';
 import {TiketFinished} from './TiketFinished';
 import { NoneSearch } from './NoneSearch';
+import { ReadyTicket } from './ReadyTicket';
 export const Beranda = () => {
   return (
     <div className='Beranda'>
@@ -71,7 +72,7 @@ export const Beranda = () => {
             </div>
           </div>
         </div>
-        <LoadingBeranda/>
+        <ReadyTicket/>
     </div>
   )
 }
