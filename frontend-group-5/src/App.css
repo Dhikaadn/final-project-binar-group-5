@@ -162,6 +162,7 @@
 .container-detail-jadwal{
     display: flex;
     margin-top: 10px;
+    border-bottom: 1px solid #D0D0D0;
 }
 
 .garis-top{
@@ -184,5 +185,63 @@
     border: none;
     width: 100px;
 }
+
+.container-keberangkatan{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+.container-keberangkatan-right{
+    display: flex;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #A06ECE;
+}
+
+.title-detail{
+    color: #4B1979;
+    font-weight: bold;
+}
+
+.container-informasi-logo{
+    display: flex;
+}
+
+.informasi-bold{
+    font-weight: bold;
+    color: black;
+    margin-left: 10px;
+}
+
+.maskapai-bold{
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.container-informasi{
+    border-bottom: 1px solid #D0D0D0;
+}
+
+.container-kedatangan{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+.container-kedatangan-right{
+    display: flex;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #A06ECE;
+}
+
+.harga-merah{
+    color: #FF0000;
+    font-weight: bold;
+}
+
+
 
 
