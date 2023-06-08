@@ -89,12 +89,6 @@
     border-right: solid 1px black;
     padding-right: 10px;
 }
-
-@media only screen and (max-width: 840px) {
-    .bt-pencarian{
-        margin-top: 10px;
-    }
-  }
 /* <---Styling container hari---> */
 
 /* Styling loading section in beranda */
@@ -248,9 +242,50 @@
     color: #FF0000;
     font-weight: bold;
 }
+.ReadyTicket{
+    display: flex;
+    flex-wrap: wrap;
+}
 /* Styling accordion */
 
+/* Responsive website */
+@media only screen and (max-width: 812px) {
+    .bt-pencarian{
+        margin-top: 10px;
+    }
 
+    .container-detail-jadwal{
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+    }
+    .container-jam-kota{
+        margin-left: 15px;
+    }
+    .container-harga{
+        margin-right: 20px;
+        margin-left: 0;
+    }
+    .accordion{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 474px) {
+    .container-input-beranda{
+        width: 300px;
+    }
+  }
+
+  @media only screen and (max-width: 840px) {
+    .bt-pencarian{
+        margin-top: 10px;
+    }
+  }
+/* Responsive website */
+
+ 
 
 
 
