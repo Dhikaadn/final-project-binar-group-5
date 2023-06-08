@@ -67,6 +67,13 @@
     flex-direction: column;
 }
 
+.bt-non-hari{
+    background: transparent;
+    color: black;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
 .title-pilih{
     font-weight: bold;
 }
@@ -241,6 +248,8 @@
     color: #FF0000;
     font-weight: bold;
 }
+/* Styling accordion */
+
 
 
 

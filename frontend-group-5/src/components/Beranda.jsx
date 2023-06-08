@@ -23,19 +23,19 @@ export const Beranda = () => {
           </div>
           <div className='container-hari-center'>
             <div className='hari'>
-              <Button className='bt-hari'>
+              <Button className='bt-non-hari'>
                 Senin<br/>
                 01/03/2023
               </Button>
             </div>
             <div className='hari'>
-              <Button className='bt-hari'>
+              <Button className='bt-non-hari'>
                 Selasa<br/>
                 01/03/2023
               </Button>
             </div>
             <div className='hari'>
-              <Button className='bt-hari'>
+              <Button className='bt-non-hari'>
                 Rabu<br/>
                 01/03/2023
               </Button>
@@ -53,19 +53,19 @@ export const Beranda = () => {
               </Button>
             </div>
             <div className='hari'>
-              <Button className='bt-hari'>
+              <Button className='bt-non-hari'>
                 Sabtu<br/>
                 01/03/2023
               </Button>
             </div>
             <div className='hari'>
-              <Button className='bt-hari'>
+              <Button className='bt-non-hari'>
                 Minggu<br/>
                 01/03/2023
               </Button>
             </div>
             <div className='hari'>
-            <Button className='bt-hari'>
+            <Button className='bt-non-hari'>
               Senin<br/>
               01/03/2023
             </Button>
