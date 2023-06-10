@@ -1,0 +1,37 @@
+.passenger-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.counter-container {
+  display: flex;
+  align-items: center;
+}
+
+.counter-btn {
+  background-color: #f8f9fa;
+  border: none;
+  color: #212529;
+  font-size: 20px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.counter-value {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.passenger-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
