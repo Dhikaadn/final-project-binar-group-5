@@ -1,291 +1,379 @@
 /* <---Styling navbar beranda---> */
-.navbar-beranda{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.navbar-beranda {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.icon-search{
-    border-left: none;
-    background: #EEEEEE;
-    border-radius: 0px 15px 15px 0px;
+.icon-search {
+  border-left: none;
+  background: #eeeeee;
+  border-radius: 0px 15px 15px 0px;
 }
 
-
-.input-search-beranda{
-    border-right: none;
-    border-radius: 15px 0px 0px 15px;
-    background: #EEEEEE;
+.input-search-beranda {
+  border-right: none;
+  border-radius: 15px 0px 0px 15px;
+  background: #eeeeee;
 }
 
-.container-input-beranda{
-    width: 450px;
+.container-input-beranda {
+  width: 450px;
 }
 
-.bt-masuk{
-    background: #7126B5;
-    color: white;
-    border: none;
+.bt-masuk {
+  background: #7126b5;
+  color: white;
+  border: none;
 }
 
-.bt-masuk:hover{
-    background:#6d3d9a;
+.bt-masuk:hover {
+  background: #6d3d9a;
 }
 /* <---Styling navbar beranda---> */
 
+/* banner */
+.container-banner {
+  position: relative;
+  top: -9rem;
+  margin-bottom: -12rem;
+}
+
+.rectangle-banner {
+  position: relative;
+  margin-top: 4rem;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to right, #9e64d4, #e0c8f5);
+}
+
+/* pilih penerbangan */
+
+.card-pilih-penerbangan {
+  border-color: #d0d0d0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-pilih-penerbangan {
+  background-color: #ffff;
+  border-width: 0;
+  border-bottom: 1px solid;
+  text-align: left;
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.btn-utama-pilih-penerbangan {
+  position: absolute;
+  height: 40px;
+  left: 0;
+  right: 0;
+  border-width: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #7126b5;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* listCard */
+
+.list_container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* modal */
+.modal-body-list {
+  cursor: pointer;
+  margin: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
 /* <---Styling container hari---> */
-.container-detail{
-    /* margin: 40px; */
-    /* margin-left: 100px; */
-    padding: 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 40px;
+.container-detail {
+  /* margin: 40px; */
+  /* margin-left: 100px; */
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
 }
 
-.container-hari-top{
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+.container-hari-top {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
-.bt-detail{
-    width: 550px;
-    text-align: left;
-    background: #A06ECE;
-    border: none;
+.bt-detail {
+  width: 550px;
+  text-align: left;
+  background: #a06ece;
+  border: none;
 }
 
-.bt-pencarian{
-    background: #73CA5C;
-    border: none;
-    display: flex;
-    flex-direction: column;
+.bt-pencarian {
+  background: #73ca5c;
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.bt-hari{
-    background: #7126B5;
-    border: none;
-    display: flex;
-    flex-direction: column;
+.bt-hari {
+  background: #7126b5;
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.bt-non-hari{
-    background: transparent;
-    color: black;
-    border: none;
-    display: flex;
-    flex-direction: column;
+.bt-non-hari {
+  background: transparent;
+  color: black;
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
-.title-pilih{
-    font-weight: bold;
-}
-
-.container-hari-center{
-    margin-top: 10px;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 10px;
+.title-pilih {
+  font-weight: bold;
 }
 
-.hari{
-    border-right: solid 1px black;
-    padding-right: 10px;
+.container-hari-center {
+  margin-top: 10px;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+}
+
+.hari {
+  border-right: solid 1px black;
+  padding-right: 10px;
 }
 /* <---Styling container hari---> */
 
 /* Styling loading section in beranda */
-.LoadingBeranda{
-    text-align: center;
+.LoadingBeranda {
+  text-align: center;
 }
 
-.text-loading{
-    color: #8A8A8A;
+.text-loading {
+  color: #8a8a8a;
 }
 
-.text-loading-2{
-    color: #8A8A8A;
-    font-size: 30px;
+.text-loading-2 {
+  color: #8a8a8a;
+  font-size: 30px;
 }
 /* Styling loading section in beranda */
 
 /* Styling none section in beranda */
-.NoneSearch{
-    text-align: center;
+.NoneSearch {
+  text-align: center;
 }
-.text-coba{
-    color: #7126B5;
+.text-coba {
+  color: #7126b5;
 }
 /* Styling none section in beranda */
 
 /* Styling finished ticket */
-.TiketFinished{
-    text-align: center;
+.TiketFinished {
+  text-align: center;
 }
 /* Styling finished ticket */
 
 /* Styling accordion */
-.accordion{
-    width: 800px;
+.accordion {
+  width: 800px;
 }
 
-.accordion-header{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+.accordion-header {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
-.accordion-item{
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.accordion-item {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.ReadyTicket{
-    display: flex;
-    justify-content: center;
+.ReadyTicket {
+  display: flex;
+  justify-content: center;
 }
 
-.container-jam-kota{
-    display: flex;
-    flex-direction: column;
-    margin-left: 55px;
+.container-jam-kota {
+  display: flex;
+  flex-direction: column;
+  margin-left: 55px;
 }
 
-.jam{
-    font-weight: bold;
+.jam {
+  font-weight: bold;
 }
 
-.container-garis{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+.container-garis {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
-.container-detail-jadwal{
-    display: flex;
-    margin-top: 10px;
-    border-bottom: 1px solid #D0D0D0;
+.container-detail-jadwal {
+  display: flex;
+  margin-top: 10px;
+  border-bottom: 1px solid #d0d0d0;
 }
 
-.garis-top{
-    border-bottom: solid 1px black;
+.garis-top {
+  border-bottom: solid 1px black;
 }
 
-.harga{
-    font-weight: bold;
-    color: #7126B5;
+.harga {
+  font-weight: bold;
+  color: #7126b5;
 }
 
-.container-harga{
-    margin-bottom: 10px;
-    text-align: center;
-    margin-left: 150px;
+.container-harga {
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 150px;
 }
 
-.bt-pilih{
-    background-color: #7126B5;
-    border: none;
-    width: 100px;
+.bt-pilih {
+  background-color: #7126b5;
+  border: none;
+  width: 100px;
 }
 
-.container-keberangkatan{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #D0D0D0;
+.container-keberangkatan {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d0d0d0;
 }
 
-.container-keberangkatan-right{
-    display: flex;
-    margin-top: 30px;
-    font-weight: bold;
-    color: #A06ECE;
+.container-keberangkatan-right {
+  display: flex;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #a06ece;
 }
 
-.title-detail{
-    color: #4B1979;
-    font-weight: bold;
+.title-detail {
+  color: #4b1979;
+  font-weight: bold;
 }
 
-.container-informasi-logo{
-    display: flex;
+.container-informasi-logo {
+  display: flex;
 }
 
-.informasi-bold{
-    font-weight: bold;
-    color: black;
-    margin-left: 10px;
+.informasi-bold {
+  font-weight: bold;
+  color: black;
+  margin-left: 10px;
 }
 
-.maskapai-bold{
-    font-weight: bold;
-    margin-top: 15px;
+.maskapai-bold {
+  font-weight: bold;
+  margin-top: 15px;
 }
 
-.container-informasi{
-    border-bottom: 1px solid #D0D0D0;
+.container-informasi {
+  border-bottom: 1px solid #d0d0d0;
 }
 
-.container-kedatangan{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #D0D0D0;
+.container-kedatangan {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d0d0d0;
 }
 
-.container-kedatangan-right{
-    display: flex;
-    margin-top: 30px;
-    font-weight: bold;
-    color: #A06ECE;
+.container-kedatangan-right {
+  display: flex;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #a06ece;
 }
 
-.harga-merah{
-    color: #FF0000;
-    font-weight: bold;
+.harga-merah {
+  color: #ff0000;
+  font-weight: bold;
 }
-.ReadyTicket{
-    display: flex;
-    flex-wrap: wrap;
+.ReadyTicket {
+  display: flex;
+  flex-wrap: wrap;
 }
 /* Styling accordion */
+
+/* notifikasi */
+.card-result {
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
+.notifikasi_img {
+  margin-right: 10px;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+.result-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.category {
+  font-weight: bold;
+  text-align: left;
+}
+
+.tanggal {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.isi {
+  text-align: left;
+}
 
 /* Responsive website */
 @media only screen and (max-width: 812px) {
-    .bt-pencarian{
-        margin-top: 10px;
-    }
-
-    .container-detail-jadwal{
-        display: flex;
-        flex-direction: column;
-        padding-left: 20px;
-    }
-    .container-jam-kota{
-        margin-left: 15px;
-    }
-    .container-harga{
-        margin-right: 20px;
-        margin-left: 0;
-    }
-    .accordion{
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+  .bt-pencarian {
+    margin-top: 10px;
   }
 
-  @media only screen and (max-width: 474px) {
-    .container-input-beranda{
-        width: 300px;
-    }
+  .container-detail-jadwal {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
   }
+  .container-jam-kota {
+    margin-left: 15px;
+  }
+  .container-harga {
+    margin-right: 20px;
+    margin-left: 0;
+  }
+  .accordion {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
 
-  @media only screen and (max-width: 840px) {
-    .bt-pencarian{
-        margin-top: 10px;
-    }
+@media only screen and (max-width: 474px) {
+  .container-input-beranda {
+    width: 300px;
   }
+}
+
+@media only screen and (max-width: 840px) {
+  .bt-pencarian {
+    margin-top: 10px;
+  }
+}
 /* Responsive website */
-
- 
-
-
-
