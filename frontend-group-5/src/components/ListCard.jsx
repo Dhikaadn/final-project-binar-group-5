@@ -78,12 +78,9 @@ function ListCard({ category }) {
   return (
     <div className="container p-4">
       <div className="row">
-        <div className="list_container my-2">
-          {searchResults.map((result) => (
-            <div
-              className="card "
-              style={{ width: "170px", marginRight: "1rem" }}
-            >
+        {searchResults.map((result) => (
+          <div className="col my-2">
+            <div className="card " style={{ width: "170px" }}>
               <img
                 src={ImgDestination}
                 className="card-img-top p-2"
@@ -125,8 +122,8 @@ function ListCard({ category }) {
                 </p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
 
         {/* <div className="col my-2">
           <div className="card " style={{ width: "170px" }}>

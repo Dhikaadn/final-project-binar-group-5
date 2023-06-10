@@ -28,10 +28,10 @@ const HomePage = () => {
               <h5>Destinasi Favorit</h5>
             </div>
 
-            <div className="col-md-8 d-flex justify-content-between">
+            <div className="col">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mx-2 my-1"
                 onClick={() => handleButtonClick("Semua")}
                 style={{
                   backgroundColor:
@@ -48,7 +48,7 @@ const HomePage = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mx-2 my-1"
                 onClick={() => handleButtonClick("Asia")}
                 style={{
                   backgroundColor:
@@ -65,7 +65,7 @@ const HomePage = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mx-2 my-1"
                 onClick={() => handleButtonClick("Amerika")}
                 style={{
                   backgroundColor:
@@ -82,7 +82,7 @@ const HomePage = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mx-2 my-1"
                 onClick={() => handleButtonClick("Australia")}
                 style={{
                   backgroundColor:
@@ -99,7 +99,7 @@ const HomePage = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mx-2 my-1"
                 onClick={() => handleButtonClick("Eropa")}
                 style={{
                   backgroundColor:
