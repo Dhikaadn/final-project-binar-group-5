@@ -377,3 +377,63 @@
   }
 }
 /* Responsive website */
+
+/* Styling login page */
+.img-left{
+    width: 700px;
+}
+
+.Login{
+    display: flex;
+}
+
+.masuk-bold{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.form-login{
+    margin: 140px;
+    margin-top: 240px;
+}
+
+.eye-logo{
+    border: 1px solid black;
+}
+
+.input-password{
+    border-right: none;
+    border-radius: 15px 0px 0px 15px;
+    background: white;
+    border-color: #D0D0D0;
+
+}
+
+.icon-visible{
+    border-left: none;
+    background: white;
+    border-radius: 0px 15px 15px 0px;
+}
+
+.container-input-password{
+    width: 340px;
+    height: 40px;
+}
+
+.input-email{
+    border-radius: 15px 15px 15px 15px;
+    background: white;
+    border-color: #D0D0D0;
+}
+
+.container-input-email{
+    width: 340px;
+    height: 40px;
+}
+
+.bt-login-submit{
+    width: 340px;
+    border-radius: 15px 15px 15px 15px;
+    background: #7126B5;
+}
+/* Styling login page */
