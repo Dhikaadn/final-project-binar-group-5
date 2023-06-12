@@ -72,15 +72,23 @@ function ListCard({ category }) {
       );
     }
 
-    setSearchResults(filteredResults.slice(0, 5));
+    setSearchResults(filteredResults);
   }, [category]);
 
   return (
     <div className="container p-4">
-      <div className="row">
+      <div className="list_container">
         {searchResults.map((result) => (
-          <div className="col my-2">
-            <div className="card " style={{ width: "170px" }}>
+          <div
+            className="m-2 "
+            style={{ display: "flex", justifyItems: "flex-start" }}
+          >
+            <div
+              className="card "
+              style={{
+                width: "170px",
+              }}
+            >
               <img
                 src={ImgDestination}
                 className="card-img-top p-2"
@@ -124,170 +132,6 @@ function ListCard({ category }) {
             </div>
           </div>
         ))}
-
-        {/* <div className="col my-2">
-          <div className="card " style={{ width: "170px" }}>
-            <img src={ImgDestination} className="card-img-top p-2" alt="..." />
-            <div className="card-body" style={{ padding: "6px" }}>
-              <h5 style={{ fontSize: "14px" }}>Jakarta {"->"} Bangkok</h5>
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "700",
-                  color: "#7126B5",
-                }}
-              >
-                Air Asia
-              </p>
-              <p
-                className="card-subtitle mb-2"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "500",
-                }}
-              >
-                20 - 30 Maret 2023
-              </p>
-
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                Mulai dari{" "}
-                <span style={{ color: "#FF0000", fontWeight: "700" }}>
-                  IDR 950.000
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col my-2">
-          <div className="card " style={{ width: "170px" }}>
-            <img src={ImgDestination} className="card-img-top p-2" alt="..." />
-            <div className="card-body" style={{ padding: "6px" }}>
-              <h5 style={{ fontSize: "14px" }}>Jakarta {"->"} Bangkok</h5>
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "700",
-                  color: "#7126B5",
-                }}
-              >
-                Air Asia
-              </p>
-              <p
-                className="card-subtitle mb-2"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "500",
-                }}
-              >
-                20 - 30 Maret 2023
-              </p>
-
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                Mulai dari{" "}
-                <span style={{ color: "#FF0000", fontWeight: "700" }}>
-                  IDR 950.000
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col my-2">
-          <div className="card " style={{ width: "170px" }}>
-            <img src={ImgDestination} className="card-img-top p-2" alt="..." />
-            <div className="card-body" style={{ padding: "6px" }}>
-              <h5 style={{ fontSize: "14px" }}>Jakarta {"->"} Bangkok</h5>
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "700",
-                  color: "#7126B5",
-                }}
-              >
-                Air Asia
-              </p>
-              <p
-                className="card-subtitle mb-2"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "500",
-                }}
-              >
-                20 - 30 Maret 2023
-              </p>
-
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                Mulai dari{" "}
-                <span style={{ color: "#FF0000", fontWeight: "700" }}>
-                  IDR 950.000
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col my-2">
-          <div className="card " style={{ width: "170px" }}>
-            <img src={ImgDestination} className="card-img-top p-2" alt="..." />
-            <div className="card-body" style={{ padding: "6px" }}>
-              <h5 style={{ fontSize: "14px" }}>Jakarta {"->"} Bangkok</h5>
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "700",
-                  color: "#7126B5",
-                }}
-              >
-                Air Asia
-              </p>
-              <p
-                className="card-subtitle mb-2"
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "500",
-                }}
-              >
-                20 - 30 Maret 2023
-              </p>
-
-              <p
-                className="card-subtitle mb-1"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                Mulai dari{" "}
-                <span style={{ color: "#FF0000", fontWeight: "700" }}>
-                  IDR 950.000
-                </span>
-              </p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

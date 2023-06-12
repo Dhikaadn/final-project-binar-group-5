@@ -10,7 +10,7 @@ function DateTimePicker({ label, selectedDate, handleDateChange }) {
   });
 
   return (
-    <div className="col-md-12" style={{ paddingLeft: "5px" }}>
+    <div style={{ width: "100%" }}>
       <p
         style={{
           fontSize: "14px",

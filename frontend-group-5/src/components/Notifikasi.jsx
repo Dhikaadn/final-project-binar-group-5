@@ -80,9 +80,9 @@ function Notifikasi() {
       <div className="container w-75">
         <div
           className="container-hari-top my-4"
-          style={{ display: "flex", alignItems: "center" }}
+          style={{ display: "flex", alignItems: "center", gap: "10px" }}
         >
-          <Button className="bt-detail me-3" style={{ flexGrow: 1 }}>
+          <Button className="bt-detail" style={{ flexGrow: 1 }}>
             <BiArrowBack className="me-3" />
             Beranda
           </Button>
