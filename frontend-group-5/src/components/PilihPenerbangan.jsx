@@ -80,10 +80,10 @@ function PilihPenerbangan() {
           </h5>
 
           {/* atas */}
-          <div className="row">
-            <div className="col-md-6">
-              <div className="input-group mb-3">
-                <div className="col-md-2 d-flex align-items-center justify-content-around">
+          <div className="container-pilih-penerbangan">
+            <div>
+              <div className="input-group mb-3 card-input-pilih-penerbangan">
+                <div className="icon-penerbangan">
                   <img src={IconPesawat} />
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
@@ -92,7 +92,7 @@ function PilihPenerbangan() {
                   </div>
                 </div>
 
-                <div className="col-md-10" style={{ paddingLeft: "5px" }}>
+                <div>
                   <button
                     type="button"
                     className="btn-pilih-penerbangan"
@@ -103,9 +103,9 @@ function PilihPenerbangan() {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="input-group mb-3">
-                <div className=" col-md-2 d-flex align-items-center justify-content-around">
+            <div>
+              <div className="input-group mb-3 card-input-pilih-penerbangan">
+                <div className=" icon-penerbangan">
                   <img src={IconPesawat} />
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
@@ -113,10 +113,10 @@ function PilihPenerbangan() {
                     </p>
                   </div>
                 </div>
-                <div className="col-md-10" style={{ paddingLeft: "5px" }}>
+                <div>
                   <button
                     type="button"
-                    className="btn-pilih-penerbangan"
+                    className="btn-pilih-penerbangan "
                     onClick={() => handleButtonModal(1)}
                   >
                     {buttonText2}
@@ -127,10 +127,10 @@ function PilihPenerbangan() {
           </div>
 
           {/* bawah */}
-          <div className="row">
-            <div className="col-md-6">
-              <div className="input-group mb-3">
-                <div className="col-md-2 input-group-prepend d-flex align-items-center  justify-content-around">
+          <div className="container-pilih-penerbangan">
+            <div>
+              <div className="input-group mb-3 card-input-pilih-penerbangan">
+                <div className=" input-group-prepend icon-penerbangan">
                   <img src={IconDate} />
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
@@ -138,7 +138,7 @@ function PilihPenerbangan() {
                     </p>
                   </div>
                 </div>
-                <div className="col-md-10 d-flex justify-content-between">
+                <div className=" d-flex justify-content-between">
                   <DateTimePicker
                     label="Departure"
                     selectedDate={selectedDate}
@@ -148,9 +148,9 @@ function PilihPenerbangan() {
               </div>
             </div>
 
-            <div className="col-md-6">
-              <div className="input-group mb-3">
-                <div className="col-md-2 input-group-prepend d-flex align-items-center justify-content-around">
+            <div>
+              <div className="input-group mb-3 card-input-pilih-penerbangan">
+                <div className="input-group-prepend icon-penerbangan">
                   <img src={IconPerson} />
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
@@ -158,8 +158,8 @@ function PilihPenerbangan() {
                     </p>
                   </div>
                 </div>
-                <div className="col-md-10 d-flex justify-content-between">
-                  <div className="col-md-5">
+                <div className="button-passenger">
+                  <div>
                     <p
                       style={{
                         fontSize: "14px",
@@ -177,7 +177,7 @@ function PilihPenerbangan() {
                       {passengerCount} Penumpang
                     </button>
                   </div>
-                  <div className="col-md-6">
+                  <div>
                     <p
                       style={{
                         fontSize: "14px",

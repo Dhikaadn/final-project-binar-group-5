@@ -41,7 +41,9 @@
   position: relative;
   margin-top: 4rem;
   width: 100%;
-  height: 100px;
+
+  height: 6rem;
+
   background: linear-gradient(to right, #9e64d4, #e0c8f5);
 }
 
@@ -50,6 +52,18 @@
 .card-pilih-penerbangan {
   border-color: #d0d0d0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.container-pilih-penerbangan {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.card-input-pilih-penerbangan {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 10px;
 }
 
 .btn-pilih-penerbangan {
@@ -75,11 +89,23 @@
   font-weight: 600;
 }
 
+.icon-penerbangan {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button-passenger {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+
 /* listCard */
 
 .list_container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* modal */
@@ -352,6 +378,16 @@
     flex-direction: column;
     padding-left: 20px;
   }
+
+  .container-banner {
+    top: -7rem;
+    margin-bottom: -9rem;
+  }
+
+  .list_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .container-jam-kota {
     margin-left: 15px;
   }
@@ -366,6 +402,36 @@
 }
 
 @media only screen and (max-width: 474px) {
+  .rectangle-banner {
+    height: 3rem;
+  }
+
+  .container-banner {
+    top: -4rem;
+    margin-bottom: -5rem;
+  }
+
+  .icon-penerbangan {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .container-pilih-penerbangan {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .card-input-pilih-penerbangan {
+    grid-template-columns: 1fr;
+  }
+
+  .list_container {
+    grid-template-columns: 1fr;
+  }
+
+  .button-passenger {
+    grid-template-columns: 1fr;
+  }
+
   .container-input-beranda {
     width: 300px;
   }
@@ -379,61 +445,60 @@
 /* Responsive website */
 
 /* Styling login page */
-.img-left{
-    width: 700px;
+.img-left {
+  width: 700px;
 }
 
-.Login{
-    display: flex;
+.Login {
+  display: flex;
 }
 
-.masuk-bold{
-    font-weight: bold;
-    font-size: 24px;
+.masuk-bold {
+  font-weight: bold;
+  font-size: 24px;
 }
 
-.form-login{
-    margin: 140px;
-    margin-top: 240px;
+.form-login {
+  margin: 140px;
+  margin-top: 240px;
 }
 
-.eye-logo{
-    border: 1px solid black;
+.eye-logo {
+  border: 1px solid black;
 }
 
-.input-password{
-    border-right: none;
-    border-radius: 15px 0px 0px 15px;
-    background: white;
-    border-color: #D0D0D0;
-
+.input-password {
+  border-right: none;
+  border-radius: 15px 0px 0px 15px;
+  background: white;
+  border-color: #d0d0d0;
 }
 
-.icon-visible{
-    border-left: none;
-    background: white;
-    border-radius: 0px 15px 15px 0px;
+.icon-visible {
+  border-left: none;
+  background: white;
+  border-radius: 0px 15px 15px 0px;
 }
 
-.container-input-password{
-    width: 340px;
-    height: 40px;
+.container-input-password {
+  width: 340px;
+  height: 40px;
 }
 
-.input-email{
-    border-radius: 15px 15px 15px 15px;
-    background: white;
-    border-color: #D0D0D0;
+.input-email {
+  border-radius: 15px 15px 15px 15px;
+  background: white;
+  border-color: #d0d0d0;
 }
 
-.container-input-email{
-    width: 340px;
-    height: 40px;
+.container-input-email {
+  width: 340px;
+  height: 40px;
 }
 
-.bt-login-submit{
-    width: 340px;
-    border-radius: 15px 15px 15px 15px;
-    background: #7126B5;
+.bt-login-submit {
+  width: 340px;
+  border-radius: 15px 15px 15px 15px;
+  background: #7126b5;
 }
 /* Styling login page */
