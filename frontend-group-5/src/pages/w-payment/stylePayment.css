@@ -1,0 +1,136 @@
+
+
+:root {
+    --neutral-black: #000000;
+    --neutral-white: #FFFFFF;
+    --neutral-gray: #8A8A8A;
+    --neutral-gray2: #3C3C3C;
+    --primary-color: #7126B5;
+    --primary-color2: #A06ECE;
+    --alert-success: #73CA5C;
+    --alert-danger: #FF0000;
+    --alert-warning: #F9CC00;
+}
+
+/* ========== Payment Done CSS ========== */
+.alertNotif_success {
+    background: var(--alert-success);
+    border-radius: 12px;
+    height: 50px;
+    font-weight: 500;
+    color: var(--neutral-white);
+    font-size: 16px;
+}
+
+.text-bio {
+    color: var(--neutral-gray);
+}
+
+.text-done {
+    color: var(--primary-color);
+}
+
+.form_payment {
+    background: var(--neutral-gray2);
+    color: var(--neutral-white);
+    height: 50px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.img_payment {
+    cursor: pointer;
+}
+
+.text_paymentTitle {
+    color: var(--primary-color) ;
+    font-size: 20px;
+}
+
+.text_paymentTitle2 {
+    color: var(--primary-color2) ;
+}
+
+.alert-payment {
+    position: absolute;
+    background: white;
+    top: 22%;
+    left: 54%;
+    width: 30%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
+    border-radius: 15px;
+}
+
+@media all and (min-width: 1024px) and (max-width: 1440px) {
+
+    .alert-payment {
+        position: absolute;
+        background: white;
+        top: 19%;
+        left: 51%;
+        width: 44%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
+        border-radius: 15px;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+
+    .alert-payment {
+        position: absolute;
+        background: white;
+        top: 22%;
+        left: 51%;
+        width: 45%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
+        border-radius: 15px;
+    }
+
+
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+
+    .alert-payment {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 90%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
+        left: 5%;
+        top: 20%;
+    }   
+}
+
+@media all and (max-width: 480px) {
+
+    .alert-payment {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 90%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
+        left: 5%;
+        top: 20%;
+    }
+
+    .alert-payment P {
+        text-align: center;
+    }
+    
+    .text-alert {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .alertNotif_success{
+        text-align: center;
+    }
+
+    .btn-done{
+        width: 80% !important;
+    }
+ }
+
