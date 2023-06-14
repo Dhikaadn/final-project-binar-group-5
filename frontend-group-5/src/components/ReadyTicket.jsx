@@ -3,11 +3,12 @@ import Accordion from 'react-bootstrap/Accordion';
 import maskapai from '../img/maskapai.jpg';
 import time from '../img/time.jpg';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 export const ReadyTicket = () => {
   return (
     <div className='ReadyTicket'>
-        <Accordion defaultActiveKey="0" className='accordion'>
+        <Accordion defaultActiveKey="0" className='accordionnn'>
       <Accordion.Item eventKey="0" className='accordion-item'>
         <Accordion.Header className='accordion-header'>
             <div className='container-kelas-pojok-kiri'>
@@ -35,7 +36,7 @@ export const ReadyTicket = () => {
             <img src={time} width="20" height="20" className='ms-4 mt-3' alt='time-logo'/>
             <div className='container-harga'>
                 <p className='harga'>IDR 4.950.000</p>
-                <Button className='bt-pilih'>
+                <Button as={Link} to={'/biodata_pemesanan'} className='bt-pilih'>
                     Pilih
                 </Button>
             </div>

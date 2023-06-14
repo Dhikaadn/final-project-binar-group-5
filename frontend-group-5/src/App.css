@@ -1,6 +1,6 @@
 /* <---Styling navbar beranda---> */
 .navbar-beranda {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
 }
 
 .icon-search {
@@ -206,7 +206,7 @@
 /* Styling finished ticket */
 
 /* Styling accordion */
-.accordion {
+.accordionnn {
   width: 800px;
 }
 
@@ -450,6 +450,12 @@
 /* Styling akun page */
 
 /* Responsive website */
+@media only screen and (max-width: 1025px) {
+  .list_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media only screen and (max-width: 812px) {
   .bt-pencarian {
     margin-top: 10px;
@@ -587,3 +593,5 @@
   background: #7126b5;
 }
 /* Styling login page */
+
+
