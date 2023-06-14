@@ -367,6 +367,88 @@
   text-align: left;
 }
 
+/* Styling akun page */
+.container-top-akun {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+}
+
+.akun-bold {
+  font-weight: bold;
+  margin-left: 100px;
+  font-size: 20px;
+}
+
+.bt-beranda-akun {
+  width: 70vw;
+  text-align: left;
+  background: #a06ece;
+  border: none;
+}
+
+.container-button-beranda {
+  display: flex;
+  justify-content: center;
+}
+
+.container-bottom-akun {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+  gap: 100px;
+}
+
+.card-akun {
+  width: 30rem;
+}
+
+.bt-menu-akun {
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 10px;
+  width: 300px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bt-menu-akun:hover {
+  background: #e5e5e5;
+}
+
+.title-profil-bold {
+  font-weight: bold;
+}
+
+.text-update-profil {
+  font-weight: bold;
+  color: #4b1979;
+}
+
+.bt-simpan-akun {
+  background-color: #4b1979;
+  border: none;
+  width: 100px;
+}
+
+.container-simpan-akun {
+  display: flex;
+  justify-content: center;
+}
+
+.title-datadiri {
+  width: 100%;
+  color: white;
+  padding: 7px;
+  text-align: left;
+  background: #a06ece;
+  border: none;
+  border-radius: 10px 10px 0px 0px;
+}
+/* Styling akun page */
+
 /* Responsive website */
 @media only screen and (max-width: 812px) {
   .bt-pencarian {
@@ -434,6 +516,9 @@
 
   .container-input-beranda {
     width: 300px;
+  }
+  .card-akun {
+    width: 20rem;
   }
 }
 

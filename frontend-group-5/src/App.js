@@ -5,6 +5,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Beranda } from "./components/Beranda";
 import Notifikasi from "./components/Notifikasi";
+import { Akun } from "./components/Akun";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/beranda" element={<Beranda />} />
           <Route path="/notifikasi" element={<Notifikasi />} />
+          <Route path="/akun" element={<Akun />} />
         </Routes>
       </Router>
     </div>
