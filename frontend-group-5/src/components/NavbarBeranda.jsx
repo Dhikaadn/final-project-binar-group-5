@@ -8,16 +8,15 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsBoxArrowInRight} from 'react-icons/bs';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from '../img/logo.jpg';
+import { Link } from 'react-router-dom';
 
 export const NavbarBeranda = () => {
   return (
-    <Navbar bg="white" expand="lg" className='navbar-beranda'>
+    <Navbar bg="white" expand="lg" className='navbar-beranda position-sticky fixed-top '>
       <Container fluid>
-        <Navbar.Brand href="#home" className='ms-5 me-4'>
+        <Navbar.Brand as={Link} to={'/'} className='ms-5 me-4'>
             <img
               src={Logo}
-              width="50"
-              height="50"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
