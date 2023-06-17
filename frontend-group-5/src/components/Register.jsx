@@ -5,10 +5,18 @@ import {useState} from "react";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { register } from "../redux/actions/auth";
+import { toast } from "react-toastify";
+
 
 export const Register = () => {
   const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [password, setPasswordInput] = useState("");
     const handlePasswordChange =(evnt)=>{
         setPasswordInput(evnt.target.value);
     }
@@ -20,17 +28,26 @@ export const Register = () => {
       }
       setPasswordType("password")
     }
+    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const data = {name, email, phoneNumber, password};
+    dispatch(register(data, navigate));
+  };
   return (
     <div className='Login'>
       <img src={imgLeft} alt="img-left" className='img-left'/>
-      <form className='form-login'>
+      <form className='form-login' onSubmit={onSubmit}>
             <p className='masuk-bold'>Daftar</p>
             <label className='mb-3'>Nama</label>
                 <InputGroup hasValidation className='container-input-nama'>
                 <Form.Control
-                  type="nama"
+                  type="name"
                   aria-describedby="inputGroupPrepend"
-                  name="nama"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className='input-nama'
                   placeholder='Nama Lengkap'
                 />                
@@ -41,6 +58,8 @@ export const Register = () => {
                   type="email"
                   aria-describedby="inputGroupPrepend"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className='input-email'
                   placeholder='Contoh:johndee@gmail.com'
                 />                
@@ -48,9 +67,11 @@ export const Register = () => {
               <label className='mb-3'>Nomor Telepon</label>
                 <InputGroup hasValidation className='container-input-noTelepon'>
                 <Form.Control
-                  type="noTelepon"
+                  type="phoneNumber"
                   aria-describedby="inputGroupPrepend"
-                  name="noTelepon"
+                  name="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   className='input-noTelepon'
                   placeholder='+62.'
                 />                
@@ -62,7 +83,7 @@ export const Register = () => {
                   onChange={handlePasswordChange}
                   aria-describedby="inputGroupPrepend"
                   name="password"
-                  value={passwordInput}
+                  value={password}
                   className='input-password'
                   placeholder='Buat Password'
                 />

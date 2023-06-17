@@ -3,8 +3,20 @@ import Accordion from 'react-bootstrap/Accordion';
 import maskapai from '../img/maskapai.jpg';
 import time from '../img/time.jpg';
 import Button from 'react-bootstrap/Button';
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../redux/actions/post";
+import { useEffect } from 'react';
 
 export const ReadyTicket = () => {
+  // dispatch -> to change the global state in redux
+  const dispatch = useDispatch();
+
+  // useSelector -> to access the global state (redux)
+  const { posts } = useSelector((state) => state.post);
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+  console.log(posts)
   return (
     <div className='ReadyTicket'>
         <Accordion defaultActiveKey="0" className='accordion'>
@@ -43,6 +55,13 @@ export const ReadyTicket = () => {
         <Accordion.Body>
           <div className='container-keberangkatan'>
             <div className='container-keberangkatan-left'>
+            {posts?.length > 0 &&
+          posts.map((post,i) => (
+              <div key={i}>
+                <p>{post.kotaKeberangkatan}</p>
+                <p>{post.schedulesList[0].waktuKeberangkatan}</p>
+              </div>
+            ))}
               <p className='title-detail'>Detail Penerbangan</p>
               <p className='jam'>07.00</p>
               <p>3 Maret 2023</p>

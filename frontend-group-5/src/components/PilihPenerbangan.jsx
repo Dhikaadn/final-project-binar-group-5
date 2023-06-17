@@ -69,7 +69,7 @@ function PilihPenerbangan() {
     handleCloseModalSeatClass();
   };
 
-  console.log(seatClass);
+  // console.log(seatClass);
   return (
     <>
       <div className="card card-rounded mb-5 card-pilih-penerbangan">

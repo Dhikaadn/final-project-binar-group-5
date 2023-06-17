@@ -7,8 +7,14 @@ import { CiSettings } from "react-icons/ci";
 import { BsBoxArrowRight } from "react-icons/bs";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getProfile, logout } from "../redux/actions/auth";
 
 export const Akun = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoggedIn, token, user } = useSelector((state) => state.auth);
   return (
     <div className="Akun">
       <NavbarBeranda />
@@ -37,7 +43,7 @@ export const Akun = () => {
             />
             Pengaturan Akun
           </div>
-          <div className="bt-menu-akun">
+          <div className="bt-menu-akun" onClick={() => dispatch(logout(navigate))}>
             <BsBoxArrowRight
               className="me-2"
               style={{ color: "#7126B5", fontSize: "30px" }}
