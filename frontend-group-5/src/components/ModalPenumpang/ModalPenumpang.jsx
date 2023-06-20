@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./modalpenumpang.css";
+import { useDispatch } from "react-redux";
+import { Penumpang } from "../../redux/actions/penumpang";
 
 function ModalPenumpang({
   show,
@@ -8,9 +10,15 @@ function ModalPenumpang({
   countPassenger,
   setCountPassenger,
 }) {
+  const dispatch = useDispatch();
+
   const [dewasa, setDewasa] = useState(1);
   const [anak, setAnak] = useState(0);
   const [bayi, setBayi] = useState(0);
+
+  // useEffect(() => {
+  //   dispatch(setPenumpang());
+  // }, [dispatch]);
 
   const handleIncrement = (type) => {
     if (type === "dewasa") {
@@ -35,11 +43,13 @@ function ModalPenumpang({
   const handleSaveChanges = () => {
     const totalPassenger = dewasa + anak + bayi;
     setCountPassenger(totalPassenger);
+    const detail = { dewasa, anak, bayi };
+    dispatch(Penumpang(detail));
     handleClose();
   };
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>Passenger</Modal.Title>
       </Modal.Header>
