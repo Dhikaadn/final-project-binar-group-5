@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const login = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://binar-backend-final-project-production.up.railway.app/api/auth/signin`,
+      `https://backend-binar-final-project-production.up.railway.app/api/auth/signin`,
       data,
       { "Content-Type": "application/json" }
     );
@@ -30,7 +30,7 @@ export const login = (data, navigate) => async (dispatch) => {
 export const register = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://binar-backend-final-project-production.up.railway.app/api/auth/signup`,
+      `https://backend-binar-final-project-production.up.railway.app/api/auth/signup`,
       data,
       { "Content-Type": "application/json" }
     );

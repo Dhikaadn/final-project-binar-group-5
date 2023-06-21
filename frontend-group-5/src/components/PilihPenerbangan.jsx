@@ -57,9 +57,9 @@ function PilihPenerbangan() {
 
   const handleListClick = (result) => {
     if (activeButton === 1) {
-      setButtonText1(result.text);
+      setButtonText1(result);
     } else if (activeButton === 2) {
-      setButtonText2(result.text);
+      setButtonText2(result);
     }
     handleCloseModal();
   };

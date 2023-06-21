@@ -37,10 +37,10 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
     const Results = async () => {
       try {
         const response = await axios.get(
-          "https://binar-backend-final-project-production.up.railway.app/api/v1/bandara"
+          "https://backend-binar-final-project-production.up.railway.app/api/v1/airport/get-airport"
         );
-        setSearchResults(response?.data);
-        console.log(response?.data);
+        setSearchResults(response?.data?.data);
+        console.log(response?.data?.data);
       } catch (error) {
         console.error(error);
       }
@@ -50,10 +50,10 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
   }, []);
 
   const filteredResults = searchResults.filter((result) =>
-    result.namaBandara.toLowerCase().includes(searchText.toLowerCase())
+    result.toLowerCase().includes(searchText.toLowerCase())
   );
   const handleListClick = (result) => {
-    setButtonText(result.namaBandara);
+    setButtonText(result);
     handleClose();
   };
 
@@ -94,7 +94,7 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
             onClick={() => handleListClick(result)}
             className="modal-body-list"
           >
-            {result.namaBandara}
+            {result}
           </div>
         ))}
       </Modal.Body>
