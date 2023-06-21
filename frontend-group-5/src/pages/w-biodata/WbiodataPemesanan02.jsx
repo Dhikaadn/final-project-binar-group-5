@@ -14,15 +14,23 @@ import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
 import { NavbarBeranda } from "../../components/NavbarBeranda";
 
-const WbiodataPemesanan02 = ({ jumlahPengulangan }) => {
+import { useSelector } from "react-redux";
+
+const WbiodataPemesanan02 = () => {
+  // const jumlahPengulangan = 2;
+  // const detail = ["dewasa", "dewasa", "anak", "bayi"];
+  const { detailPenumpang } = useSelector((state) => state.penumpang);
+
   const [dataPemesan, setDataPemesan] = useState({
     name: "",
     nameKeluarga: "",
     noHp: "",
     email: "",
   });
-  const [formData, setFormData] = useState(null);
-  const [loopedItems, setLoopedItems] = useState(2);
+  const [formData, setFormData] = useState({});
+  const [showmodal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   const [isOn, setIsOn] = useState(false);
 
@@ -50,30 +58,27 @@ const WbiodataPemesanan02 = ({ jumlahPengulangan }) => {
   };
 
   useEffect(() => {
-    const totalItems = Array.from(
-      { length: jumlahPengulangan },
-      (_, index) => index + 1
-    );
-
     const newFormData = {};
 
-    totalItems.map((item) => {
-      newFormData[`title${item}`] = "Mr.";
-      newFormData[`name${item}`] = "";
-      newFormData[`namaKeluarga${item}`] = "";
-      newFormData[`tanggalLahir${item}`] = "";
-      newFormData[`negara${item}`] = "";
-      newFormData[`identitas${item}`] = "";
-      newFormData[`penerbit${item}`] = "";
-      newFormData[`masaAktif${item}`] = "";
+    detailPenumpang.map((item, index) => {
+      // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
+
+      newFormData[`title${index}`] = "Mr.";
+      newFormData[`name${index}`] = "";
+      newFormData[`namaKeluarga${index}`] = "";
+      newFormData[`tanggalLahir${index}`] = "";
+      newFormData[`negara${index}`] = "";
+      newFormData[`identitas${index}`] = "";
+      newFormData[`penerbit${index}`] = "";
+      newFormData[`masaAktif${index}`] = "";
     });
 
     // newFormData
     // {username1: "", phoneNumber1: "", username2: "", phoneNumber2: ""}
 
-    setLoopedItems(totalItems);
+    // setLoopedItems(totalItems);
     setFormData(newFormData);
-  }, [jumlahPengulangan]);
+  }, [detailPenumpang]);
 
   console.log(formData);
   console.log(dataPemesan);
@@ -84,7 +89,7 @@ const WbiodataPemesanan02 = ({ jumlahPengulangan }) => {
 
       <Container className="mt-3">
         <Row className="containerrr_form">
-          <Col>
+          <Col className="form_inputBiodata">
             <Accordion>
               <Card>
                 <Card.Body>
@@ -163,46 +168,45 @@ const WbiodataPemesanan02 = ({ jumlahPengulangan }) => {
               <Card.Title className="m-4 fw-bold">
                 Isi Data Penumpang
               </Card.Title>
-              {loopedItems.length > 0 &&
-                loopedItems.map((item) => (
-                  <Card.Body key={item}>
-                    <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
-                      Data Diri Penumpang {item} - Adult
-                    </Card.Text>
+              {detailPenumpang.map((item, index) => (
+                <Card.Body key={index}>
+                  <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
+                    Data Diri Penumpang {index + 1} - {item}
+                  </Card.Text>
 
-                    <Form>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">Title</Form.Label>
-                        <Form.Select
-                          key={item}
-                          id={`title${item}`}
-                          name={`title${item}`}
-                          value={formData[`title${item}`]}
-                          onChange={handleInputChange}
-                        >
-                          <option value="Mr.">Mr.</option>
-                          <option value="Mrs.">Mrs.</option>
-                        </Form.Select>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label
-                          className="text_label"
-                          aria-label="Nama Lengkap"
-                        >
-                          Nama Lengkap
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Harry"
-                          id={`name${item}`}
-                          name={`name${item}`}
-                          value={formData[`name${item}`]}
-                          onChange={handleInputChange}
-                          autoComplete="off"
-                        />
-                      </Form.Group>
+                  <Form>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">Title</Form.Label>
+                      <Form.Select
+                        key={index}
+                        id={`title${index}`}
+                        name={`title${index}`}
+                        value={formData[`title${index}`]}
+                        onChange={handleInputChange}
+                      >
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                      </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label
+                        className="text_label"
+                        aria-label="Nama Lengkap"
+                      >
+                        Nama Lengkap
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Harry"
+                        id={`name${index}`}
+                        name={`name${index}`}
+                        value={formData[`name${index}`]}
+                        onChange={handleInputChange}
+                        autoComplete="off"
+                      />
+                    </Form.Group>
 
-                      {/* <Form.Group className="mb-3 d-flex justify-content-between">
+                    {/* <Form.Group className="mb-3 d-flex justify-content-between">
                           <Form.Label>Punya Nama Keluarga?</Form.Label>
                           <HideShowForm
                             eventKey={item.toString()}
@@ -210,149 +214,88 @@ const WbiodataPemesanan02 = ({ jumlahPengulangan }) => {
                           />
                         </Form.Group> */}
 
-                      {/* <Accordion.Collapse eventKey={item.toString()}> */}
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Nama Keluarga
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Potter"
-                          id={`namaKeluarga${item}`}
-                          name={`namaKeluarga${item}`}
-                          value={formData[`namaKeluarga${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      {/* </Accordion.Collapse> */}
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Tanggal Lahir
-                        </Form.Label>
-                        <Form.Control
-                          type="date"
-                          placeholder="dd/mm/yyyy"
-                          id={`tanggalLahir${item}`}
-                          name={`tanggalLahir${item}`}
-                          value={formData[`tanggalLahir${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Kewarganegaraan
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Indonesia"
-                          id={`negara${item}`}
-                          name={`negara${item}`}
-                          value={formData[`negara${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          KTP/Paspor
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder=""
-                          id={`identitas${item}`}
-                          name={`identitas${item}`}
-                          value={formData[`identitas${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Negara penerbit
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder=""
-                          id={`penerbit${item}`}
-                          name={`penerbit${item}`}
-                          value={formData[`penerbit${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Berlaku Sampai
-                        </Form.Label>
-                        <Form.Control
-                          type="date"
-                          placeholder="dd/mm/yyyy"
-                          id={`masaAktif${item}`}
-                          name={`masaAktif${item}`}
-                          value={formData[`masaAktif${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                    </Form>
-                  </Card.Body>
-                ))}
+                    {/* <Accordion.Collapse eventKey={item.toString()}> */}
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Nama Keluarga
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Potter"
+                        id={`namaKeluarga${index}`}
+                        name={`namaKeluarga${index}`}
+                        value={formData[`namaKeluarga${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    {/* </Accordion.Collapse> */}
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Tanggal Lahir
+                      </Form.Label>
+                      <Form.Control
+                        type="date"
+                        placeholder="dd/mm/yyyy"
+                        id={`tanggalLahir${index}`}
+                        name={`tanggalLahir${index}`}
+                        value={formData[`tanggalLahir${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Kewarganegaraan
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Indonesia"
+                        id={`negara${index}`}
+                        name={`negara${index}`}
+                        value={formData[`negara${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">KTP/Paspor</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        id={`identitas${index}`}
+                        name={`identitas${index}`}
+                        value={formData[`identitas${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Negara penerbit
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        id={`penerbit${index}`}
+                        name={`penerbit${index}`}
+                        value={formData[`penerbit${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Berlaku Sampai
+                      </Form.Label>
+                      <Form.Control
+                        type="date"
+                        placeholder="dd/mm/yyyy"
+                        id={`masaAktif${index}`}
+                        name={`masaAktif${index}`}
+                        value={formData[`masaAktif${index}`]}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </Form>
+                </Card.Body>
+              ))}
             </Card>
-
-            {/* <Accordion >
-                        <Card className='mt-4'>
-                            <Card.Body>
-                                <Card.Title className='pb-3 fw-bold'>Isi Data Penumpang</Card.Title>
-                                <Card.Text className='title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4'>
-                                    Data Diri Penumpang 1 - Adult
-                                </Card.Text>
-                                
-                                <Form>
-                                    <Form.Group className="mb-3" >
-                                        <Form.Label className='text_label'>Title</Form.Label>
-                                        <Form.Select id='title' >
-                                            <option >Mr.</option>
-                                            <option value="1">Mrs.</option>
-                                        </Form.Select>
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" >
-                                        <Form.Label className='text_label' aria-label='Nama Lengkap'>Nama Lengkap</Form.Label>
-                                        <Form.Control type="text" placeholder="Harry" id='name' autoComplete='off'/>
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3 d-flex justify-content-between" >
-                                        <Form.Label >Punya Nama Keluarga?</Form.Label>                                        
-                                        <HideShowForm eventKey="2" onClick={handleSwitch}/>
-                                    </Form.Group>
-
-                                    <Accordion.Collapse eventKey="2">
-                                        <Form>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>Nama Keluarga</Form.Label>
-                                                <Form.Control type="text" placeholder="Potter" id='nameKeluarga'/>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>Tanggal Lahir</Form.Label>
-                                                <Form.Control type="date" placeholder="dd/mm/yyyy" id='ttl'/>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>Kewarganegaraan</Form.Label>
-                                                <Form.Control type="text" placeholder="Indonesia" id='negara'/>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>KTP/Paspor</Form.Label>
-                                                <Form.Control type="text" placeholder="" id='paspor'/>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>Negara penerbit</Form.Label>
-                                                <Form.Control type="text" placeholder="" id='penerbit'/>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" >
-                                                <Form.Label className='text_label'>Berlaku Sampai</Form.Label>
-                                                <Form.Control type="date" placeholder="dd/mm/yyyy" id='expired'/>
-                                            </Form.Group>
-                                        </Form>
-                                    </Accordion.Collapse>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Accordion> */}
 
             <div className="button-wrapper position-relative">
               <Button className="my-5 w-100" disabled variant="secondary">

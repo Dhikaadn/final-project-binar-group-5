@@ -5,10 +5,16 @@ import {useState} from "react";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { login } from "../redux/actions/auth";
 
 export const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPasswordInput] = useState("");
     const handlePasswordChange =(evnt)=>{
         setPasswordInput(evnt.target.value);
     }
@@ -20,15 +26,26 @@ export const Login = () => {
       }
       setPasswordType("password")
     }
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+      const data = { email, password };
+      dispatch(login(data, navigate));
+    };
+
+    console.log(password);
+    console.log(email);
   return (
     <div className='Login'>
       <img src={imgLeft} alt="img-left" className='img-left'/>
-      <form className='form-login'>
+      <form className='form-login' onSubmit={onSubmit}>
             <p className='masuk-bold'>Masuk</p>
                 <label className='mb-3'>Email/No Telepon</label>
                 <InputGroup hasValidation className='container-input-email'>
                 <Form.Control
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   aria-describedby="inputGroupPrepend"
                   name="email"
                   className='input-email'
@@ -42,7 +59,7 @@ export const Login = () => {
                   onChange={handlePasswordChange}
                   aria-describedby="inputGroupPrepend"
                   name="password"
-                  value={passwordInput}
+                  value={password}
                   className='input-password'
                   placeholder='Masukan Password'
                 />

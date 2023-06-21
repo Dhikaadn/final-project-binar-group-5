@@ -5,9 +5,17 @@ import ListCard from "./ListCard";
 import PilihPenerbangan from "./PilihPenerbangan";
 
 import IconSearch from "../img/fi_search_putih.svg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState("Semua");
+
+  const { penumpang } = useSelector((state) => state.penumpang);
+
+  console.log(penumpang);
+  console.log(penumpang.anak);
 
   const handleButtonClick = (category) => {
     setActiveButton(category);
@@ -20,6 +28,10 @@ const HomePage = () => {
       <div className="container w-75">
         {/* pilih penerbangan */}
         <PilihPenerbangan />
+
+        <button onClick={() => navigate("/biodata_pemesanan")}>
+          Test Form Biodata pemesanan
+        </button>
 
         {/* destination favorit */}
         <div className="card border-light">
