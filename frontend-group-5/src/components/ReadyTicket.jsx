@@ -4,26 +4,48 @@ import maskapai from '../img/maskapai.jpg';
 import time from '../img/time.jpg';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
+import { getDetail } from '../redux/actions/detail';
 import { getListPenerbangan } from '../redux/actions/search';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Penumpang } from "../redux/actions/penumpang";
 
 export const ReadyTicket = () => {
   // dispatch -> to change the global state in redux
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // useSelector -> to access the global state (redux)
   const { listPenerbangan } = useSelector((state) => state.search);
+  const { penumpang } = useSelector((state) => state.penumpang);
   useEffect(() => {
-    dispatch(getListPenerbangan());
+    dispatch(getListPenerbangan(),Penumpang());
   }, [dispatch]);
-  console.log(listPenerbangan)
+
+  // console.log(listPenerbangan[urutan].arrivalCity)
+  // console.log(urutan)
+  // console.log(listPenerbangan[urutan].arrivalCity)
+  
+
+  const handlePilih = (a) =>{
+    const airlineCode = listPenerbangan[a].airlineCode;
+    const flightClass = listPenerbangan[a].airlineClass;
+    const adultPassenger = penumpang.dewasa;
+    const childrenPassenger = penumpang.anak;
+    const babyPassenger = penumpang.bayi;
+    const data = {airlineCode,flightClass,adultPassenger,childrenPassenger,babyPassenger};
+    dispatch(getDetail(data, navigate));
+  }
+
+
+  
+
   return (
     <div className='ReadyTicket'>
-        <Accordion defaultActiveKey="0" className='accordion'>
+       <Accordion>
         {listPenerbangan?.length > 0 &&
-          listPenerbangan.map((list,i) => (
-            <Accordion.Item eventKey={i} className='accordion-item' key={i}>
-            <Accordion.Header className='accordion-header'>
+          listPenerbangan.map((list,index) => (
+            <Accordion.Item eventKey={index} className='accordion-item' key={index}>
+              <Accordion.Header className='accordion-header'>
                 <div className='container-kelas-pojok-kiri'>
                     <img className='me-3' src={maskapai} alt="logo maskapai"/>
                     {list.airlineName} - {list.airlineClass}
@@ -36,7 +58,7 @@ export const ReadyTicket = () => {
                 </div>
                 <div className='container-garis'>
                     <div className='garis-top'>
-                        4h 0m
+                        4h 0m 
                     </div>
                     <div className='garis-bottom'>
                         Direct
@@ -48,8 +70,8 @@ export const ReadyTicket = () => {
                 </div>
                 <img src={time} width="20" height="20" className='ms-4 mt-3' alt='time-logo'/>
                 <div className='container-harga'>
-                    <p className='harga'>{list.airlinePrice}</p>
-                    <Button className='bt-pilih'>
+                    <p className='harga me-3'>{list.airlinePrice}</p>
+                    <Button className='bt-pilih me-3' onClick={(e)=>handlePilih(index)}>
                         Pilih
                     </Button>
                 </div>
@@ -93,10 +115,13 @@ export const ReadyTicket = () => {
                 </div>
               </div>
             </Accordion.Body>
-          </Accordion.Item>
+            </Accordion.Item>
             ))}
-      
-      {/* <Accordion.Item eventKey="1" className='accordion-item'>
+            </Accordion>
+    </div>
+)}
+
+    /* <Accordion.Item eventKey="1" className='accordion-item'>
         <Accordion.Header className='accordion-header'>
             <div className='container-kelas-pojok-kiri'>
                 <img className='me-3' src={maskapai} alt="logo maskapai"/>
@@ -167,9 +192,4 @@ export const ReadyTicket = () => {
             </div>
           </div>
         </Accordion.Body>
-      </Accordion.Item> */}
-    </Accordion>
-    </div>
-    
-  )
-}
+      </Accordion.Item> */
