@@ -11,32 +11,36 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
 import { NavbarBeranda } from "../../components/NavbarBeranda";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  BiodataPemesan,
+  BiodataPenumpang,
+} from "../../redux/actions/formbiodata";
+
 import { getDetail } from "../../redux/actions/detail";
 import { Penumpang } from "../../redux/actions/penumpang";
 
 const WbiodataPemesanan = () => {
   // const jumlahPengulangan = 2;
   // const detail = ["dewasa", "dewasa", "anak", "bayi"];
-  // dispatch -> to change the global state in redux
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { detailPenumpang } = useSelector((state) => state.penumpang);
-  const {penumpang} = useSelector((state) => state.penumpang);
+  const { penumpang } = useSelector((state) => state.penumpang);
   const { detail } = useSelector((state) => state.detail);
 
   useEffect(() => {
     dispatch(getDetail());
   }, [dispatch]);
 
-
   const [dataPemesan, setDataPemesan] = useState({
-    name: "",
-    nameKeluarga: "",
-    noHp: "",
+    fullName: "",
+    familyName: "",
+    phoneNumber: "",
     email: "",
   });
   const [formData, setFormData] = useState({});
@@ -64,9 +68,9 @@ const WbiodataPemesanan = () => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
+  const handleSubmit = () => {
+    dispatch(BiodataPemesan(dataPemesan, navigate));
+    dispatch(BiodataPenumpang(formData, navigate));
   };
 
   useEffect(() => {
@@ -76,13 +80,13 @@ const WbiodataPemesanan = () => {
       // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
 
       newFormData[`title${index}`] = "Mr.";
-      newFormData[`name${index}`] = "";
-      newFormData[`namaKeluarga${index}`] = "";
-      newFormData[`tanggalLahir${index}`] = "";
-      newFormData[`negara${index}`] = "";
-      newFormData[`identitas${index}`] = "";
-      newFormData[`penerbit${index}`] = "";
-      newFormData[`masaAktif${index}`] = "";
+      newFormData[`fullName${index}`] = "";
+      newFormData[`familyName${index}`] = "";
+      newFormData[`dob${index}`] = "";
+      newFormData[`nationality${index}`] = "";
+      newFormData[`identityNumber${index}`] = "";
+      newFormData[`identityIssuingCountry${index}`] = "";
+      newFormData[`expiredAt${index}`] = "";
     });
 
     // newFormData
@@ -120,9 +124,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder="Harry"
-                        id="name"
-                        name="name"
-                        value={dataPemesan["name"]}
+                        id="fullName"
+                        name="fullName"
+                        value={dataPemesan["fullName"]}
                         onChange={handleChange}
                         autoComplete="off"
                       />
@@ -141,9 +145,9 @@ const WbiodataPemesanan = () => {
                         <Form.Control
                           type="text"
                           placeholder="Potter"
-                          id="nameKeluarga"
-                          name="nameKeluarga"
-                          value={dataPemesan["nameKeluarga"]}
+                          id="familyName"
+                          name="familyName"
+                          value={dataPemesan["familyName"]}
                           onChange={handleChange}
                         />
                       </Form.Group>
@@ -153,11 +157,11 @@ const WbiodataPemesanan = () => {
                         Nomor Telepon
                       </Form.Label>
                       <Form.Control
-                        type="number"
+                        type="text"
                         placeholder="0812345678"
-                        id="noHp"
-                        name="noHp"
-                        value={dataPemesan["noHp"]}
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={dataPemesan["phoneNumber"]}
                         onChange={handleChange}
                       />
                     </Form.Group>
@@ -211,9 +215,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder="Harry"
-                        id={`name${index}`}
-                        name={`name${index}`}
-                        value={formData[`name${index}`]}
+                        id={`fullName${index}`}
+                        name={`fullName${index}`}
+                        value={formData[`fullName${index}`]}
                         onChange={handleInputChange}
                         autoComplete="off"
                       />
@@ -235,9 +239,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder="Potter"
-                        id={`namaKeluarga${index}`}
-                        name={`namaKeluarga${index}`}
-                        value={formData[`namaKeluarga${index}`]}
+                        id={`familyName${index}`}
+                        name={`familyName${index}`}
+                        value={formData[`familyName${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -249,9 +253,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="date"
                         placeholder="dd/mm/yyyy"
-                        id={`tanggalLahir${index}`}
-                        name={`tanggalLahir${index}`}
-                        value={formData[`tanggalLahir${index}`]}
+                        id={`dob${index}`}
+                        name={`dob${index}`}
+                        value={formData[`dob${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -262,9 +266,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder="Indonesia"
-                        id={`negara${index}`}
-                        name={`negara${index}`}
-                        value={formData[`negara${index}`]}
+                        id={`nationality${index}`}
+                        name={`nationality${index}`}
+                        value={formData[`nationality${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -273,9 +277,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder=""
-                        id={`identitas${index}`}
-                        name={`identitas${index}`}
-                        value={formData[`identitas${index}`]}
+                        id={`identityNumber${index}`}
+                        name={`identityNumber${index}`}
+                        value={formData[`identityNumber${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -286,9 +290,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="text"
                         placeholder=""
-                        id={`penerbit${index}`}
-                        name={`penerbit${index}`}
-                        value={formData[`penerbit${index}`]}
+                        id={`identityIssuingCountry${index}`}
+                        name={`identityIssuingCountry${index}`}
+                        value={formData[`identityIssuingCountry${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -299,9 +303,9 @@ const WbiodataPemesanan = () => {
                       <Form.Control
                         type="date"
                         placeholder="dd/mm/yyyy"
-                        id={`masaAktif${index}`}
-                        name={`masaAktif${index}`}
-                        value={formData[`masaAktif${index}`]}
+                        id={`expiredAt${index}`}
+                        name={`expiredAt${index}`}
+                        value={formData[`expiredAt${index}`]}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -313,8 +317,7 @@ const WbiodataPemesanan = () => {
             <div className="button-wrapper position-relative">
               <Button
                 className="my-5 w-100"
-                as={Link}
-                to={"/biodata_pemesanan2"}
+                onClick={() => handleSubmit()}
                 style={{ background: "#7126B5", border: "none" }}
               >
                 Simpan
@@ -353,14 +356,16 @@ const WbiodataPemesanan = () => {
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">
-                      <span className="fs-6 fw-bolder">{detail.departureTime}</span>
+                      <span className="fs-6 fw-bolder">
+                        {detail.departureTime}
+                      </span>
                       <span className="text_paymentTitle2 ps-2 fw-bolder">
                         Keberangkatan
                       </span>
                     </div>
 
                     <div className="">
-                      <span className="fs-6">{detail.departureTime}</span>
+                      <span className="fs-6">{detail.departureDate}</span>
                       <p className="fs-6 border-bottom pb-3">
                         {detail.departureAirport}
                       </p>
@@ -375,8 +380,12 @@ const WbiodataPemesanan = () => {
                         <span className="fs-6 fw-bold ">
                           <img src={paymentLogo} alt="paymentLogo" /> Informasi:
                         </span>
-                        <span className="fs-6 ps-4 pt-1">Baggage {detail.checkedBaggage} kg</span>
-                        <span className="fs-6 ps-4">Cabin baggage {detail.cabinBaggage} kg</span>
+                        <span className="fs-6 ps-4 pt-1">
+                          Baggage {detail.checkedBaggage} kg
+                        </span>
+                        <span className="fs-6 ps-4">
+                          Cabin baggage {detail.cabinBaggage} kg
+                        </span>
                         <span className="fs-6 pb-2 ps-4">
                           In Flight Entertainment
                         </span>
@@ -402,7 +411,7 @@ const WbiodataPemesanan = () => {
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6">
                         <span className=" ">{penumpang.anak} Children </span>
-                        <span className=" ">IDR {detail.infantPrice}</span>
+                        <span className=" ">IDR {detail.childPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                         <span className=" ">Tax </span>

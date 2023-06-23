@@ -9,79 +9,52 @@ import {
   Form,
   Row,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
 import { NavbarBeranda } from "../../components/NavbarBeranda";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getDetail } from "../../redux/actions/detail";
 
 const WbiodataPemesanan02 = () => {
   // const jumlahPengulangan = 2;
   // const detail = ["dewasa", "dewasa", "anak", "bayi"];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { penumpang } = useSelector((state) => state.penumpang);
+  const { detail } = useSelector((state) => state.detail);
   const { detailPenumpang } = useSelector((state) => state.penumpang);
+  const { biodataPemesan, biodataPenumpang } = useSelector(
+    (state) => state.formbiodata
+  );
 
-  const [dataPemesan, setDataPemesan] = useState({
-    name: "",
-    nameKeluarga: "",
-    noHp: "",
-    email: "",
-  });
-  const [formData, setFormData] = useState({});
-  const [showmodal, setShowModal] = useState(false);
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
-
-  const [isOn, setIsOn] = useState(false);
-
-  const handleSwitch = () => {
-    setIsOn(!isOn);
-  };
-
-  const handleChange = (event) => {
-    setDataPemesan({
-      ...dataPemesan,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleInputChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
+  useEffect(() => {
+    dispatch(getDetail());
+  }, [dispatch]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
   };
 
-  useEffect(() => {
-    const newFormData = {};
+  const arrayBiodataPenumpang = Object.keys(biodataPenumpang).reduce(
+    (result, key) => {
+      const index = parseInt(key.slice(-1));
+      const newKey = key.slice(0, -1);
+      const value = biodataPenumpang[key];
 
-    detailPenumpang.map((item, index) => {
-      // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
+      result[index] = {
+        ...result[index],
+        [newKey]: value,
+        passengerId: index,
+      };
 
-      newFormData[`title${index}`] = "Mr.";
-      newFormData[`name${index}`] = "";
-      newFormData[`namaKeluarga${index}`] = "";
-      newFormData[`tanggalLahir${index}`] = "";
-      newFormData[`negara${index}`] = "";
-      newFormData[`identitas${index}`] = "";
-      newFormData[`penerbit${index}`] = "";
-      newFormData[`masaAktif${index}`] = "";
-    });
+      return result;
+    },
+    []
+  );
 
-    // newFormData
-    // {username1: "", phoneNumber1: "", username2: "", phoneNumber2: ""}
-
-    // setLoopedItems(totalItems);
-    setFormData(newFormData);
-  }, [detailPenumpang]);
-
-  console.log(formData);
-  console.log(dataPemesan);
+  console.log(arrayBiodataPenumpang);
 
   return (
     <>
@@ -90,79 +63,60 @@ const WbiodataPemesanan02 = () => {
       <Container className="mt-3">
         <Row className="containerrr_form">
           <Col className="form_inputBiodata">
-            <Accordion>
-              <Card>
-                <Card.Body>
-                  <Card.Title className="pb-3 fw-bold">
-                    Isi Data Pemesan
-                  </Card.Title>
-                  <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
-                    Data Diri Pemesan
-                  </Card.Text>
-                  <Form>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="text_label">
-                        Nama Lengkap
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Harry"
-                        id="name"
-                        name="name"
-                        value={dataPemesan["name"]}
-                        onChange={handleChange}
-                        autoComplete="off"
-                      />
-                    </Form.Group>
+            <Card>
+              <Card.Body>
+                <Card.Title className="pb-3 fw-bold">
+                  Isi Data Pemesan
+                </Card.Title>
+                <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
+                  Data Diri Pemesan
+                </Card.Text>
+                <Form>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="text_label">Nama Lengkap</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Harry"
+                      value={biodataPemesan.fullName}
+                      disabled
+                    />
+                  </Form.Group>
 
-                    <Form.Group className="mb-3 d-flex justify-content-between">
-                      <Form.Label>Punya Nama Keluarga?</Form.Label>
-                      <HideShowForm eventKey="0" onClick={handleSwitch} />
-                    </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="text_label">
+                      Nama Keluarga
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Potter"
+                      value={biodataPemesan.familyName}
+                      disabled
+                    />
+                  </Form.Group>
 
-                    <Accordion.Collapse eventKey="0">
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Nama Keluarga
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Potter"
-                          id="nameKeluarga"
-                          name="nameKeluarga"
-                          value={dataPemesan["nameKeluarga"]}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-                    </Accordion.Collapse>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="text_label">
-                        Nomor Telepon
-                      </Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="0812345678"
-                        id="noHp"
-                        name="noHp"
-                        value={dataPemesan["noHp"]}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                      <Form.Label className="text_label">Email</Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Contoh: johndoe@gmail.com"
-                        id="email"
-                        name="email"
-                        value={dataPemesan["email"]}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
-                  </Form>
-                </Card.Body>
-              </Card>
-            </Accordion>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="text_label">
+                      Nomor Telepon
+                    </Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="0812345678"
+                      value={biodataPemesan.phoneNumber}
+                      disabled
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label className="text_label">Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Contoh: johndoe@gmail.com"
+                      value={biodataPemesan.email}
+                      disabled
+                    />
+                  </Form.Group>
+                </Form>
+              </Card.Body>
+            </Card>
 
             <Card className="mt-4">
               <Card.Title className="m-4 fw-bold">
@@ -179,10 +133,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Label className="text_label">Title</Form.Label>
                       <Form.Select
                         key={index}
-                        id={`title${index}`}
-                        name={`title${index}`}
-                        value={formData[`title${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`title${index}`]}
+                        disabled
                       >
                         <option value="Mr.">Mr.</option>
                         <option value="Mrs.">Mrs.</option>
@@ -198,23 +150,11 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="text"
                         placeholder="Harry"
-                        id={`name${index}`}
-                        name={`name${index}`}
-                        value={formData[`name${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`fullName${index}`]}
+                        disabled
                         autoComplete="off"
                       />
                     </Form.Group>
-
-                    {/* <Form.Group className="mb-3 d-flex justify-content-between">
-                          <Form.Label>Punya Nama Keluarga?</Form.Label>
-                          <HideShowForm
-                            eventKey={item.toString()}
-                            onClick={handleSwitch}
-                          />
-                        </Form.Group> */}
-
-                    {/* <Accordion.Collapse eventKey={item.toString()}> */}
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
                         Nama Keluarga
@@ -222,10 +162,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="text"
                         placeholder="Potter"
-                        id={`namaKeluarga${index}`}
-                        name={`namaKeluarga${index}`}
-                        value={formData[`namaKeluarga${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`familyName${index}`]}
+                        disabled
                       />
                     </Form.Group>
                     {/* </Accordion.Collapse> */}
@@ -236,10 +174,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="date"
                         placeholder="dd/mm/yyyy"
-                        id={`tanggalLahir${index}`}
-                        name={`tanggalLahir${index}`}
-                        value={formData[`tanggalLahir${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`dob${index}`]}
+                        disabled
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -249,10 +185,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="text"
                         placeholder="Indonesia"
-                        id={`negara${index}`}
-                        name={`negara${index}`}
-                        value={formData[`negara${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`nationality${index}`]}
+                        disabled
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -260,10 +194,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="text"
                         placeholder=""
-                        id={`identitas${index}`}
-                        name={`identitas${index}`}
-                        value={formData[`identitas${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`identityNumber${index}`]}
+                        disabled
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -273,10 +205,10 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="text"
                         placeholder=""
-                        id={`penerbit${index}`}
-                        name={`penerbit${index}`}
-                        value={formData[`penerbit${index}`]}
-                        onChange={handleInputChange}
+                        value={
+                          biodataPenumpang[`identityIssuingCountry${index}`]
+                        }
+                        disabled
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -286,10 +218,8 @@ const WbiodataPemesanan02 = () => {
                       <Form.Control
                         type="date"
                         placeholder="dd/mm/yyyy"
-                        id={`masaAktif${index}`}
-                        name={`masaAktif${index}`}
-                        value={formData[`masaAktif${index}`]}
-                        onChange={handleInputChange}
+                        value={biodataPenumpang[`expiredAt${index}`]}
+                        disabled
                       />
                     </Form.Group>
                   </Form>
@@ -314,30 +244,36 @@ const WbiodataPemesanan02 = () => {
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">
-                      <span className="fs-6 fw-bolder">07:00 </span>
+                      <span className="fs-6 fw-bolder">
+                        {detail.departureTime}
+                      </span>
                       <span className="text_paymentTitle2 ps-2 fw-bolder">
                         Keberangkatan
                       </span>
                     </div>
 
                     <div className="">
-                      <span className="fs-6">3 Maret 2023</span>
+                      <span className="fs-6">{detail.departureDate}</span>
                       <p className="fs-6 border-bottom pb-3">
-                        Soekarno Hatta - Terminal 1A Domestik
+                        {detail.departureAirport}
                       </p>
                     </div>
 
                     <div className="border-bottom">
                       <span className="fs-6 fw-bold ps-4">
-                        Jet Air - Economy
+                        {detail.airlineName}
                       </span>
-                      <p className="fs-6 fw-bold ps-4">JT - 203</p>
+                      <p className="fs-6 fw-bold ps-4">{detail.airlineCode}</p>
                       <div className="d-flex flex-column">
                         <span className="fs-6 fw-bold ">
                           <img src={paymentLogo} alt="paymentLogo" /> Informasi:
                         </span>
-                        <span className="fs-6 ps-4 pt-1">Baggage 20 kg</span>
-                        <span className="fs-6 ps-4">Cabin baggage 7 kg</span>
+                        <span className="fs-6 ps-4 pt-1">
+                          Baggage {detail.checkedBaggage} kg
+                        </span>
+                        <span className="fs-6 ps-4">
+                          Cabin baggage {detail.cabinBaggage} kg
+                        </span>
                         <span className="fs-6 pb-2 ps-4">
                           In Flight Entertainment
                         </span>
@@ -346,24 +282,24 @@ const WbiodataPemesanan02 = () => {
 
                     <div className="border-bottom">
                       <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
-                        <span className=" fw-bolder">11:00 </span>
+                        <span className=" fw-bolder">{detail.arrivalTime}</span>
                         <span className="text_paymentTitle2 ps-2 fw-bolder ">
                           Kedatangan
                         </span>
                       </div>
-                      <span className="fs-6">3 Maret 2023</span>
-                      <p className="fs-6 ">Melbourne International Airport</p>
+                      <span className="fs-6">{detail.arrivalDate}</span>
+                      <p className="fs-6 ">{detail.arrivalAirport}</p>
                     </div>
 
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">2 Adults </span>
-                        <span className=" ">IDR 9.550.000</span>
+                        <span className=" ">{penumpang.dewasa} Adults </span>
+                        <span className=" ">IDR {detail.adultPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">1 Baby </span>
-                        <span className=" ">IDR 0</span>
+                        <span className=" ">{penumpang.anak} Children </span>
+                        <span className=" ">IDR {detail.childPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                         <span className=" ">Tax </span>
@@ -374,7 +310,7 @@ const WbiodataPemesanan02 = () => {
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                       <span className=" fw-bolder">Total </span>
                       <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                        IDR 9.850.000
+                        IDR {detail.totalPrice}
                       </span>
                     </div>
                   </Card.Body>

@@ -4,6 +4,7 @@ import auth from "./auth";
 import penumpang from "./penumpang";
 import search from "./search";
 import detail from "./detail";
+import formbiodata from "./formbiodata";
 
 export default combineReducers({
   post,
@@ -11,4 +12,5 @@ export default combineReducers({
   penumpang,
   search,
   detail,
+  formbiodata,
 });

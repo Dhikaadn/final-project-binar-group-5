@@ -29,10 +29,6 @@ const HomePage = () => {
         {/* pilih penerbangan */}
         <PilihPenerbangan />
 
-        <button onClick={() => navigate("/biodata_pemesanan")}>
-          Test Form Biodata pemesanan
-        </button>
-
         {/* destination favorit */}
         <div className="card border-light">
           <div className="card-body">
