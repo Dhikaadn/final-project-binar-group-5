@@ -15,12 +15,23 @@ import { Link } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
 import { NavbarBeranda } from "../../components/NavbarBeranda";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetail } from "../../redux/actions/detail";
+import { Penumpang } from "../../redux/actions/penumpang";
 
 const WbiodataPemesanan = () => {
   // const jumlahPengulangan = 2;
   // const detail = ["dewasa", "dewasa", "anak", "bayi"];
+  // dispatch -> to change the global state in redux
+  const dispatch = useDispatch();
   const { detailPenumpang } = useSelector((state) => state.penumpang);
+  const {penumpang} = useSelector((state) => state.penumpang);
+  const { detail } = useSelector((state) => state.detail);
+
+  useEffect(() => {
+    dispatch(getDetail());
+  }, [dispatch]);
+
 
   const [dataPemesan, setDataPemesan] = useState({
     name: "",
@@ -342,30 +353,30 @@ const WbiodataPemesanan = () => {
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">
-                      <span className="fs-6 fw-bolder">07:00 </span>
+                      <span className="fs-6 fw-bolder">{detail.departureTime}</span>
                       <span className="text_paymentTitle2 ps-2 fw-bolder">
                         Keberangkatan
                       </span>
                     </div>
 
                     <div className="">
-                      <span className="fs-6">3 Maret 2023</span>
+                      <span className="fs-6">{detail.departureTime}</span>
                       <p className="fs-6 border-bottom pb-3">
-                        Soekarno Hatta - Terminal 1A Domestik
+                        {detail.departureAirport}
                       </p>
                     </div>
 
                     <div className="border-bottom">
                       <span className="fs-6 fw-bold ps-4">
-                        Jet Air - Economy
+                        {detail.airlineName}
                       </span>
-                      <p className="fs-6 fw-bold ps-4">JT - 203</p>
+                      <p className="fs-6 fw-bold ps-4">{detail.airlineCode}</p>
                       <div className="d-flex flex-column">
                         <span className="fs-6 fw-bold ">
                           <img src={paymentLogo} alt="paymentLogo" /> Informasi:
                         </span>
-                        <span className="fs-6 ps-4 pt-1">Baggage 20 kg</span>
-                        <span className="fs-6 ps-4">Cabin baggage 7 kg</span>
+                        <span className="fs-6 ps-4 pt-1">Baggage {detail.checkedBaggage} kg</span>
+                        <span className="fs-6 ps-4">Cabin baggage {detail.cabinBaggage} kg</span>
                         <span className="fs-6 pb-2 ps-4">
                           In Flight Entertainment
                         </span>
@@ -374,24 +385,24 @@ const WbiodataPemesanan = () => {
 
                     <div className="border-bottom">
                       <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
-                        <span className=" fw-bolder">11:00 </span>
+                        <span className=" fw-bolder">{detail.arrivalTime}</span>
                         <span className="text_paymentTitle2 ps-2 fw-bolder ">
                           Kedatangan
                         </span>
                       </div>
-                      <span className="fs-6">3 Maret 2023</span>
-                      <p className="fs-6 ">Melbourne International Airport</p>
+                      <span className="fs-6">{detail.arrivalDate}</span>
+                      <p className="fs-6 ">{detail.arrivalAirport}</p>
                     </div>
 
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">2 Adults </span>
-                        <span className=" ">IDR 9.550.000</span>
+                        <span className=" ">{penumpang.dewasa} Adults </span>
+                        <span className=" ">IDR {detail.adultPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">1 Baby </span>
-                        <span className=" ">IDR 0</span>
+                        <span className=" ">{penumpang.anak} Children </span>
+                        <span className=" ">IDR {detail.infantPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                         <span className=" ">Tax </span>
@@ -402,7 +413,7 @@ const WbiodataPemesanan = () => {
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                       <span className=" fw-bolder">Total </span>
                       <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                        IDR 9.850.000
+                        IDR {detail.totalPrice}
                       </span>
                     </div>
                   </Card.Body>
