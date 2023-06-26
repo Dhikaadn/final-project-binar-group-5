@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './stylePayment.css'
 import { Accordion, Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -10,10 +10,28 @@ import AmexLogo from './../../img/amex logo.png'
 import paymentLogo from './../../img/Image.png'
 import notifLogo from './../../img/notif.png'
 import { NavbarBeranda } from '../../components/NavbarBeranda'
+import { useDispatch, useSelector } from "react-redux";
+import { pesan } from '../../redux/actions/pemesanan';
+import { getDetail } from '../../redux/actions/detail';
+import { useNavigate } from "react-router-dom";
+import { Penumpang } from '../../redux/actions/penumpang';
+
 // import Countdown from '../w-biodata/Countdown'
 
 const WPayment = () => {
     const [showAlert, setShowAlert] = useState(true);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { pemesanan } = useSelector((state) => state.pemesanan);
+    const { detail } = useSelector((state) => state.detail);
+    const { penumpang } = useSelector((state) => state.penumpang);
+
+
+
+    useEffect(() => {
+        dispatch(pesan(),getDetail(),Penumpang());
+    }, [dispatch]);
+
 
     return (
         <>
@@ -96,27 +114,27 @@ const WPayment = () => {
                         <Card.Body>
                             <div className="d-flex align-items-center">
                                 <p className='fw-bolder fs-4'>Booking Code: </p>
-                                <p className='text_paymentTitle ps-2 fw-bolder'>123123</p>
+                                <p className='text_paymentTitle ps-2 fw-bolder'>{pemesanan.bookingCode}</p>
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <span className='fs-6 fw-bolder'>07:00 </span>
+                                <span className='fs-6 fw-bolder'>{pemesanan.departureTime}</span>
                                 <span className='text_paymentTitle2 ps-2 fw-bolder'>Keberangkatan</span>
                             </div>
 
                             <div className="">
-                                <span className='fs-6'>3 Maret 2023</span>
-                                <p className='fs-6 border-bottom pb-3'>Soekarno Hatta - Terminal 1A Domestik</p>
+                                <span className='fs-6'>{pemesanan.departureDate}</span>
+                                <p className='fs-6 border-bottom pb-3'>{pemesanan.departureAirport}</p>
                             </div>
 
                             <div className="border-bottom">
 
-                            <span className='fs-6 fw-bold ps-4'>Jet Air - Economy</span>
-                            <p className='fs-6 fw-bold ps-4'>JT - 203</p>
+                            <span className='fs-6 fw-bold ps-4'>{detail.airlineName}</span>
+                            <p className='fs-6 fw-bold ps-4'>{detail.airlineCode}</p>
                             <div className="d-flex flex-column">
                                 <span className='fs-6 fw-bold '><img src={paymentLogo} alt='paymentLogo'/> Informasi:</span>
-                                <span className='fs-6 ps-4 pt-1'>Baggage 20 kg</span>
-                                <span className='fs-6 ps-4'>Cabin baggage 7 kg</span>
+                                <span className='fs-6 ps-4 pt-1'>Baggage {detail.checkedBaggage} kg</span>
+                                <span className='fs-6 ps-4'>Cabin baggage {detail.cabinBaggage} kg</span>
                                 <span className='fs-6 pb-2 ps-4'>In Flight Entertainment</span>
                             </div>
                             </div>
@@ -124,34 +142,45 @@ const WPayment = () => {
                             <div className="border-bottom">
 
                                 <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
-                                    <span className=' fw-bolder'>11:00 </span>
+                                    <span className=' fw-bolder'>{detail.arrivalTime}</span>
                                     <span className='text_paymentTitle2 ps-2 fw-bolder '>Kedatangan</span>
                                 </div>
-                                <span className='fs-6'>3 Maret 2023</span>
-                                <p className='fs-6 '>Melbourne International Airport</p>
+                                <span className='fs-6'>{detail.arrivalDate}</span>
+                                <p className='fs-6 '>{detail.arrivalAirport}</p>
                             </div>
                             <div className="pt-3 border-bottom">
 
                             <span className='pt-3 fw-bolder'>Rincian Harga</span>
                             
 
-                            <div className="d-flex align-items-center justify-content-between fs-6">
-                                    <span className=' '>2 Adults </span>
-                                    <span className=' '>IDR 9.550.000</span>
-                                </div>
-                                <div className="d-flex align-items-center justify-content-between fs-6">
-                                    <span className=' '>1 Baby </span>
-                                    <span className=' '>IDR 0</span>
-                                </div>
-                                <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
-                                    <span className=' '>Tax </span>
-                                    <span className='  '>IDR 300.000</span>
-                                </div>
+                            {penumpang.dewasa !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.dewasa} Adults</span>
+                          <span className=" ">IDR {detail.adultPrice}</span>
+                        </div>
+                      )}
+
+                      {penumpang.anak !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.anak} Children </span>
+                          <span className=" ">IDR {detail.childPrice}</span>
+                        </div>
+                      )}
+                      {penumpang.bayi !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.bayi} Baby</span>
+                          <span className=" ">IDR {detail.infantPrice}</span>
+                        </div>
+                      )}
+                      <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
+                        <span className=" ">Tax </span>
+                        <span className="  ">IDR 300.000</span>
+                      </div>
                                 </div>
 
                                 <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                                     <span className=' fw-bolder'>Total </span>
-                                    <span className='text_paymentTitle ps-2 fw-bolder fs-5 '>IDR 9.850.000</span>
+                                    <span className='text_paymentTitle ps-2 fw-bolder fs-5 '>IDR {detail.totalPrice}</span>
                                 </div>
                         </Card.Body>
                     </Card>

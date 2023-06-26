@@ -107,7 +107,7 @@ const WbiodataPemesanan02 = () => {
   const onBook = (e) => {
     e.preventDefault();
     const airlineCode = detail.airlineCode;
-    const flightClass = "Economy";
+    const flightClass = detail.flightClass;
     const customers = biodataPemesan;
     const passengers = arrayBiodataPenumpang;
     const data = {airlineCode, flightClass, customers, passengers};

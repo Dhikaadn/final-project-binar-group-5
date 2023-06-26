@@ -22,13 +22,13 @@ import {
 } from "../../redux/actions/formbiodata";
 
 import { getDetail } from "../../redux/actions/detail";
-import { Penumpang } from "../../redux/actions/penumpang";
 
 const WbiodataPemesanan = () => {
   // const jumlahPengulangan = 2;
   // const detail = ["dewasa", "dewasa", "anak", "bayi"];
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isFormValid, setIsFormValid] = useState(false);
   const { detailPenumpang } = useSelector((state) => state.penumpang);
   const { penumpang } = useSelector((state) => state.penumpang);
   const { detail } = useSelector((state) => state.detail);
@@ -38,13 +38,12 @@ const WbiodataPemesanan = () => {
   }, [dispatch]);
 
   const [dataPemesan, setDataPemesan] = useState({
-    fullName: "",
-    familyName: "",
-    phoneNumber: "",
-    email: "",
+    fullName: '',
+    familyName: '',
+    phoneNumber: '',
+    email: '',
   });
 
-  const isFormValid = dataPemesan.fullName !== '' && dataPemesan.phoneNumber !== '' && dataPemesan.email !== '';
   const [formData, setFormData] = useState({});
   const [showmodal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
@@ -82,13 +81,13 @@ const WbiodataPemesanan = () => {
       // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
 
       newFormData[`title${index}`] = "Mr.";
-      newFormData[`fullName${index}`] = "";
-      newFormData[`familyName${index}`] = "";
-      newFormData[`dob${index}`] = "";
-      newFormData[`nationality${index}`] = "";
-      newFormData[`identityNumber${index}`] = "";
-      newFormData[`identityIssuingCountry${index}`] = "";
-      newFormData[`expiredAt${index}`] = "";
+      newFormData[`fullName${index}`] = '';
+      newFormData[`familyName${index}`] = '';
+      newFormData[`dob${index}`] = '';
+      newFormData[`nationality${index}`] = '';
+      newFormData[`identityNumber${index}`] = '';
+      newFormData[`identityIssuingCountry${index}`] = '';
+      newFormData[`expiredAt${index}`] = '';
     });
 
     // newFormData
@@ -97,6 +96,19 @@ const WbiodataPemesanan = () => {
     // setLoopedItems(totalItems);
     setFormData(newFormData);
   }, [detailPenumpang]);
+
+  useEffect(() => {
+    const isDataPemesanValid =
+      dataPemesan.fullName !== "" &&
+      dataPemesan.phoneNumber !== "" &&
+      dataPemesan.email !== "";
+
+    const isFormDataValid = Object.values(formData).every(
+      (value) => value !== ""
+    );
+
+    setIsFormValid(isDataPemesanValid && isFormDataValid);
+  }, [dataPemesan, formData]);
 
   console.log(formData);
   console.log(dataPemesan);
@@ -152,6 +164,7 @@ const WbiodataPemesanan = () => {
                           name="familyName"
                           value={dataPemesan["familyName"]}
                           onChange={handleChange}
+                          required
                         />
                       </Form.Group>
                     </Accordion.Collapse>
@@ -249,7 +262,8 @@ const WbiodataPemesanan = () => {
                         id={`familyName${index}`}
                         name={`familyName${index}`}
                         value={formData[`familyName${index}`]}
-                        onChange={handleInputChange}                      
+                        onChange={handleInputChange}  
+                        required                    
                         />
                     </Form.Group>
                     {/* </Accordion.Collapse> */}
@@ -263,7 +277,8 @@ const WbiodataPemesanan = () => {
                         id={`dob${index}`}
                         name={`dob${index}`}
                         value={formData[`dob${index}`]}
-                        onChange={handleInputChange}                     
+                        onChange={handleInputChange}
+                        required                     
                          />
                     </Form.Group>
                     <Form.Group className="mb-3">
