@@ -10,7 +10,7 @@ export const login = (data, navigate) => async (dispatch) => {
       { "Content-Type": "application/json" }
     );
 
-    const { token } = response?.data;
+    const { token } = response?.data?.data;
     console.log(response.data);
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(true));

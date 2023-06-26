@@ -43,6 +43,8 @@ const WbiodataPemesanan = () => {
     phoneNumber: "",
     email: "",
   });
+
+  const isFormValid = dataPemesan.fullName !== '' && dataPemesan.phoneNumber !== '' && dataPemesan.email !== '';
   const [formData, setFormData] = useState({});
   const [showmodal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
@@ -129,6 +131,7 @@ const WbiodataPemesanan = () => {
                         value={dataPemesan["fullName"]}
                         onChange={handleChange}
                         autoComplete="off"
+                        required
                       />
                     </Form.Group>
 
@@ -163,6 +166,7 @@ const WbiodataPemesanan = () => {
                         name="phoneNumber"
                         value={dataPemesan["phoneNumber"]}
                         onChange={handleChange}
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -174,6 +178,7 @@ const WbiodataPemesanan = () => {
                         name="email"
                         value={dataPemesan["email"]}
                         onChange={handleChange}
+                        required
                       />
                     </Form.Group>
                   </Form>
@@ -200,6 +205,7 @@ const WbiodataPemesanan = () => {
                         name={`title${index}`}
                         value={formData[`title${index}`]}
                         onChange={handleInputChange}
+                        required
                       >
                         <option value="Mr.">Mr.</option>
                         <option value="Mrs.">Mrs.</option>
@@ -220,7 +226,8 @@ const WbiodataPemesanan = () => {
                         value={formData[`fullName${index}`]}
                         onChange={handleInputChange}
                         autoComplete="off"
-                      />
+                        required                     
+                        />
                     </Form.Group>
 
                     {/* <Form.Group className="mb-3 d-flex justify-content-between">
@@ -242,8 +249,8 @@ const WbiodataPemesanan = () => {
                         id={`familyName${index}`}
                         name={`familyName${index}`}
                         value={formData[`familyName${index}`]}
-                        onChange={handleInputChange}
-                      />
+                        onChange={handleInputChange}                      
+                        />
                     </Form.Group>
                     {/* </Accordion.Collapse> */}
                     <Form.Group className="mb-3">
@@ -256,8 +263,8 @@ const WbiodataPemesanan = () => {
                         id={`dob${index}`}
                         name={`dob${index}`}
                         value={formData[`dob${index}`]}
-                        onChange={handleInputChange}
-                      />
+                        onChange={handleInputChange}                     
+                         />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -270,7 +277,7 @@ const WbiodataPemesanan = () => {
                         name={`nationality${index}`}
                         value={formData[`nationality${index}`]}
                         onChange={handleInputChange}
-                      />
+                        required  />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">KTP/Paspor</Form.Label>
@@ -281,7 +288,8 @@ const WbiodataPemesanan = () => {
                         name={`identityNumber${index}`}
                         value={formData[`identityNumber${index}`]}
                         onChange={handleInputChange}
-                      />
+                        required                   
+                        />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -294,7 +302,7 @@ const WbiodataPemesanan = () => {
                         name={`identityIssuingCountry${index}`}
                         value={formData[`identityIssuingCountry${index}`]}
                         onChange={handleInputChange}
-                      />
+                        required                    />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -307,6 +315,7 @@ const WbiodataPemesanan = () => {
                         name={`expiredAt${index}`}
                         value={formData[`expiredAt${index}`]}
                         onChange={handleInputChange}
+                        required
                       />
                     </Form.Group>
                   </Form>
@@ -316,9 +325,11 @@ const WbiodataPemesanan = () => {
 
             <div className="button-wrapper position-relative">
               <Button
+                type = "submit"
                 className="my-5 w-100"
                 onClick={() => handleSubmit()}
                 style={{ background: "#7126B5", border: "none" }}
+                disabled={!isFormValid}
               >
                 Simpan
               </Button>
@@ -405,7 +416,7 @@ const WbiodataPemesanan = () => {
 
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
-                      <div className="d-flex align-items-center justify-content-between fs-6">
+                      {/* <div className="d-flex align-items-center justify-content-between fs-6">
                         <span className=" ">{penumpang.dewasa} Adults </span>
                         <span className=" ">IDR {detail.adultPrice}</span>
                       </div>
@@ -413,6 +424,30 @@ const WbiodataPemesanan = () => {
                         <span className=" ">{penumpang.anak} Children </span>
                         <span className=" ">IDR {detail.childPrice}</span>
                       </div>
+                      <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
+                        <span className=" ">Tax </span>
+                        <span className="  ">IDR 300.000</span>
+                      </div> */}
+
+                      {penumpang.dewasa !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.dewasa} Adults</span>
+                          <span className=" ">IDR {detail.adultPrice}</span>
+                        </div>
+                      )}
+
+                      {penumpang.anak !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.anak} Children </span>
+                          <span className=" ">IDR {detail.childPrice}</span>
+                        </div>
+                      )}
+                      {penumpang.bayi !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.bayi} Baby</span>
+                          <span className=" ">IDR {detail.infantPrice}</span>
+                        </div>
+                      )}
                       <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                         <span className=" ">Tax </span>
                         <span className="  ">IDR 300.000</span>

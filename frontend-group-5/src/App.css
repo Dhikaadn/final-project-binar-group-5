@@ -535,23 +535,42 @@
 }
 /* Responsive website */
 
+
+
 /* Styling login page */
 .img-left {
-  width: 700px;
+  width: 100%;
+  height: auto;
+  margin-left: 0;
 }
 
 .Login {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+@media (max-width: 1000px) {
+  .Login {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .masuk-bold {
   font-weight: bold;
   font-size: 24px;
+  text-align: center;
+  
 }
 
 .form-login {
-  margin: 140px;
-  margin-top: 240px;
+  margin: 40px;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 80px;
 }
 
 .eye-logo {
@@ -563,35 +582,58 @@
   border-radius: 15px 0px 0px 15px;
   background: white;
   border-color: #d0d0d0;
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .icon-visible {
   border-left: none;
   background: white;
   border-radius: 0px 15px 15px 0px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-input-password {
-  width: 340px;
+  width: 100%;
+  max-width: 400px;
   height: 40px;
+  
 }
 
 .input-email {
   border-radius: 15px 15px 15px 15px;
   background: white;
   border-color: #d0d0d0;
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .container-input-email {
-  width: 340px;
+  width: 100%;
+  max-width: 400px;
   height: 40px;
 }
 
 .bt-login-submit {
-  width: 340px;
+  width: 100%;
+  max-width: 400px;
   border-radius: 15px 15px 15px 15px;
   background: #7126b5;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
 }
+
 /* Styling login page */
 
 

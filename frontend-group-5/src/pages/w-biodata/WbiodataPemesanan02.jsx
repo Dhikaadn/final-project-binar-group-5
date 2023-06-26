@@ -16,6 +16,7 @@ import { NavbarBeranda } from "../../components/NavbarBeranda";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail } from "../../redux/actions/detail";
+import { pesan } from "../../redux/actions/pemesanan";
 
 const WbiodataPemesanan02 = () => {
   // const jumlahPengulangan = 2;
@@ -23,6 +24,9 @@ const WbiodataPemesanan02 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { penumpang } = useSelector((state) => state.penumpang);
+  const { token } = useSelector((state) => state.auth);
+  // const { kelas } = useSelector((state) => state.kelas);
+  const [bookingCode, setBookingCode] = useState("");
   const { detail } = useSelector((state) => state.detail);
   const { detailPenumpang } = useSelector((state) => state.penumpang);
   const { biodataPemesan, biodataPenumpang } = useSelector(
@@ -37,6 +41,25 @@ const WbiodataPemesanan02 = () => {
     event.preventDefault();
   };
 
+  const generateBookingCode = () => {
+    // Generate a random alphanumeric string
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    const length = 6; // Length of the booking code
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
+    setBookingCode(result);
+  };
+
+  useEffect(() => {
+    generateBookingCode();
+  }, []);
+
   const arrayBiodataPenumpang = Object.keys(biodataPenumpang).reduce(
     (result, key) => {
       const index = parseInt(key.slice(-1));
@@ -46,7 +69,7 @@ const WbiodataPemesanan02 = () => {
       result[index] = {
         ...result[index],
         [newKey]: value,
-        passengerId: index,
+        // passengerId: index,
       };
 
       return result;
@@ -55,6 +78,42 @@ const WbiodataPemesanan02 = () => {
   );
 
   console.log(arrayBiodataPenumpang);
+  // console.log(kelas)
+
+  // const dataBooking = {
+  //   airlineCode: detail.airlineCode,
+  //   flightClass: "Economy",
+  //   customers: biodataPemesan,
+  //   passengers: arrayBiodataPenumpang,
+  //   departureAirport: detail.departureAirport,
+  //   arrivalTime: detail.arrivalTime,
+  //   flightCode: detail.airlineCode,
+  // };
+  
+
+    // const airlineCode = detail.airlineCode;
+    // const flightClass = "Economy";
+    // const customers = biodataPemesan;
+    // const passengers = arrayBiodataPenumpang;
+    // const data = {airlineCode, flightClass, customers, passengers};
+    // console.log(data);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json"
+      },
+    };
+  const onBook = (e) => {
+    e.preventDefault();
+    const airlineCode = detail.airlineCode;
+    const flightClass = "Economy";
+    const customers = biodataPemesan;
+    const passengers = arrayBiodataPenumpang;
+    const data = {airlineCode, flightClass, customers, passengers};
+    console.log(data);
+    dispatch(pesan(data, config, navigate));
+  };
 
   return (
     <>
@@ -79,6 +138,7 @@ const WbiodataPemesanan02 = () => {
                       placeholder="Harry"
                       value={biodataPemesan.fullName}
                       disabled
+                      required
                     />
                   </Form.Group>
 
@@ -91,6 +151,7 @@ const WbiodataPemesanan02 = () => {
                       placeholder="Potter"
                       value={biodataPemesan.familyName}
                       disabled
+                      required
                     />
                   </Form.Group>
 
@@ -103,6 +164,7 @@ const WbiodataPemesanan02 = () => {
                       placeholder="0812345678"
                       value={biodataPemesan.phoneNumber}
                       disabled
+                      required
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
@@ -112,6 +174,7 @@ const WbiodataPemesanan02 = () => {
                       placeholder="Contoh: johndoe@gmail.com"
                       value={biodataPemesan.email}
                       disabled
+                      required
                     />
                   </Form.Group>
                 </Form>
@@ -135,6 +198,7 @@ const WbiodataPemesanan02 = () => {
                         key={index}
                         value={biodataPenumpang[`title${index}`]}
                         disabled
+                        
                       >
                         <option value="Mr.">Mr.</option>
                         <option value="Mrs.">Mrs.</option>
@@ -152,6 +216,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder="Harry"
                         value={biodataPenumpang[`fullName${index}`]}
                         disabled
+                        required
                         autoComplete="off"
                       />
                     </Form.Group>
@@ -164,6 +229,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder="Potter"
                         value={biodataPenumpang[`familyName${index}`]}
                         disabled
+                        required
                       />
                     </Form.Group>
                     {/* </Accordion.Collapse> */}
@@ -176,6 +242,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder="dd/mm/yyyy"
                         value={biodataPenumpang[`dob${index}`]}
                         disabled
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -187,6 +254,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder="Indonesia"
                         value={biodataPenumpang[`nationality${index}`]}
                         disabled
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -196,6 +264,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder=""
                         value={biodataPenumpang[`identityNumber${index}`]}
                         disabled
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -209,6 +278,7 @@ const WbiodataPemesanan02 = () => {
                           biodataPenumpang[`identityIssuingCountry${index}`]
                         }
                         disabled
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -220,6 +290,7 @@ const WbiodataPemesanan02 = () => {
                         placeholder="dd/mm/yyyy"
                         value={biodataPenumpang[`expiredAt${index}`]}
                         disabled
+                        required
                       />
                     </Form.Group>
                   </Form>
@@ -231,6 +302,14 @@ const WbiodataPemesanan02 = () => {
               <Button className="my-5 w-100" disabled variant="secondary">
                 Simpan
               </Button>
+              <Button
+                  className="w-100 mt-3"
+                  style={{ background: "#FF0000", border: "none" }}
+                  as={Link}
+                  onClick={(e)=>onBook(e)}
+                >
+                  Lanjut Bayar
+                </Button>
             </div>
           </Col>
 

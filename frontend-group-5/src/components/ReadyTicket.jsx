@@ -9,6 +9,7 @@ import { getListPenerbangan } from '../redux/actions/search';
 import { useEffect,useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Penumpang } from "../redux/actions/penumpang";
+// import { kelas } from '../redux/actions/kelas';
 
 export const ReadyTicket = () => {
   // dispatch -> to change the global state in redux
@@ -33,7 +34,10 @@ export const ReadyTicket = () => {
     const childrenPassenger = penumpang.anak;
     const babyPassenger = penumpang.bayi;
     const data = {airlineCode,flightClass,adultPassenger,childrenPassenger,babyPassenger};
+    // const detail = { flightClass };
+    console.log(data)
     dispatch(getDetail(data, navigate));
+    // dispatch(kelas(detail));
   }
 
 

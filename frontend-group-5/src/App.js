@@ -12,6 +12,7 @@ import WbiodataPemesanan from "./pages/w-biodata/WbiodataPemesanan";
 import WbiodataPemesanan02 from "./pages/w-biodata/WbiodataPemesanan02";
 import WPayment from "./pages/w-payment/WPayment";
 import DonePayment from "./pages/w-payment/DonePayment";
+import RequiredForm from "./components/RequiredForm";
 
 function App() {
   const angka = 3;
@@ -37,6 +38,7 @@ function App() {
           <Route path="/paymentdone" element={<DonePayment />} />
           <Route path="/riwayat" element={<Riwayat />} />
           <Route path="/riwayatnull" element={<RiwayatNull />} />
+          <Route path="/required" element={<RequiredForm />} />
         </Routes>
       </Router>
     </div>
