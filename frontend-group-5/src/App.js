@@ -12,9 +12,10 @@ import WbiodataPemesanan from "./pages/w-biodata/WbiodataPemesanan";
 import WbiodataPemesanan02 from "./pages/w-biodata/WbiodataPemesanan02";
 import WPayment from "./pages/w-payment/WPayment";
 import DonePayment from "./pages/w-payment/DonePayment";
-import RequiredForm from "./components/RequiredForm";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const angka = 3;
   return (
     <div className="App">
@@ -24,21 +25,47 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/beranda" element={<Beranda />} />
-          <Route path="/notifikasi" element={<Notifikasi />} />
-          <Route path="/akun" element={<Akun />} />
+          <Route
+            path="/notifikasi"
+            element={isLoggedIn ? <Notifikasi /> : <Login />}
+          />
+          <Route path="/akun" element={isLoggedIn ? <Akun /> : <Login />} />
           <Route
             path="/biodata_pemesanan"
-            element={<WbiodataPemesanan jumlahPengulangan={angka} />}
+            element={
+              isLoggedIn ? (
+                <WbiodataPemesanan jumlahPengulangan={angka} />
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path="/biodata_pemesanan2"
-            element={<WbiodataPemesanan02 jumlahPengulangan={angka} />}
+            element={
+              isLoggedIn ? (
+                <WbiodataPemesanan02 jumlahPengulangan={angka} />
+              ) : (
+                <Login />
+              )
+            }
           />
-          <Route path="/payment" element={<WPayment />} />
-          <Route path="/paymentdone" element={<DonePayment />} />
-          <Route path="/riwayat" element={<Riwayat />} />
-          <Route path="/riwayatnull" element={<RiwayatNull />} />
-          <Route path="/required" element={<RequiredForm />} />
+          <Route
+            path="/payment"
+            element={isLoggedIn ? <WPayment /> : <Login />}
+          />
+          <Route
+            path="/paymentdone"
+            element={isLoggedIn ? <DonePayment /> : <Login />}
+          />
+          <Route
+            path="/riwayat"
+            element={isLoggedIn ? <Riwayat /> : <Login />}
+          />
+          <Route
+            path="/riwayatnull"
+            element={isLoggedIn ? <RiwayatNull /> : <Login />}
+          />
         </Routes>
       </Router>
     </div>

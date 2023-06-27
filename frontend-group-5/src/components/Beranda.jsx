@@ -73,14 +73,13 @@ export const Beranda = () => {
       <div className="container-detail">
         <h2 className="title-pilih mb-4">Pilih Penerbangan</h2>
         <div className="container-hari-top">
-          {listPenerbangan?.length > 0 &&
-            listPenerbangan.map((list, i) => (
-              <Button className="bt-detail me-3">
-                <BiArrowBack className="me-3" />
-                {list.departureCity} {">"} {list.arrivalCity} - {countPenumpang}{" "}
-                Penumpang - {list.airlineClass}
-              </Button>
-            ))}
+            {listPenerbangan.length>0?
+            <Button className="bt-detail me-3">
+            <BiArrowBack className="me-3" />
+            {listPenerbangan[0].departureCity} {">"} {listPenerbangan[0].arrivalCity} - {countPenumpang}{" "}
+            Penumpang - {listPenerbangan[0].airlineClass}
+          </Button>
+            :<div></div>}
           <Link to="/">
             <Button className="bt-pencarian">Ubah Pencarian</Button>
           </Link>
