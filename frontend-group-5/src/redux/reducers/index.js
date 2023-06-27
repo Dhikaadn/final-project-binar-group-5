@@ -6,6 +6,7 @@ import search from "./search";
 import detail from "./detail";
 import formbiodata from "./formbiodata";
 import pemesanan from "./pemesanan";
+import kelas from "./kelas";
 
 export default combineReducers({
   post,
@@ -15,4 +16,5 @@ export default combineReducers({
   detail,
   formbiodata,
   pemesanan,
+  kelas,
 });

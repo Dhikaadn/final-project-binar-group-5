@@ -10,6 +10,7 @@ import IconPerson from "../img/icon_penumpang.svg";
 
 import { useDispatch } from "react-redux";
 import { getListPenerbangan } from "../redux/actions/search";
+import { dataSearch } from "../redux/actions/kelas";
 
 function PilihPenerbangan() {
   const [showModal, setShowModal] = useState(false);
@@ -113,6 +114,8 @@ function PilihPenerbangan() {
   const handleButtonClick = () => {
     const data = { formattedDate, buttonText1, buttonText2, seatClass };
     dispatch(getListPenerbangan(data, navigate));
+
+    dispatch(dataSearch(data));
   };
 
   // console.log(seatClass);
