@@ -34,7 +34,10 @@ export const Beranda = () => {
   const countPenumpang = penumpang.anak + penumpang.dewasa + penumpang.bayi;
 
   useEffect(() => {
-    const currentDate = new Date(dataAwal.formattedDate);
+    const currentDate = dataAwal.formattedDate
+      ? new Date(dataAwal.formattedDate)
+      : new Date();
+
     const dates = [];
     for (let i = 0; i < 6; i++) {
       const futureDate = `${currentDate.toISOString().split("T")[0]}`;
