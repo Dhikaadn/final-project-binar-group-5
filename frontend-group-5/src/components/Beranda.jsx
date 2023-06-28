@@ -80,7 +80,7 @@ export const Beranda = () => {
             Penumpang - {listPenerbangan[0].airlineClass}
           </Button>
             :<div></div>}
-          <Link to="/">
+          <Link to="/" style={{textDecoration:"none"}}>
             <Button className="bt-pencarian">Ubah Pencarian</Button>
           </Link>
         </div>

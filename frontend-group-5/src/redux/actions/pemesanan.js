@@ -6,7 +6,7 @@ import { setPemesanan } from "../reducers/pemesanan";
 export const pesan = (data, config, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://backend-binar-final-project-production.up.railway.app/api/v1/booking`,
+      `${process.env.REACT_APP_BASE_URL}/api/v1/booking`,
       data,
       config
     );

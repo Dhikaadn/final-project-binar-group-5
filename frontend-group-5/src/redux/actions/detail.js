@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const getDetail = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://backend-binar-final-project-production.up.railway.app/api/v1/detail-information`,
+      `${process.env.REACT_APP_BASE_URL}/api/v1/detail-information`,
       {
         params: {
           airlineCode: data.airlineCode,

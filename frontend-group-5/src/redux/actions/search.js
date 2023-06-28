@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const getListPenerbangan = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://backend-binar-final-project-production.up.railway.app/api/v1/schedule/search-schedule`,
+      `${process.env.REACT_APP_BASE_URL}/api/v1/schedule/search-schedule`,
       {
         params: {
           depDate: data.formattedDate,

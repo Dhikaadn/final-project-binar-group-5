@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 export const login = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://backend-binar-final-project-production.up.railway.app/api/auth/signin`,
+      `${process.env.REACT_APP_BASE_URL}/api/auth/signin`,
       data,
       { "Content-Type": "application/json" }
     );
@@ -37,7 +37,7 @@ export const login = (data, navigate) => async (dispatch) => {
 export const register = (data, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `https://backend-binar-final-project-production.up.railway.app/api/auth/signup`,
+      `${process.env.REACT_APP_BASE_URL}/api/auth/signup`,
       data,
       { "Content-Type": "application/json" }
     );
@@ -66,31 +66,6 @@ export const logout = (navigate) => async (dispatch) => {
 
   // redirect to home
   navigate("/");
-};
-
-export const getProfile = () => async (dispatch, getState) => {
-  try {
-    const { token } = getState().auth;
-
-    const response = await axios.get(
-      `https://km4-challenge-5-api.up.railway.app/api/v1/auth/me`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    const { data } = response?.data;
-    dispatch(setUser(data));
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      toast.error(error?.response?.data?.message);
-      return;
-    }
-
-    toast.error(error.message);
-  }
 };
 
 export const googleLogin = (data, navigate) => async (dispatch) => {

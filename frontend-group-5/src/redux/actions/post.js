@@ -5,7 +5,7 @@ import { setPosts } from "../reducers/post";
 export const getPosts = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://binar-backend-final-project-production.up.railway.app/api/v1/waktu`
+      `${process.env.REACT_APP_BASE_URL}/api/v1/waktu`
     );
     dispatch(setPosts(response.data));
   } catch (error) {
