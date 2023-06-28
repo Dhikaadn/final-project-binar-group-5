@@ -18,6 +18,7 @@ export const ReadyTicket = () => {
   // useSelector -> to access the global state (redux)
   const { listPenerbangan } = useSelector((state) => state.search);
   const { penumpang } = useSelector((state) => state.penumpang);
+  const { uuidUser } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getListPenerbangan(),Penumpang());
   }, [dispatch]);
@@ -39,6 +40,8 @@ export const ReadyTicket = () => {
     dispatch(getDetail(data, navigate));
     // dispatch(kelas(detail));
   }
+
+  console.log(uuidUser);
 
 
   

@@ -26,6 +26,8 @@ const WbiodataPemesanan02 = () => {
   const navigate = useNavigate();
   const { penumpang } = useSelector((state) => state.penumpang);
   const { token } = useSelector((state) => state.auth);
+  const { uuidUser } = useSelector((state) => state.auth);
+
   // const { kelas } = useSelector((state) => state.kelas);
   const [bookingCode, setBookingCode] = useState("");
   const { detail } = useSelector((state) => state.detail);
@@ -102,19 +104,24 @@ const WbiodataPemesanan02 = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
-        // "Content-Type": "application/json"
+        "Content-Type": "application/json"
       },
     };
   const onBook = (e) => {
     e.preventDefault();
     const airlineCode = detail.airlineCode;
     const flightClass = detail.flightClass;
+    const adult = penumpang.dewasa;
+    const child = penumpang.anak;
+    const baby = penumpang.bayi;
     const customers = biodataPemesan;
     const passengers = arrayBiodataPenumpang;
-    const data = {airlineCode, flightClass, customers, passengers};
+    const data = {uuidUser, airlineCode, flightClass, adult, child, baby, customers, passengers};
     console.log(data);
     dispatch(pesan(data, config, navigate));
   };
+
+  console.log(uuidUser);
 
   return (
     <>
@@ -303,20 +310,12 @@ const WbiodataPemesanan02 = () => {
               <Button className="my-5 w-100" disabled variant="secondary">
                 Simpan
               </Button>
-              <Button
-                  className="w-100 mt-3"
-                  style={{ background: "#FF0000", border: "none" }}
-                  as={Link}
-                  onClick={(e)=>onBook(e)}
-                >
-                  Lanjut Bayar
-                </Button>
             </div>
           </Col>
 
           <Col>
             <Container>
-              <Col className="form_Detail">
+              <Col>
                 <Card className="border-0 ">
                   <Card.Body>
                     <div className="d-flex align-items-center">
@@ -399,7 +398,7 @@ const WbiodataPemesanan02 = () => {
                   className="w-100 mt-3"
                   style={{ background: "#FF0000", border: "none" }}
                   as={Link}
-                  to={"/payment"}
+                  onClick={(e)=>onBook(e)}
                 >
                   Lanjut Bayar
                 </Button>

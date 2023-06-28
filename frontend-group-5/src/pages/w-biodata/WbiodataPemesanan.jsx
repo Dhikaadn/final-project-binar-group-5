@@ -374,7 +374,7 @@ const WbiodataPemesanan = () => {
 
           <Col>
             <Container>
-              <Col className="form_Detail">
+              <Col>
                 <Card className="border-0 ">
                   <Card.Body>
                     <div className="d-flex align-items-center">
