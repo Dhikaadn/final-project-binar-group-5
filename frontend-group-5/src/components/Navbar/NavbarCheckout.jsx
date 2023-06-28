@@ -91,7 +91,6 @@ export const NavbarCheckout = () => {
                             <p className='text-bio fw-bold pe-2'> {'>'} </p>
                             <p className='pe-2'>Selesai</p>
                         </Col>
-                        {/* <p className='alertNotif_danger d-flex justify-content-center align-items-center'>Data Anda berhasil tersimpan!</p> */}
                         <Countdown />
                     </Row>
                 </Container>

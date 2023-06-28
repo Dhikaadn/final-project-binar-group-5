@@ -123,7 +123,7 @@ function ModalPenumpang({
       </Modal.Body>
       <Modal.Footer>
         <Button
-          style={{ backgroundColor: "#4B1979" }}
+          style={{ backgroundColor: "#4B1979", border:"none" }}
           onClick={handleSaveChanges}
         >
           Simpan

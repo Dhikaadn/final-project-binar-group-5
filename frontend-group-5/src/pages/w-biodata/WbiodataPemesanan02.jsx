@@ -17,6 +17,7 @@ import { NavbarBeranda } from "../../components/NavbarBeranda";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail } from "../../redux/actions/detail";
 import { pesan } from "../../redux/actions/pemesanan";
+import { NavbarCheckout2 } from "../../components/Navbar/NavbarCheckout";
 
 const WbiodataPemesanan02 = () => {
   // const jumlahPengulangan = 2;
@@ -117,7 +118,7 @@ const WbiodataPemesanan02 = () => {
 
   return (
     <>
-      <NavbarBeranda />
+      <NavbarCheckout2/>
 
       <Container className="mt-3">
         <Row className="containerrr_form">

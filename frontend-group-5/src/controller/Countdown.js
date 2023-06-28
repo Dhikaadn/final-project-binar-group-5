@@ -3,28 +3,38 @@ import '../pages/w-biodata/styleBiodata.css'
 import { CloseButton, Modal } from 'react-bootstrap';
 
 
-const Countdown = ({ seconds }) => {
-  const [countdown, setCountdown] = useState(seconds);
+const Countdown = () => {
+  const [minutes, setMinutes] = useState(15);
+  const [seconds, setSeconds] = useState(0); //update time
 
   useEffect(() => {
-    if (countdown > 0) {
-      const timer = setInterval(() => {
-        setCountdown(prevCountdown => prevCountdown - 1);
-      }, 1000);
+    let interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
 
-      return () => clearInterval(timer);
-    }
-  }, [countdown]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [minutes, seconds]);
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
   return (
-    <div>
-      {countdown > 0 ? (
-        <p className='alertNotif_danger d-flex justify-content-center align-items-center'>Selesaikan Dalam  {countdown} detik</p>
-      ) : (
-          <>
+    <>
+      {minutes === 0 && seconds === 0 ? (
+        <>
+            <p className='alertNotif_danger d-flex justify-content-center align-items-center'>Waktu Anda Habis!</p> 
             <Modal show={show}  backdrop='static'>
               <Modal.Body className='d-flex justify-content-between align-items-center bg-danger'>
 
@@ -37,12 +47,14 @@ const Countdown = ({ seconds }) => {
               </div>
               </Modal.Body>
             </Modal>
-            
-        </>
-        
-
+      </>
+      ) : (
+          
+        <p className='alertNotif_danger d-flex justify-content-center align-items-center'>
+          Selesaikan pembayaran Anda {minutes.toString().padStart(2, '0')} menit { }
+        {seconds.toString().padStart(2, '0')} detik</p>
       )}
-    </div>
+    </>
   );
 };
 

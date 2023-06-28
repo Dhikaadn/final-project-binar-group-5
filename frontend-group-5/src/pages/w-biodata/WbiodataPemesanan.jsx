@@ -14,7 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
-import { NavbarBeranda } from "../../components/NavbarBeranda";
+import { NavbarCheckout } from "../../components/Navbar/NavbarCheckout";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BiodataPemesan,
@@ -116,7 +116,7 @@ const WbiodataPemesanan = () => {
   return (
     <>
       {/* ===== NAVBAR ====== */}
-      <NavbarBeranda />
+      <NavbarCheckout />
 
       <Container className="mt-2">
         <Row className="containerrr_form">
