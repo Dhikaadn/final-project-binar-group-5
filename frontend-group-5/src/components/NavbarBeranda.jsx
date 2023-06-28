@@ -22,36 +22,39 @@ export const NavbarBeranda = () => {
   const { isLoggedIn, token, user } = useSelector((state) => state.auth);
   return (
     <>
-    <Navbar expand="lg" className="bg-body-tertiary position-sticky fixed-top navbar-beranda">
-      <Container fluid >
-        <Navbar.Brand as={Link} to='/'>
-          <img src={Logo} alt="React Bootstrap logo" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-          <Form.Group controlId="validationFormikUsername">
-                  <InputGroup hasValidation className="container-input-beranda">
-                    <Form.Control
-                      type="text"
-                      placeholder="Cari di sini ..."
-                      aria-describedby="inputGroupPrepend"
-                      name="username"
-                      className="input-search-beranda"
-                    />
-                    <InputGroup.Text
-                      id="inputGroupPrepend"
-                      className="icon-search"
-                    >
-                      <AiOutlineSearch />
-                    </InputGroup.Text>
-                  </InputGroup>
-                </Form.Group>
-          </Nav>
+      <Navbar
+        expand="lg"
+        className="bg-body-tertiary position-sticky fixed-top navbar-beranda"
+      >
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/">
+            <img src={Logo} alt="React Bootstrap logo" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Form.Group controlId="validationFormikUsername">
+                <InputGroup hasValidation className="container-input-beranda">
+                  <Form.Control
+                    type="text"
+                    placeholder="Cari di sini ..."
+                    aria-describedby="inputGroupPrepend"
+                    name="username"
+                    className="input-search-beranda"
+                  />
+                  <InputGroup.Text
+                    id="inputGroupPrepend"
+                    className="icon-search"
+                  >
+                    <AiOutlineSearch />
+                  </InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
+            </Nav>
             <Nav>
-            {isLoggedIn ? (
+              {isLoggedIn ? (
                 <div className="navbarItems">
-                  <Link to="/">
+                  <Link to="/riwayat">
                     <BsListUl
                       style={{ marginRight: 20, fontSize: 20, color: "black" }}
                     />
@@ -70,7 +73,10 @@ export const NavbarBeranda = () => {
               ) : (
                 <div className="navbarItems">
                   <Link to="/login">
-                    <Button className=" me-5 py-2" style={{background:"#7126B5", border:"none"}}>
+                    <Button
+                      className=" me-5 py-2"
+                      style={{ background: "#7126B5", border: "none" }}
+                    >
                       <BsBoxArrowInRight className="me-2 fs-5" />
                       Masuk
                     </Button>
@@ -78,9 +84,9 @@ export const NavbarBeranda = () => {
                 </div>
               )}
             </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
       {/* <div className="position-sticky fixed-top">
         <Navbar bg="white" className="navbar-beranda">
           <Container fluid>

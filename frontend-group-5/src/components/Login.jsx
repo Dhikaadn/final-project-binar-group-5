@@ -68,7 +68,12 @@ export const Login = () => {
   return (
     <>
       <div className=" ">
-        <img src={imgLeft} alt="img-left" className="position-fixed imgLogin" />
+        <img
+          src={imgLeft}
+          alt="img-left"
+          className="position-fixed imgLogin"
+          style={{ maxWidth: "50vw" }}
+        />
         <Container>
           <Row className="align-items-center" style={{ height: "100vh" }}>
             <Col>

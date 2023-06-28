@@ -1,5 +1,10 @@
 import axios from "axios";
-import { setIsLoggedIn, setToken, setUser } from "../reducers/auth";
+import {
+  setIsLoggedIn,
+  setToken,
+  setUser,
+  setUuidUser,
+} from "../reducers/auth";
 import { toast } from "react-toastify";
 
 export const login = (data, navigate) => async (dispatch) => {
@@ -11,8 +16,10 @@ export const login = (data, navigate) => async (dispatch) => {
     );
 
     const { token } = response?.data?.data;
+    const { uuidUser } = response?.data?.data;
     console.log(response.data);
     dispatch(setToken(token));
+    dispatch(setUuidUser(uuidUser));
     dispatch(setIsLoggedIn(true));
 
     // redirect to home, don't forget to useNavigate in the component
