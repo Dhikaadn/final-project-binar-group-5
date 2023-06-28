@@ -67,21 +67,14 @@ export const Login = () => {
   console.log(email);
   return (
     <>
-      <div className=" ">
-        <img
-          src={imgLeft}
-          alt="img-left"
-          className="position-fixed imgLogin"
-          style={{ maxWidth: "50vw" }}
-        />
-        <Container>
-          <Row className="align-items-center" style={{ height: "100vh" }}>
+          <Row className="LoginRegis align-items-center">
             <Col>
-              <div className="pembatas"></div>
+            <img src={imgLeft} alt="img-left" className="imgLogin"/>
             </Col>
             <Col>
-              <h3 className="fw-bold">Masuk</h3>
               {/* onSubmit={onSubmit} */}
+              <Container className="formLogin">
+              <h3 className="fw-bold">Masuk</h3>
               <Form onSubmit={handleSubmit} noValidate validated={validated}>
                 <Form.Group
                   className="mb-3"
@@ -137,10 +130,9 @@ export const Login = () => {
                   </p>
                 </div>
               </Form>
+              </Container>
             </Col>
           </Row>
-        </Container>
-      </div>
     </>
   );
 };

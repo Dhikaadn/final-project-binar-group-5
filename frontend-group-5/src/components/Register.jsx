@@ -70,14 +70,12 @@ export const Register = () => {
 
   return (
     <>
-      <div className=" ">
-        <img src={imgLeft} alt="img-left" className="position-fixed imgLogin" />
-        <Container>
-          <Row className="align-items-center" style={{ height: "100vh" }}>
+      <Row className="LoginRegis align-items-center">
             <Col>
-              <div className="pembatas"></div>
+            <img src={imgLeft} alt="img-left" className="imgLogin"/>
             </Col>
             <Col>
+              <Container className="formRegis">
               <h3 className="fw-bold">Daftar</h3>
               {/* onSubmit={onSubmit} */}
               <Form onSubmit={handleSubmit} noValidate validated={validated}>
@@ -158,10 +156,9 @@ export const Register = () => {
                   </p>
                 </div>
               </Form>
+          </Container>
             </Col>
           </Row>
-        </Container>
-      </div>
     </>
   );
 };

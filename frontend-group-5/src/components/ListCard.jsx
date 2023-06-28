@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import ImgDestination from "../img/img_destinasi.svg";
 
 function ListCard({ category }) {
@@ -76,64 +77,35 @@ function ListCard({ category }) {
   }, [category]);
 
   return (
-    <div className="container p-2">
-      <div className="list_container">
+    <Container className=" p-2">
+      <div className="list_container" >
         {searchResults.map((result) => (
-          <div
-            className="m-2 "
+          <div className="m-2"
             style={{ display: "flex", justifyItems: "flex-start" }}
           >
-            <div
-              className="card "
-              style={{
-                width: "170px",
-              }}
-            >
+            <Card style={{ width: "180px", }} >
               <img
                 src={ImgDestination}
                 className="card-img-top p-2"
                 alt="..."
               />
-              <div className="card-body" style={{ padding: "6px" }}>
-                <h5 style={{ fontSize: "14px" }}>{result.rute}</h5>
-                <p
-                  className="card-subtitle mb-1"
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "700",
-                    color: "#7126B5",
-                  }}
-                >
+              <div className="p-2 d-flex flex-column">
+                <h5 style={{ fontSize: "14px", fontWeight:"bold" }}>{result.rute}</h5>
+                <span className="card-maskapai pb-2" >
                   {result.maskapai}
-                </p>
-                <p
-                  className="card-subtitle mb-2"
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "500",
-                  }}
-                >
-                  {result.tanggal}
-                </p>
-
-                <p
-                  className="card-subtitle mb-1"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 500,
-                  }}
-                >
-                  Mulai dari{" "}
+                </span>
+                <span className="card-subtitle pb-2" > {result.tanggal} </span>
+                <p className="card-subtitle " > Mulai dari{" "}
                   <span style={{ color: "#FF0000", fontWeight: "600" }}>
                     {result.harga}
                   </span>
                 </p>
               </div>
-            </div>
+            </Card>
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 

@@ -47,6 +47,23 @@ body {
   margin-left: 10px;
 }
 
+.imgLogin {
+  position: fixed;
+  width: 40%;
+}
+
+.formLogin {
+  position: fixed;
+  width: 35%;
+  top: 35%;
+}
+
+.formRegis {
+  position: fixed;
+  width: 35%;
+  top: 25%;
+}
+
 /* ======= PILIH PENERBANGAN STYLE ======== */
 /* --- BANNER ---- */
 .container-banner {
@@ -106,20 +123,19 @@ body {
 /* --- FORM INPUT USER --- */
 
 /* --- LIST CARD FAVORIT --- */
-/* listCard */
 
 .list_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
 .card-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .card-maskapai {
   color: var(--primary-color);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 /* --- LIST CARD FAVORIT --- */
@@ -480,6 +496,7 @@ body {
     position: relative;
   }
 
+
   .form_Detail {
     position: fixed;
     width: 42%;
@@ -520,6 +537,28 @@ body {
 @media all and (min-width: 480px) and (max-width: 768px) {
   .form_inputBiodata {
     position: relative;
+  }
+
+  .imgLogin{
+    position: absolute;
+    width: 100%;
+  }
+
+  .formLogin {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .LoginRegis{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formRegis {
+    position: absolute;
+    width: 100%;
+    top: 100%;
   }
 
   .form_Detail {
@@ -563,6 +602,28 @@ body {
 }
 
 @media all and (max-width: 480px) {
+  .imgLogin{
+    position: absolute;
+    width: 100%;
+  }
+
+  .formLogin {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .formRegis {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .LoginRegis{
+    display: flex;
+    flex-direction: column;
+  }
+
   .navbar {
     top: 0;
     position: fixed;
