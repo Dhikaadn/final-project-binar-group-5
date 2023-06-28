@@ -5,26 +5,25 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 :root {
   --neutral-black: #000000;
-  --neutral-white: #FFFFFF;
-  --neutral-gray: #8A8A8A;
-  --neutral-gray2: #3C3C3C;
-  --neutral-gray3: #EEE;
-  --primary-color: #7126B5;
-  --primary-color2: #A06ECE;
-  --alert-success: #73CA5C;
-  --alert-danger: #FF0000;
-  --alert-warning: #F9CC00;
+  --neutral-white: #ffffff;
+  --neutral-gray: #8a8a8a;
+  --neutral-gray2: #3c3c3c;
+  --neutral-gray3: #eee;
+  --primary-color: #7126b5;
+  --primary-color2: #a06ece;
+  --alert-success: #73ca5c;
+  --alert-danger: #ff0000;
+  --alert-warning: #f9cc00;
 }
-
 
 /* ======= NAVBAR STYLE ========== */
 .navbar-beranda {
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 .icon-search {
@@ -41,13 +40,12 @@ body {
 /* ======= NAVBAR STYLE ========== */
 
 /* ======= LOGIN/REGISTER ======== */
-.linkLogin{
+.linkLogin {
   text-decoration: none;
   color: var(--primary-color);
   font-weight: bold;
   margin-left: 10px;
 }
-
 
 /* ======= PILIH PENERBANGAN STYLE ======== */
 /* --- BANNER ---- */
@@ -65,7 +63,6 @@ body {
   background: linear-gradient(to right, #9e64d4, #e0c8f5);
 }
 /* --- BANNER ---- */
-
 
 /* --- FORM INPUT USER --- */
 
@@ -108,8 +105,13 @@ body {
 }
 /* --- FORM INPUT USER --- */
 
-
 /* --- LIST CARD FAVORIT --- */
+/* listCard */
+
+.list_container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
 .card-subtitle {
   font-size: 14px;
   font-weight: 500;
@@ -121,7 +123,6 @@ body {
   font-weight: bold;
 }
 /* --- LIST CARD FAVORIT --- */
-
 
 /* <---Styling container hari---> */
 .container-detail {
@@ -458,31 +459,34 @@ body {
 /* Styling akun page */
 
 /* ======= RESPONSIVE WEBSITE ======== */
+@media only screen and (max-width: 1025px) {
+  .list_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 @media all and (min-width: 1024px) and (max-width: 1440px) {
-
   .form_inputBiodata {
-      position: relative;
+    position: relative;
   }
 
   .form_Detail {
-      position: fixed;
-      width: 42%;
+    position: fixed;
+    width: 42%;
   }
 }
 
-@media all and (min-width: 768px) and (max-width: 1024px) { 
-
+@media all and (min-width: 768px) and (max-width: 1024px) {
   .form_inputBiodata {
-      position: relative;
+    position: relative;
   }
 
   .form_Detail {
-      position: fixed;
-      width: 42%;
-      border: 1px solid var(--neutral-gray);
-      margin-left: -10px;
-      margin-right: -10px;
-      margin-bottom: 20px;
+    position: fixed;
+    width: 42%;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
   }
 
   .bt-pencarian {
@@ -511,22 +515,20 @@ body {
     margin-left: 10px;
     margin-right: 10px;
   }
-
 }
 
-@media all and (min-width: 480px) and (max-width: 768px) { 
-
+@media all and (min-width: 480px) and (max-width: 768px) {
   .form_inputBiodata {
-      position: relative;
+    position: relative;
   }
 
   .form_Detail {
-      position: fixed;
-      width: auto;
-      border: 1px solid var(--neutral-gray);
-      margin-left: -10px;
-      margin-right: -10px;
-      margin-bottom: 20px;
+    position: fixed;
+    width: auto;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
   }
 
   .bt-pencarian {
@@ -554,58 +556,62 @@ body {
   .accordion {
     margin-left: 10px;
     margin-right: 10px;
+  }
+  .list_container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media all and (max-width: 480px) {
-
   .navbar {
-      top: 0;
-      position: fixed;
+    top: 0;
+    position: fixed;
   }
 
   .form_inputBiodata {
-      position: relative;
+    position: relative;
   }
-  
+
   .containerrr_form {
-      display: flex;
-      flex-direction: column-reverse;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .list_container {
+    grid-template-columns: 1fr;
   }
 
   .form_Detail {
-      position: relative;
-      width: auto;
-      border: 1px solid var(--neutral-gray);
-      margin-left: -10px;
-      margin-right: -10px;
-      margin-bottom: 20px;
+    position: relative;
+    width: auto;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
   }
 
   .btn_switch {
-      width: 50px;
-      height: 25px;
+    width: 50px;
+    height: 25px;
   }
 
   .btn_switchSlider {
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      top: 3px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 3px;
   }
 
   .alertNotif_danger {
-      text-align: center;
+    text-align: center;
   }
 
   .modal_content {
-      padding: 10px 3px;
+    padding: 10px 3px;
   }
 
   .rectangle-banner {
     height: 3rem;
   }
-
 
   .container-banner {
     top: -4rem;
@@ -625,8 +631,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-
-
   .button-passenger {
     grid-template-columns: 1fr;
   }
@@ -637,11 +641,5 @@ body {
   .card-akun {
     width: 20rem;
   }
-
 }
 /* ======= RESPONSIVE WEBSITE ======== */
-
-
-
-
-
