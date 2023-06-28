@@ -3,10 +3,12 @@ import { NavbarBeranda } from "./NavbarBeranda";
 import Banner from "./Banner";
 import ListCard from "./ListCard";
 import PilihPenerbangan from "./PilihPenerbangan";
-
 import IconSearch from "../img/fi_search_putih.svg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { BiSearch } from 'react-icons/bi';
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -22,114 +24,82 @@ const HomePage = () => {
   };
 
   return (
-    <div className="Home">
+    <>
       <NavbarBeranda />
       <Banner />
-      <div className="container w-75">
+      <Container className="w-75">
         {/* pilih penerbangan */}
         <PilihPenerbangan />
 
         {/* destination favorit */}
-        <div className="card border-light">
-          <div className="card-body">
-            <div className="card-title mb-3">
-              <h5>Destinasi Favorit</h5>
-            </div>
-
-            <div className="col">
-              <button
-                type="button"
-                className="btn btn-primary mx-2 my-1"
+        <Container>
+          <Row>
+              <h4 className="fw-bold">Destinasi Favorit</h4>
+            <Col>
+              <Button className="py-2 me-3 my-1"
                 onClick={() => handleButtonClick("Semua")}
                 style={{
-                  backgroundColor:
-                    activeButton === "Semua" ? "#7126B5" : "#E2D4F0",
-                  borderWidth: 0,
+                  backgroundColor: activeButton === "Semua" ? "#7126B5" : "#E2D4F0",
+                  color: activeButton === "Semua" ? "#E2D4F0" : "#000",
+                  border: "none",
                 }}
               >
-                <img
-                  src={IconSearch}
-                  alt="Icon"
-                  style={{ marginRight: "5px" }}
-                />
+                <BiSearch className="fs-5 me-2"/>
                 Semua
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary mx-2 my-1"
+              </Button>
+              <Button className="py-2 me-3 my-1"
                 onClick={() => handleButtonClick("Asia")}
                 style={{
-                  backgroundColor:
-                    activeButton === "Asia" ? "#7126B5" : "#E2D4F0",
-                  borderWidth: 0,
+                  backgroundColor: activeButton === "Asia" ? "#7126B5" : "#E2D4F0",
+                  color: activeButton === "Asia" ? "#E2D4F0" : "#000",
+                  border: "none",
                 }}
               >
-                <img
-                  src={IconSearch}
-                  alt="Icon"
-                  style={{ marginRight: "5px" }}
-                />
+                <BiSearch className="fs-5 me-2"/>
                 Asia
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary mx-2 my-1"
+              </Button>
+              <Button className="py-2 me-3 my-1"
                 onClick={() => handleButtonClick("Amerika")}
                 style={{
-                  backgroundColor:
-                    activeButton === "Amerika" ? "#7126B5" : "#E2D4F0",
-                  borderWidth: 0,
+                  backgroundColor: activeButton === "Amerika" ? "#7126B5" : "#E2D4F0",
+                  color: activeButton === "Amerika" ? "#E2D4F0" : "#000",
+                  border: "none",
                 }}
               >
-                <img
-                  src={IconSearch}
-                  alt="Icon"
-                  style={{ marginRight: "5px" }}
-                />
+                <BiSearch className="fs-5 me-2"/>
                 Amerika
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary mx-2 my-1"
+              </Button>
+              <Button className="py-2 me-3 my-1"
                 onClick={() => handleButtonClick("Australia")}
                 style={{
-                  backgroundColor:
-                    activeButton === "Australia" ? "#7126B5" : "#E2D4F0",
-                  borderWidth: 0,
+                  backgroundColor: activeButton === "Australia" ? "#7126B5" : "#E2D4F0",
+                  color: activeButton === "Australia" ? "#E2D4F0" : "#000",
+                  border: "none",
                 }}
               >
-                <img
-                  src={IconSearch}
-                  alt="Icon"
-                  style={{ marginRight: "5px" }}
-                />
+                <BiSearch className="fs-5 me-2"/>
                 Australia
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary mx-2 my-1"
+              </Button>
+              <Button className="py-2 me-3 my-1"
                 onClick={() => handleButtonClick("Eropa")}
                 style={{
-                  backgroundColor:
-                    activeButton === "Eropa" ? "#7126B5" : "#E2D4F0",
-                  borderWidth: 0,
+                  backgroundColor: activeButton === "Eropa" ? "#7126B5" : "#E2D4F0",
+                  color: activeButton === "Eropa" ? "#E2D4F0" : "#000",
+                  border: "none",
                 }}
               >
-                <img
-                  src={IconSearch}
-                  alt="Icon"
-                  style={{ marginRight: "5px" }}
-                />
-                Eropa
-              </button>
-            </div>
-          </div>
-        </div>
+                <BiSearch className="fs-5 me-2"/>
+                <span>Eropa</span> 
+              </Button>
+            </Col>
+          </Row>
+        
+          {/* list */}
+          <ListCard category={activeButton} />
+        </Container>
 
-        {/* list */}
-        <ListCard category={activeButton} />
-      </div>
-    </div>
+      </Container>
+    </>
   );
 };
 

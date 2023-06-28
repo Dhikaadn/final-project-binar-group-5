@@ -92,7 +92,7 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
           <div
             key={result.id}
             onClick={() => handleListClick(result)}
-            className="modal-body-list"
+            className="border-bottom my-3" style={{cursor:"pointer"}}
           >
             {result}
           </div>

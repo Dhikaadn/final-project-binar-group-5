@@ -90,7 +90,7 @@
 
 
 
-@media all and (min-width: 1024px) and (max-width: 1440px) {
+/* @media all and (min-width: 1024px) and (max-width: 1440px) {
 
     .form_inputBiodata {
         position: relative;
@@ -179,7 +179,7 @@
     .modal_content {
         padding: 10px 3px;
     }
-}
+} */
 
 
 

@@ -11,6 +11,7 @@ import IconPerson from "../img/icon_penumpang.svg";
 import { useDispatch } from "react-redux";
 import { getListPenerbangan } from "../redux/actions/search";
 import { dataSearch } from "../redux/actions/kelas";
+import { Button } from "react-bootstrap";
 
 function PilihPenerbangan() {
   const [showModal, setShowModal] = useState(false);
@@ -125,7 +126,7 @@ function PilihPenerbangan() {
         <div className="card-body">
           <h5 className="card-title">
             Pilih Jadwal Penerbangan spesial di{" "}
-            <span style={{ color: "#7126B5" }}>Tiketku!</span>
+            <span style={{ color: "#7126B5", fontWeight:"bold" }}>Tiketku!</span>
           </h5>
 
           {/* atas */}
@@ -250,13 +251,12 @@ function PilihPenerbangan() {
           </div>
 
           {/* button */}
-          <button
-            className="btn-utama-pilih-penerbangan"
+        </div>
+          <Button style={{background:"#7126B5", border:"none", height:"45px", borderRadius:"0"}}
             onClick={() => handleButtonClick()}
           >
             Cari Penerbangan
-          </button>
-        </div>
+          </Button>
       </div>
 
       {/* Modal */}
