@@ -10,11 +10,25 @@ import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfile, logout } from "../redux/actions/auth";
+import { useState } from "react";
+import { update } from "../redux/actions/updateuser";
 
 export const Akun = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { uuidUser } = useSelector((state) => state.auth);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
   const { isLoggedIn, token, user } = useSelector((state) => state.auth);
+
+  const onUpdate = (e) =>{
+    e.preventDefault();
+    const data = {uuidUser, name, phoneNumber, password}
+    dispatch(update(data, navigate));
+    console.log(data)
+  }
+
   return (
     <div className="Akun">
       <NavbarBeranda />
@@ -66,7 +80,7 @@ export const Akun = () => {
                   <Form.Label className="text-update-profil">
                     Nama Lengkap
                   </Form.Label>
-                  <Form.Control type="text" placeholder="fullname" />
+                  <Form.Control type="text" placeholder="fullname" onChange={(e) => setName(e.target.value)}/>
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
@@ -75,17 +89,17 @@ export const Akun = () => {
                   <Form.Label className="text-update-profil">
                     Nomor Telepon
                   </Form.Label>
-                  <Form.Control type="text" placeholder="+62.." />
+                  <Form.Control type="text" placeholder="+62.." onChange={(e) => setPhoneNumber(e.target.value)}/>
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label className="text-update-profil">Email</Form.Label>
-                  <Form.Control type="email" placeholder="name@example.com" />
+                  <Form.Label className="text-update-profil">Password</Form.Label>
+                  <Form.Control type="password" placeholder="*******" onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
                 <div className="container-simpan-akun">
-                  <Button className="bt-simpan-akun">Simpan</Button>
+                  <Button className="bt-simpan-akun" onClick={(e)=>onUpdate(e)}>Simpan</Button>
                 </div>
               </Form>
             </Card.Body>
