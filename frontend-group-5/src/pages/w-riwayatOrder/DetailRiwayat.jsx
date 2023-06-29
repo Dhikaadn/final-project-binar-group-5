@@ -27,7 +27,26 @@ const DetailRiwayat = () => {
       (data) => data.bookingCode === bookingCode
     );
     setShowDetails(selectedData);
+    setBookingCode(selectedData.bookingCode);
   };
+
+  // useEffect(() => {
+  //   const latestBookingCode = listRiwayat[listRiwayat.length - 1]?.bookingCode;
+  //   if (latestBookingCode) {
+  //     const selectedData = listRiwayat.find(
+  //       (data) => data.bookingCode === latestBookingCode
+  //     );
+  //     setShowDetails(selectedData);
+  //     setBookingCode(bookingCode); // Tambahkan baris ini
+  //   }
+  // }, [listRiwayat]);
+
+  // const handleOnClick = (bookingCode) => {
+  //   const selectedData = listRiwayat.find(
+  //     (data) => data.bookingCode === bookingCode
+  //   );
+  //   setShowDetails(selectedData);
+  // };
 
   console.log(bookingCode);
 
