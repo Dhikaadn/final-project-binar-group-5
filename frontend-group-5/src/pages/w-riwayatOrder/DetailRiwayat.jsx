@@ -1,127 +1,30 @@
-import React, { useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import paymentLogo from "./../../img/Image.png";
 import arrowLogo from "./../../img/Thin (Stroke).png";
 
+import { useSelector } from "react-redux";
+
 const DetailRiwayat = () => {
-  const dummyData = [
-    {
-      bookingId: 11,
-      bookingCode: "UVSWKL",
-      departureAirport: "Semarang",
-      departureDate: "2023-06-25",
-      departureTime: "15:30:00",
-      departureGate: "G01",
-      arrivalAirport: "Banjarmasin",
-      arrivalDate1: "2023-06-25",
-      arrivalTime: "16:29:00",
-      arrivalGate: "G02",
-      longFlight1: "0 Hours 59 Minutes",
-      flightClass: "Economy",
-      airlineCode: "GA-345",
-      customers: {
-        customerId: 11,
-        fullName: "Lucky Alma Aficionado Rigel",
-        familyName: "Lucky Andreas",
-        phoneNumber: "0877197823673",
-        email: "luckyrigel@gmail.com",
-      },
-      passengers: [
-        {
-          passengerId: 13,
-          title: "Mr.",
-          fullName: "Lucky Alma Aficionado Rigel",
-          familyName: "Lucky Andreas",
-          dob: "2023-06-26",
-          nationality: "Indonesia",
-          identityNumber: 0,
-          identityIssuingCountry: "Indonesia",
-          expiredAt: "2023-06-26",
-        },
-        {
-          passengerId: 14,
-          title: "Mr.",
-          fullName: "ajdhja",
-          familyName: "jhadj",
-          dob: "2023-06-26",
-          nationality: "Indonesia",
-          identityNumber: 0,
-          identityIssuingCountry: "Indonesia",
-          expiredAt: "2023-06-26",
-        },
-        {
-          passengerId: 190,
-          title: "Mr.",
-          fullName: "ajdhja",
-          familyName: "jhadj",
-          dob: "2023-06-26",
-          nationality: "Indonesia",
-          identityNumber: 0,
-          identityIssuingCountry: "Indonesia",
-          expiredAt: "2023-06-26",
-        },
-      ],
-    },
+  const { listRiwayat } = useSelector((state) => state.riwayat) || [];
 
-    {
-      bookingId: 12,
-      bookingCode: "UGHJT",
-      departureAirport: "Jakarta",
-      departureDate: "2023-06-25",
-      departureTime: "15:30:00",
-      departureGate: "G01",
-      arrivalAirport: "Bali",
-      arrivalDate1: "2023-06-25",
-      arrivalTime: "16:29:00",
-      arrivalGate: "G02",
-      longFlight1: "0 Hours 59 Minutes",
-      flightClass: "Economy",
-      airlineCode: "GA-345",
-      customers: {
-        customerId: 11,
-        fullName: "Lucky Alma Aficionado Rigel",
-        familyName: "Lucky Andreas",
-        phoneNumber: "0877197823673",
-        email: "luckyrigel@gmail.com",
-      },
-      passengers: [
-        {
-          passengerId: 178,
-          title: "Mr.",
-          fullName: "Luihjh",
-          familyName: "Lucky Andreas",
-          dob: "2023-06-26",
-          nationality: "Indonesia",
-          identityNumber: 0,
-          identityIssuingCountry: "Indonesia",
-          expiredAt: "2023-06-26",
-        },
-        {
-          passengerId: 189,
-          title: "Mr.",
-          fullName: "kjkhajs",
-          familyName: "jhadj",
-          dob: "2023-06-26",
-          nationality: "Indonesia",
-          identityNumber: 0,
-          identityIssuingCountry: "Indonesia",
-          expiredAt: "2023-06-26",
-        },
-      ],
-    },
-    // Add more objects here if needed
-  ];
-
-  const latestBookingCode = dummyData[dummyData.length - 1].bookingCode;
+  const latestBookingCode = listRiwayat[listRiwayat.length - 1].bookingCode;
   const [showDetails, setShowDetails] = useState(
-    dummyData.find((data) => data.bookingCode === latestBookingCode)
+    listRiwayat.find((data) => data.bookingCode === latestBookingCode)
   );
+  const [bookingCode, setBookingCode] = useState("");
 
   const handleOnClick = (bookingCode) => {
-    const selectedData = dummyData.find(
+    const selectedData = listRiwayat.find(
       (data) => data.bookingCode === bookingCode
     );
     setShowDetails(selectedData);
+    setBookingCode(bookingCode); // Tambahkan baris ini
+  };
+
+  const handlePrintTicket = () => {
+    const url = `https://backend-binar-final-project-production.up.railway.app/api/v1/invoice/${bookingCode}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -130,7 +33,7 @@ const DetailRiwayat = () => {
         <Row>
           <Col>
             <h5>Maret 2023</h5>
-            {dummyData.map((data) => (
+            {listRiwayat.map((data) => (
               <Card
                 className="card_active mb-3"
                 onClick={() => handleOnClick(data.bookingCode)}
@@ -210,13 +113,18 @@ const DetailRiwayat = () => {
                   <div className="">
                     <span className="fs-6">{showDetails.departureDate}</span>
                     <p className="fs-6 border-bottom pb-3">
-                      Soekarno Hatta - Terminal 1A Domestik
+                      {showDetails.departureAirport} - Gate{" "}
+                      {showDetails.departureGate}
                     </p>
                   </div>
 
                   <div className="border-bottom">
-                    <span className="fs-6 fw-bold ps-4">Jet Air - Economy</span>
-                    <p className="fs-6 fw-bold ps-4">JT - 203</p>
+                    <span className="fs-6 fw-bold ps-4">
+                      {showDetails.airlineName}-{showDetails.flightClass}
+                    </span>
+                    <p className="fs-6 fw-bold ps-4">
+                      {showDetails.airlineCode}
+                    </p>
                     <div className="d-flex flex-column">
                       <span className="fs-6 fw-bold ">
                         <img src={paymentLogo} alt="paymentLogo" /> Informasi:
@@ -237,24 +145,45 @@ const DetailRiwayat = () => {
 
                   <div className="border-bottom">
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
-                      <span className=" fw-bolder">11:00 </span>
+                      <span className=" fw-bolder">
+                        {showDetails.arrivalTime}{" "}
+                      </span>
                       <span className="text_paymentTitle2 ps-2 fw-bolder ">
                         Kedatangan
                       </span>
                     </div>
-                    <span className="fs-6">3 Maret 2023</span>
-                    <p className="fs-6 ">Melbourne International Airport</p>
+                    <span className="fs-6">{showDetails.arrivalDate1}</span>
+                    <p className="fs-6 ">
+                      {showDetails.arrivalAirport} - Gate{" "}
+                      {showDetails.arrivalGate}
+                    </p>
                   </div>
                   <div className="pt-3 border-bottom">
                     <span className="pt-3 fw-bolder">Rincian Harga</span>
-                    <div className="d-flex align-items-center justify-content-between fs-6 pt-2">
-                      <span className=" ">2 Adults </span>
-                      <span className=" ">IDR 9.550.000</span>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between fs-6">
-                      <span className=" ">1 Baby </span>
-                      <span className=" ">IDR 0</span>
-                    </div>
+                    {showDetails.adultPassenger !== 0 && (
+                      <div className="d-flex align-items-center justify-content-between fs-6 pt-2">
+                        <span className=" ">
+                          {showDetails.adultPassenger} Adults{" "}
+                        </span>
+                        <span className=" ">IDR {showDetails.adultPrice}</span>
+                      </div>
+                    )}
+                    {showDetails.childPassenger !== 0 && (
+                      <div className="d-flex align-items-center justify-content-between fs-6">
+                        <span className=" ">
+                          {showDetails.childPassenger} Baby{" "}
+                        </span>
+                        <span className=" ">IDR {showDetails.childPrice}</span>
+                      </div>
+                    )}
+                    {showDetails.babyPassenger !== 0 && (
+                      <div className="d-flex align-items-center justify-content-between fs-6">
+                        <span className=" ">
+                          {showDetails.babyPassenger} Baby{" "}
+                        </span>
+                        <span className=" ">IDR {showDetails.babyPrice}</span>
+                      </div>
+                    )}
                     <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                       <span className=" ">Tax </span>
                       <span className="  ">IDR 300.000</span>
@@ -264,10 +193,17 @@ const DetailRiwayat = () => {
                   <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                     <span className=" fw-bolder">Total </span>
                     <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                      IDR 9.850.000
+                      {showDetails.totalPrice}
                     </span>
                   </div>
                 </Card.Body>
+                <Button
+                  className="p-3 mb-2"
+                  style={{ backgroundColor: "#7126B5", border: 0 }}
+                  onClick={handlePrintTicket}
+                >
+                  Cetak Tiket
+                </Button>
               </Card>
             </Col>
           )}
