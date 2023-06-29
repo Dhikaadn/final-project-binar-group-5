@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   token: localStorage.getItem("token") || null,
   isLoggedIn: !!localStorage.getItem("token"),
-  uuidUser: null,
+  uuidUser: localStorage.getItem("uuidUser") || null,
   user: null,
 };
 
@@ -25,6 +25,12 @@ const authSlicer = createSlice({
     },
 
     setUuidUser: (state, action) => {
+      if (action.payload) {
+        localStorage.setItem("uuidUser", action.payload);
+      } else {
+        localStorage.removeItem("uuidUser");
+      }
+
       state.uuidUser = action.payload;
     },
     setUser: (state, action) => {

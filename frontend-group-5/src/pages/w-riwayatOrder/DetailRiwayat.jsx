@@ -8,19 +8,28 @@ import { useSelector } from "react-redux";
 const DetailRiwayat = () => {
   const { listRiwayat } = useSelector((state) => state.riwayat) || [];
 
-  const latestBookingCode = listRiwayat[listRiwayat.length - 1].bookingCode;
-  const [showDetails, setShowDetails] = useState(
-    listRiwayat.find((data) => data.bookingCode === latestBookingCode)
-  );
+  const [showDetails, setShowDetails] = useState();
   const [bookingCode, setBookingCode] = useState("");
+
+  useEffect(() => {
+    const latestBookingCode = listRiwayat[0]?.bookingCode; // Mengambil booking code terlama
+    if (latestBookingCode) {
+      const selectedData = listRiwayat.find(
+        (data) => data.bookingCode === latestBookingCode
+      );
+      setShowDetails(selectedData);
+      setBookingCode(latestBookingCode); // Menggunakan booking code terlama
+    }
+  }, [listRiwayat]);
 
   const handleOnClick = (bookingCode) => {
     const selectedData = listRiwayat.find(
       (data) => data.bookingCode === bookingCode
     );
     setShowDetails(selectedData);
-    setBookingCode(bookingCode); // Tambahkan baris ini
   };
+
+  console.log(bookingCode);
 
   const handlePrintTicket = () => {
     const url = `https://backend-binar-final-project-production.up.railway.app/api/v1/invoice/${bookingCode}`;
@@ -32,7 +41,6 @@ const DetailRiwayat = () => {
       <Container className="mt-4">
         <Row>
           <Col>
-            <h5>Maret 2023</h5>
             {listRiwayat.map((data) => (
               <Card
                 className="card_active mb-3"
@@ -41,7 +49,15 @@ const DetailRiwayat = () => {
               >
                 <Card.Body>
                   <Col>
-                    <p className="pb-3 card_tittle">Issued</p>
+                    {data.statusPayment === "ISSUED" && (
+                      <p className="pb-3 card_tittle">{data.statusPayment}</p>
+                    )}
+                    {data.statusPayment === "UNPAID" && (
+                      <p className="pb-3 card_unpaid">{data.statusPayment}</p>
+                    )}
+                    {data.statusPayment === "CANCELED" && (
+                      <p className="pb-3 card_canceled">{data.statusPayment}</p>
+                    )}
                     <Col className="card_body ">
                       <div className="border-bottom d-flex justify-content-between">
                         <div className="d-flex flex-column">
@@ -75,7 +91,7 @@ const DetailRiwayat = () => {
                         </div>
                         <div className="">
                           <span className="fw-bold pe-1">IDR</span>
-                          <span className="fw-bold">9.850.000</span>
+                          <span className="fw-bold">{data.totalPrice}</span>
                         </div>
                       </div>
                     </Col>

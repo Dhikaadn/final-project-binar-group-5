@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const getListRiwayat = (uuidUser) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://backend-binar-final-project-production.up.railway.app/api/history`,
+      `${process.env.REACT_APP_BASE_URL}/api/history`,
       {
         params: {
           uuidRequest: uuidUser,
