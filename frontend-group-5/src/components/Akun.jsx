@@ -12,6 +12,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProfile, logout } from "../redux/actions/auth";
 import { useState } from "react";
 import { update } from "../redux/actions/updateuser";
+import InputGroup from 'react-bootstrap/InputGroup';
+import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
+
 
 export const Akun = () => {
   const dispatch = useDispatch();
@@ -21,6 +24,14 @@ export const Akun = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const { isLoggedIn, token, user } = useSelector((state) => state.auth);
+  // ==== SHOW HIDE PASS
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  // ==== SHOW HIDE PASS
 
   const onUpdate = (e) =>{
     e.preventDefault();
@@ -96,7 +107,17 @@ export const Akun = () => {
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label className="text-update-profil">Password</Form.Label>
-                  <Form.Control type="password" placeholder="*******" onChange={(e) => setPassword(e.target.value)}/>
+                  <InputGroup className="mb-2">
+                  <Form.Control 
+                  type={showPassword ? "text" : "password"}
+                  placeholder="*******" 
+                  onChange={(e) => setPassword(e.target.value)}/>
+                  <InputGroup.Text
+                  style={{ cursor: "pointer" }}
+                  onClick={togglePasswordVisibility}>
+                  {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
+                  </InputGroup.Text>
+                  </InputGroup>
                 </Form.Group>
                 <div className="container-simpan-akun">
                   <Button className="bt-simpan-akun" onClick={(e)=>onUpdate(e)}>Simpan</Button>

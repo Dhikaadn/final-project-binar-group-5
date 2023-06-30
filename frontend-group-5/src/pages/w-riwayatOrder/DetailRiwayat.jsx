@@ -228,7 +228,7 @@ const DetailRiwayat = () => {
                   <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                     <span className=" fw-bolder">Total </span>
                     <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                      {showDetails.totalPrice}
+                      IDR {showDetails.totalPrice}
                     </span>
                   </div>
                 </Card.Body>

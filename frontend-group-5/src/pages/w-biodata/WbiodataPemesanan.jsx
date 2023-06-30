@@ -348,9 +348,6 @@ const WbiodataPemesanan = () => {
               >
                 Simpan
               </Button>
-              <Button className="my-5 w-100" onClick={handleShowModal}>
-                Simpan Modal
-              </Button>
             </div>
 
             <Modal

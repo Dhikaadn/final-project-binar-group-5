@@ -65,7 +65,7 @@ export const ReadyTicket = () => {
                 </div>
                 <div className='container-garis'>
                     <div className='garis-top'>
-                        4h 0m 
+                        {list.longFlight} 
                     </div>
                     <div className='garis-bottom'>
                         Direct
@@ -77,7 +77,7 @@ export const ReadyTicket = () => {
                 </div>
                 <img src={time} width="20" height="20" className='ms-4 mt-3' alt='time-logo'/>
                 <div className='container-harga'>
-                    <p className='harga me-3'>{list.airlinePrice}</p>
+                    <p className='harga me-3'>IDR {list.airlinePrice}</p>
                     <Button className='bt-pilih me-3' onClick={(e)=>handlePilih(index)}>
                         Pilih
                     </Button>
