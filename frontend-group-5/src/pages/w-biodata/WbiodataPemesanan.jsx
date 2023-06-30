@@ -45,9 +45,7 @@ const WbiodataPemesanan = () => {
   });
 
   const [formData, setFormData] = useState({});
-  const [showmodal, setShowModal] = useState(false);
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+
 
   const [isOn, setIsOn] = useState(false);
 
@@ -173,7 +171,7 @@ const WbiodataPemesanan = () => {
                         Nomor Telepon
                       </Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         placeholder="0812345678"
                         id="phoneNumber"
                         name="phoneNumber"
@@ -297,7 +295,7 @@ const WbiodataPemesanan = () => {
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">KTP/Paspor</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         placeholder=""
                         id={`identityNumber${index}`}
                         name={`identityNumber${index}`}
@@ -338,7 +336,7 @@ const WbiodataPemesanan = () => {
               ))}
             </Card>
 
-            <div className="button-wrapper position-relative">
+            
               <Button
                 type = "submit"
                 className="my-5 w-100"
@@ -348,37 +346,16 @@ const WbiodataPemesanan = () => {
               >
                 Simpan
               </Button>
-              <Button className="my-5 w-100" onClick={handleShowModal}>
-                Simpan Modal
-              </Button>
-            </div>
 
-            <Modal
-              show={showmodal}
-              onHide={handleCloseModal}
-              backdrop="static"
-              keyboard={false}
-              className="pt-5"
-            >
-              <div className="modal_content">
-                <span className="ps-2">Anda Harus Login Terlebih Dahulu!</span>
-                <CloseButton
-                  onClick={handleCloseModal}
-                  variant="white"
-                  aria-label="close"
-                  className="fs-6 ms-3"
-                />
-              </div>
-            </Modal>
           </Col>
 
           <Col>
             <Container>
               <Col>
-                <Card className="border-0 ">
+                <Card className="border-0">
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      <p className="fw-bolder fs-4">Detail Penerbangan </p>
+                      <Card.Title className="fw-bold">Detail Penerbangan </Card.Title>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">

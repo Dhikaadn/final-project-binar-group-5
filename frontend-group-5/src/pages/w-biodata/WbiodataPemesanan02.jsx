@@ -319,7 +319,7 @@ const WbiodataPemesanan02 = () => {
                 <Card className="border-0 ">
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      <p className="fw-bolder fs-4">Detail Penerbangan </p>
+                      <Card.Title className="fw-bold">Detail Penerbangan </Card.Title>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">

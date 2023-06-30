@@ -61,7 +61,7 @@ body {
 .formRegis {
   position: fixed;
   width: 35%;
-  top: 25%;
+  top: 20%;
 }
 
 /* ======= PILIH PENERBANGAN STYLE ======== */
@@ -139,38 +139,13 @@ body {
   font-weight: bold;
 }
 /* --- LIST CARD FAVORIT --- */
+/* ======= PILIH PENERBANGAN STYLE ======== */
 
-/* <---Styling container hari---> */
-.container-detail {
-  /* margin: 40px; */
-  /* margin-left: 100px; */
-  padding: 40px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 40px;
-}
 
-.container-hari-top {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.bt-detail {
-  width: 550px;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-}
-
-.bt-pencarian {
-  background: #73ca5c;
-  border: none;
-  display: flex;
-  flex-direction: column;
-}
-
+/* ======= BERANDA STYLE ======== */
+/* BUTTON HARI */
 .bt-hari {
-  background: #7126b5;
+  background: var(--primary-color);
   border: none;
   display: flex;
   flex-direction: column;
@@ -183,183 +158,55 @@ body {
   display: flex;
   flex-direction: column;
 }
-.title-pilih {
-  font-weight: bold;
+
+.bt-non-hari:hover {
+  background: var(--primary-color2);
+}
+
+.bt-non-hari.active{
+  background: var(--primary-color);
 }
 
 .container-hari-center {
   margin-top: 10px;
   flex-wrap: wrap;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
 .hari {
-  border-right: solid 1px black;
+  border-right: solid 1px var(--neutral-gray);
   padding-right: 10px;
 }
-/* <---Styling container hari---> */
+/* BUTTON HARI */
 
-/* Styling loading section in beranda */
-.LoadingBeranda {
-  text-align: center;
+/* FILTER BTN */
+.btFilter {
+  float: right;
 }
 
-.text-loading {
-  color: #8a8a8a;
+.boxBtnAcordi {
+  border-bottom: 2px solid rgba(0,0,0,0.23);
 }
+/* FILTER BTN */
 
-.text-loading-2 {
-  color: #8a8a8a;
-  font-size: 30px;
-}
-/* Styling loading section in beranda */
-
-/* Styling none section in beranda */
-.NoneSearch {
-  text-align: center;
-}
+/* NONE SEARCH */
 .text-coba {
-  color: #7126b5;
+  color: var(--primary-color);
 }
-/* Styling none section in beranda */
 
-/* Styling finished ticket */
 .TiketFinished {
   text-align: center;
 }
-/* Styling finished ticket */
 
-/* Styling accordion */
-.accordionnn {
-  width: 800px;
-}
+/* ======= PILIH BERANDA STYLE ======== */
 
-.accordion-header {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
 
-.accordion-item {
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.ReadyTicket {
-  display: flex;
-  justify-content: center;
-}
-
-.container-jam-kota {
-  display: flex;
-  flex-direction: column;
-  margin-left: 55px;
-}
-
-.jam {
-  font-weight: bold;
-}
-
-.container-garis {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-
-.container-detail-jadwal {
-  display: flex;
-  margin-top: 10px;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.garis-top {
-  border-bottom: solid 1px black;
-}
-
-.harga {
-  font-weight: bold;
-  color: #7126b5;
-}
-
-.container-harga {
-  margin-bottom: 10px;
-  text-align: center;
-  margin-left: 150px;
-}
-
-.bt-pilih {
-  background-color: #7126b5;
-  border: none;
-  width: 100px;
-}
-
-.container-keberangkatan {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-keberangkatan-right {
-  display: flex;
-  margin-top: 30px;
-  font-weight: bold;
-  color: #a06ece;
-}
-
-.title-detail {
-  color: #4b1979;
-  font-weight: bold;
-}
-
-.container-informasi-logo {
-  display: flex;
-}
-
-.informasi-bold {
-  font-weight: bold;
-  color: black;
-  margin-left: 10px;
-}
-
-.maskapai-bold {
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-.container-informasi {
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-kedatangan {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-kedatangan-right {
-  display: flex;
-  margin-top: 30px;
-  font-weight: bold;
-  color: #a06ece;
-}
-
-.harga-merah {
-  color: #ff0000;
-  font-weight: bold;
-}
-.ReadyTicket {
-  display: flex;
-  flex-wrap: wrap;
-}
-/* Styling accordion */
-
-/* notifikasi */
+/* ===== NOTIFIKASI STYLE ===== */
 .card-result {
   margin-top: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--neutral-gray);
   padding: 1rem;
   display: flex;
   flex-direction: row;
@@ -382,8 +229,8 @@ body {
 }
 
 .tanggal {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 14px;
+  color: var(--neutral-gray);
   text-align: right;
   margin-bottom: 0.5rem;
 }
@@ -392,87 +239,46 @@ body {
   text-align: left;
 }
 
-/* Styling akun page */
-.container-top-akun {
+/* ===== NOTIFIKASI STYLE ===== */
+
+/* ==== AKUN STYLE ===== */
+.textBtn_back2 {
+  background: var(--primary-color2);
+  color: var(--neutral-white);
+  border-radius: 14px;
   display: flex;
-  flex-direction: column;
-  padding: 40px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 40px;
+  align-items: center;
+  height: 50px;
+  padding-left: 15px;
+  font-size: 18px;
 }
 
-.akun-bold {
-  font-weight: bold;
-  margin-left: 100px;
-  font-size: 20px;
-}
-
-.bt-beranda-akun {
-  width: 70vw;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-}
-
-.container-button-beranda {
-  display: flex;
-  justify-content: center;
-}
-
-.container-bottom-akun {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 50px;
-  gap: 100px;
-}
-
-.card-akun {
-  width: 30rem;
+.iconAkun {
+  color: var(--primary-color);
+  font-size: 25px;
 }
 
 .bt-menu-akun {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--neutral-gray3);
   margin-top: 10px;
-  width: 300px;
+  width: 50%;
   cursor: pointer;
   padding: 10px;
 }
 
 .bt-menu-akun:hover {
-  background: #e5e5e5;
+  background: var(--neutral-gray3);
 }
 
-.title-profil-bold {
-  font-weight: bold;
+.title_card2 {
+  background: var(--primary-color2);
+  height: 40px;
+  color: var(--neutral-white);
+  font-weight: 500;
+  font-size: 16px;
 }
+/* ==== AKUN STYLE ===== */
 
-.text-update-profil {
-  font-weight: bold;
-  color: #4b1979;
-}
-
-.bt-simpan-akun {
-  background-color: #4b1979;
-  border: none;
-  width: 100px;
-}
-
-.container-simpan-akun {
-  display: flex;
-  justify-content: center;
-}
-
-.title-datadiri {
-  width: 100%;
-  color: white;
-  padding: 7px;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-  border-radius: 10px 10px 0px 0px;
-}
-/* Styling akun page */
 
 /* ======= RESPONSIVE WEBSITE ======== */
 @media only screen and (max-width: 1025px) {
@@ -570,6 +376,16 @@ body {
     margin-bottom: 20px;
   }
 
+  .btn-back {
+    
+    margin: 10px 0px;
+  }
+
+  .btn-filter{
+    display: flex;
+    align-items: center;
+  }
+  
   .bt-pencarian {
     margin-top: 10px;
   }
@@ -598,6 +414,10 @@ body {
   }
   .list_container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bt-menu-akun {
+    width: auto;
   }
 }
 
@@ -628,6 +448,16 @@ body {
     top: 0;
     position: fixed;
   }
+
+  .acordioRespon {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-back {
+    margin: 10px 0px;
+  }
+
 
   .form_inputBiodata {
     position: relative;
@@ -701,6 +531,19 @@ body {
   }
   .card-akun {
     width: 20rem;
+  }
+
+  .bt-menu-akun {
+    width: auto;
+  }
+
+
+  .textBtn_back span {
+    display: none;
+  }
+
+  .btn-filter span {
+    display: none;
   }
 }
 /* ======= RESPONSIVE WEBSITE ======== */

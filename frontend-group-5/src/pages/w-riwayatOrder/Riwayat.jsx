@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListRiwayat } from "../../redux/actions/riwayat";
 import axios from "axios";
 import RiwayatNull from "./RiwayatNull";
+import { Link } from 'react-router-dom';
+
 
 const Riwayat = () => {
   const navigate = useNavigate();
@@ -41,31 +43,31 @@ const Riwayat = () => {
       <Container className="border-bottom">
         <Row className="mb-4 btn-back">
           <div className="title_pesanan">
-            <p className="fw-bold mt-5 fs-3">Riwayat Pemesanan</p>
+            <p className="fw-bold mt-5 fs-4">Riwayat Pemesanan</p>
           </div>
           <Col className="d-flex justify-content-between align-items-center">
             <div className="textBtn_back">
-              <Button style={{ background: "none", border: "none" }}>
-                <HiArrowLeft />
+              <Button style={{ background: "none", border: "none" }} as={Link} to="/">
+                <HiArrowLeft  className='fs-5'/>
               </Button>{" "}
-              Beranda
+              <span>Beranda</span>
             </div>
             <div className="btn-filter">
               <Button
                 className="px-3 btn-filter"
                 style={{
-                  border: "2px solid #7126B5",
+                  border: "1px solid #7126B5",
                   borderRadius: "25px",
                   color: "#000",
                   background: "none",
                 }}
               >
-                <BiFilterAlt className="pe-2" style={{ color: "gray" }} />
-                Filter
-              </Button>
+                <BiFilterAlt className="pe-2 fs-3" style={{ color: "gray" }} />
+                <span>Filter
+              </span></Button>
               <BsSearch
                 onClick={handleShow}
-                className="ps-3 fs-4"
+                className="ms-3 fs-5"
                 style={{ cursor: "pointer", color: "#7126B5" }}
               />
             </div>

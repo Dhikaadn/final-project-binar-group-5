@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavbarBeranda } from "./NavbarBeranda";
 import Button from "react-bootstrap/Button";
 import { BiArrowBack } from "react-icons/bi";
+import { BsArrowDownUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { LoadingBeranda } from "./LoadingBeranda";
 import { TiketFinished } from "./TiketFinished";
@@ -13,8 +14,12 @@ import { Penumpang } from "../redux/actions/penumpang";
 import { useEffect } from "react";
 import { dataNew } from "../redux/actions/kelas";
 import { useNavigate } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
 
 export const Beranda = () => {
+
+
+
   // dispatch -> to change the global state in redux
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,10 +73,72 @@ export const Beranda = () => {
   console.log(selectedDate);
 
   return (
-    <div className="Beranda">
+    <>
       <NavbarBeranda />
-      <div className="container-detail">
-        <h2 className="title-pilih mb-4">Pilih Penerbangan</h2>
+      <Container className=" mb-3 boxBtnAcordi">
+        <Row className="mb-4 ">
+          <div className="title_pesanan">
+            <p className="fw-bold mt-5 fs-4">Pilih Penerbangan</p>
+          </div>
+          <Col
+            className="d-flex justify-content-between align-items-center btn-back"
+            xs={12} md={9}
+          >
+            <div className="textBtn_back w-100">
+              {listPenerbangan.length > 0 ? (
+                <Button style={{ background: "none", border: "none" }} as={Link} to="/">
+                  <BiArrowBack className="me-3 fs-4" />{" "}
+                  {listPenerbangan[0].departureCity} {">"}{" "}
+                  {listPenerbangan[0].arrivalCity} - {countPenumpang} Penumpang
+                  - {listPenerbangan[0].airlineClass}
+                </Button>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </Col>
+          <Col xs={12} md={3}>
+            <Button
+              as={Link}
+              to="/"
+              style={{
+                background: "#73CA5C",
+                border: "none",
+                height: "48px",
+                borderRadius: "12px",
+              }}
+              className="w-100 d-flex align-items-center justify-content-center"
+            >
+              Ubah Pencarian
+            </Button>
+          </Col>
+        </Row>
+
+          <div className="container-hari-center mb-4">
+          {futureDates.map((date, index) => (
+            <div className="hari" key={index}>
+              <Button 
+                className={`bt-non-hari ${
+                  selectedDate === date ? "active" : ""
+                }`}
+                onClick={() => handleDateSelect(date)}
+              >
+                {date}
+              </Button>
+            </div>
+          ))}
+        </div>
+      </Container>
+      
+
+
+      {listPenerbangan.length > 0 ? <ReadyTicket /> : <NoneSearch />}
+    </>
+  );
+};
+
+
+        {/* <h4 className="fw-bold mb-4">Pilih Penerbangan</h4>
         <div className="container-hari-top">
             {listPenerbangan.length>0?
             <Button className="bt-detail me-3">
@@ -83,23 +150,4 @@ export const Beranda = () => {
           <Link to="/" style={{textDecoration:"none"}}>
             <Button className="bt-pencarian">Ubah Pencarian</Button>
           </Link>
-        </div>
-        <div className="container-hari-center">
-          {futureDates.map((date, index) => (
-            <div className="hari" key={index}>
-              <Button
-                className={`bt-non-hari ${
-                  selectedDate === date ? "active" : ""
-                }`}
-                onClick={() => handleDateSelect(date)}
-              >
-                {date}
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-      {listPenerbangan.length > 0 ? <ReadyTicket /> : <NoneSearch />}
-    </div>
-  );
-};
+        </div> */}

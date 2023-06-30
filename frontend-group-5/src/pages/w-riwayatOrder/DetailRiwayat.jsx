@@ -4,6 +4,7 @@ import paymentLogo from "./../../img/Image.png";
 import arrowLogo from "./../../img/Thin (Stroke).png";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const DetailRiwayat = () => {
   const { listRiwayat } = useSelector((state) => state.riwayat) || [];
@@ -122,13 +123,26 @@ const DetailRiwayat = () => {
 
           {showDetails && (
             <Col>
-              <Card className="border-0">
+              <Card className="border-0" onClick={() => handleOnClick(showDetails.bookingCode)}
+                key={showDetails.bookingCode}>
+                
                 <Card.Body>
-                  <div className="d-flex align-items-center">
-                    <p className="fw-bolder fs-4">Detail Pesanan </p>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <p className="fw-bold fs-5">Detail Pesanan </p>
+                    <span>
+                    {showDetails.statusPayment === "ISSUED" && (
+                      <p className="pb-3 card_tittle">{showDetails.statusPayment}</p>
+                    )}
+                    {showDetails.statusPayment === "UNPAID" && (
+                      <p className="pb-3 card_unpaid">{showDetails.statusPayment}</p>
+                    )}
+                    {showDetails.statusPayment === "CANCELED" && (
+                      <p className="pb-3 card_canceled">{showDetails.statusPayment}</p>
+                    )}
+                    </span>
                   </div>
                   <div className="d-flex align-items-center">
-                    <p className="fw-bolder fs-5">
+                    <p className="fw-bold fs-5">
                       Booking Code :{" "}
                       <span style={{ color: "#7126B5" }}>
                         {showDetails.bookingCode}
@@ -137,7 +151,7 @@ const DetailRiwayat = () => {
                   </div>
 
                   <div className="d-flex align-items-center justify-content-between">
-                    <span className="fs-6 fw-bolder">
+                    <span className="fs-6 fw-bold">
                       {showDetails.departureTime}{" "}
                     </span>
                     <span className="text_paymentTitle2 ps-2 fw-bolder">
@@ -197,48 +211,61 @@ const DetailRiwayat = () => {
                     <span className="pt-3 fw-bolder">Rincian Harga</span>
                     {showDetails.adultPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6 pt-2">
-                        <span className=" ">
+                        <span >
                           {showDetails.adultPassenger} Adults{" "}
                         </span>
-                        <span className=" ">IDR {showDetails.adultPrice}</span>
+                        <span >IDR {showDetails.adultPrice}</span>
                       </div>
                     )}
                     {showDetails.childPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">
+                        <span >
                           {showDetails.childPassenger} Baby{" "}
                         </span>
-                        <span className=" ">IDR {showDetails.childPrice}</span>
+                        <span >IDR {showDetails.childPrice}</span>
                       </div>
                     )}
                     {showDetails.babyPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">
+                        <span >
                           {showDetails.babyPassenger} Baby{" "}
                         </span>
-                        <span className=" ">IDR {showDetails.babyPrice}</span>
+                        <span >IDR {showDetails.babyPrice}</span>
                       </div>
                     )}
                     <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
-                      <span className=" ">Tax </span>
-                      <span className="  ">IDR 300.000</span>
+                      <span >Tax </span>
+                      <span >IDR 300.000</span>
                     </div>
                   </div>
 
                   <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                     <span className=" fw-bolder">Total </span>
                     <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                      {showDetails.totalPrice}
+                      IDR {showDetails.totalPrice}
                     </span>
                   </div>
                 </Card.Body>
-                <Button
-                  className="p-3 mb-2"
-                  style={{ backgroundColor: "#7126B5", border: 0 }}
-                  onClick={handlePrintTicket}
-                >
-                  Cetak Tiket
-                </Button>
+                
+                {showDetails.statusPayment === "ISSUED" && (
+                      <Button
+                      className="py-2 mb-2"
+                      style={{ backgroundColor: "red", border: 0 }}
+                      as={Link} to="/payment"
+                    >
+                      Cetak Tiket
+                    </Button>
+                    )}
+                    {showDetails.statusPayment === "UNPAID" && (
+                      <Button
+                      className="py-2 mb-2"
+                      style={{ backgroundColor: "#7126B5", border: 0 }}
+                      onClick={handlePrintTicket}
+                    >
+                      Cetak Tiket
+                    </Button>
+                    )}
+                
               </Card>
             </Col>
           )}

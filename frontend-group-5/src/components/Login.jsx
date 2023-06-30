@@ -97,7 +97,7 @@ export const Login = () => {
                   <Form.Control
                     controlId="exampleForm.ControlInput2"
                     type={showPassword ? "text" : "password"}
-                    name="email"
+                    name="password"
                     placeholder="Masukkan Password"
                     value={password}
                     onChange={handlePasswordChange}

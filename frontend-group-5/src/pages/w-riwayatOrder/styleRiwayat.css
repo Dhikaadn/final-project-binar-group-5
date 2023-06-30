@@ -1,17 +1,12 @@
-.nav_second {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .textBtn_back {
   background: #a06ece;
   color: white;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   height: 50px;
-  padding-left: 20px;
+  padding-left: 15px;
   font-size: 18px;
   width: 80%;
 }
@@ -65,9 +60,9 @@
 }
 
 @media all and (max-width: 480px) {
-  .textBtn_back {
-    width: 50%;
-  }
+    .textBtn_back {
+        width: auto;
+    }
 
   .text-calender {
     text-align: center;

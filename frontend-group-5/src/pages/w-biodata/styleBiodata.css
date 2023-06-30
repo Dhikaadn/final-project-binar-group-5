@@ -39,18 +39,13 @@
 }
 
 .modal_content {
-    background-color:red ;
+    background-color:var(--alert-danger) ;
     color: var(--neutral-white);
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-}
-
-.form_Detail {
-    width: 35%;
-    position: fixed;
 }
 
 .btn_switch {
