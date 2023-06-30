@@ -13,10 +13,10 @@ function ModalSeatClass({ handleClose, buttonText, setButtonText }) {
     // Misalnya, lakukan pencarian di database atau API
     // dan perbarui state searchResults dengan hasil pencarian
     const results = [
-      { id: 1, nama: "Economy", harga: "IDR 4.950.000" },
-      { id: 2, nama: "Premium Economy", harga: "IDR 7.550.000" },
-      { id: 3, nama: "Business", harga: "IDR 29.220.000" },
-      { id: 4, nama: "First Class", harga: "IDR 87.620.000" },
+      { id: 1, nama: "Economy" },
+      { id: 2, nama: "Premium Economy" },
+      { id: 3, nama: "Business" },
+      { id: 4, nama: "First Class" },
     ];
 
     setSearchResults(results);
@@ -47,7 +47,7 @@ function ModalSeatClass({ handleClose, buttonText, setButtonText }) {
             }`}
           >
             <div className="result-name">{result.nama}</div>
-            <div
+            {/* <div
               className={`${
                 selectedItem && selectedItem.id === result.id
                   ? "result-price-selected"
@@ -55,7 +55,7 @@ function ModalSeatClass({ handleClose, buttonText, setButtonText }) {
               }`}
             >
               {result.harga}
-            </div>
+            </div> */}
           </div>
         ))}
       </Modal.Body>
