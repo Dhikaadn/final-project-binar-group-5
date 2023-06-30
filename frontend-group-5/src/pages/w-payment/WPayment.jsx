@@ -53,6 +53,13 @@ const WPayment = () => {
     };
   };
 
+//   ==== HIDE SHOW Accordion
+const [isOn, setIsOn] = useState(false);
+
+const handleSwitch = () => {
+  setIsOn(!isOn);
+};
+
   // Menggunakan fungsi untuk mendapatkan tanggal dan menampilkannya di komponen JSX
   const dates = getFutureDate();
   return (
@@ -87,14 +94,18 @@ const WPayment = () => {
 
                 <Form.Group className="form_payment mb-3 px-4 d-flex justify-content-between align-items-center">
                   <Form.Label>Virtual Account</Form.Label>
-                  <SlArrowDown />
+                  <SlArrowDown/>
                 </Form.Group>
 
-                <Accordion defaultActiveKey="0" className="shadow-none">
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>Credit Card</Accordion.Header>
-                    <Accordion.Body>
-                      <Row className="my-3">
+                <Form.Group className={`form_payment ${isOn ? 'on' : 'off'} mb-3 px-4 d-flex justify-content-between align-items-center`}>
+                  <Form.Label>Credit Card</Form.Label>
+                  <SlArrowDown onClick={handleSwitch} className={`arow ${isOn ? 'on' : 'off'}`}/>
+                </Form.Group>
+
+                {!isOn && (
+                    <Card className="border-0">
+                        <Card.Body>
+                        <Row className="my-3">
                         <Col className="img_payment d-flex justify-content-center align-items-center">
                           <img
                             src={masterCardLogo}
@@ -170,14 +181,14 @@ const WPayment = () => {
                           </Form.Group>
                         </Col>
                       </Row>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+                        </Card.Body>
+                    </Card>
+                )}
               </Card.Body>
             </Card>
             <Button
               className="w-100 mt-3 mb-4"
-              style={{ background: "#FF0000", border: "none" }}
+              style={{ background: "#7126B5", border: "none" }}
               as={Link}
               to={"/paymentdone"}
             >
