@@ -19,6 +19,8 @@ import { useDispatch, useSelector } from "react-redux";
 function Notifikasi() {
   const dispatch = useDispatch();
   const { uuidUser } = useSelector((state) => state.auth);
+  const { listNotifikasi } = useSelector((state) => state.notifikasi);
+  console.log(listNotifikasi);
 
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -80,11 +82,11 @@ function Notifikasi() {
     ];
 
     // Filter hasil pencarian berdasarkan searchText, category, dan tanggal
-    const filteredResults = results.filter((result) => {
+    const filteredResults = listNotifikasi.filter((result) => {
       const isMatch =
-        result.isi.toLowerCase().includes(searchText.toLowerCase()) ||
-        result.category.toLowerCase().includes(searchText.toLowerCase()) ||
-        result.tanggal.toLowerCase().includes(searchText.toLowerCase());
+        result.body.toLowerCase().includes(searchText.toLowerCase()) ||
+        result.title.toLowerCase().includes(searchText.toLowerCase());
+      // result.tanggal.toLowerCase().includes(searchText.toLowerCase());
       return isMatch;
     });
 
@@ -158,10 +160,10 @@ function Notifikasi() {
             <img src={IconNotif} className="notifikasi_img" />
             <div className="w-100">
               <div className="result-item">
-                <div className="category">{result.category}</div>
+                <div className="category">{result.title}</div>
                 <div className="tanggal">{result.tanggal}</div>
               </div>
-              <div className="isi">{result.isi}</div>
+              <div className="isi">{result.body}</div>
             </div>
           </div>
         ))}
