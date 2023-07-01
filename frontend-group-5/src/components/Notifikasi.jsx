@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { NavbarBeranda } from "./NavbarBeranda";
-import { InputGroup, Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
-import { HiArrowLeft } from 'react-icons/hi';
-import { BiFilterAlt } from 'react-icons/bi';
-import { BsSearch } from 'react-icons/bs';
+import {
+  InputGroup,
+  Button,
+  Container,
+  Row,
+  Col,
+  Modal,
+  Form,
+} from "react-bootstrap";
+import { HiArrowLeft } from "react-icons/hi";
+import { BiFilterAlt } from "react-icons/bi";
+import { BsSearch } from "react-icons/bs";
 import IconNotif from "../img/notifikasi_icon.svg";
 import { Link } from "react-router-dom";
+import { getListNotifikasi } from "../redux/actions/notifikasi";
+import { useDispatch, useSelector } from "react-redux";
 function Notifikasi() {
+  const dispatch = useDispatch();
+  const { uuidUser } = useSelector((state) => state.auth);
 
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -16,7 +28,6 @@ function Notifikasi() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    
     const results = [
       {
         id: 1,
@@ -80,29 +91,54 @@ function Notifikasi() {
     setSearchResults(filteredResults);
   }, [searchText]);
 
+  useEffect(() => {
+    // Dispatch action saat halaman dimuat
+    console.log("hallo");
+    dispatch(getListNotifikasi(uuidUser));
+  }, []);
+
   return (
     <>
       <NavbarBeranda />
-      <Container className='border-bottom'>
-            <Row className='mb-4 btn-back'>
-                    <div className="title_pesanan">
-                        <p className='fw-bold mt-5 fs-4'>Riwayat Pemesanan</p>
-                    </div>
-                <Col className='d-flex justify-content-between align-items-center'>
-                    <div className='textBtn_back'>
-                        <Button style={{ background: "none", border: "none"}} as={Link} to="/">
-                                <HiArrowLeft className='fs-5'/>
-                        </Button> <span>Beranda</span> 
-                    </div>
-                    <div className='btn-filter'>
-                        <Button className="px-3 btn-filter" style={{ border: "1px solid #7126B5", borderRadius: "25px",color: "#000", background:"none"}} >
-                        <BiFilterAlt className='pe-2 fs-3' style={{color: "gray"}}/><span>Filter</span></Button>
-                    <BsSearch onClick={handleShow} className='ms-3 fs-5' style={{cursor: "pointer", color: "#7126B5"}}/>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-          {/* <InputGroup style={{ width: "20rem" }}>
+      <Container className="border-bottom">
+        <Row className="mb-4 btn-back">
+          <div className="title_pesanan">
+            <p className="fw-bold mt-5 fs-4">Riwayat Pemesanan</p>
+          </div>
+          <Col className="d-flex justify-content-between align-items-center">
+            <div className="textBtn_back">
+              <Button
+                style={{ background: "none", border: "none" }}
+                as={Link}
+                to="/"
+              >
+                <HiArrowLeft className="fs-5" />
+              </Button>{" "}
+              <span>Beranda</span>
+            </div>
+            <div className="btn-filter">
+              <Button
+                className="px-3 btn-filter"
+                style={{
+                  border: "1px solid #7126B5",
+                  borderRadius: "25px",
+                  color: "#000",
+                  background: "none",
+                }}
+              >
+                <BiFilterAlt className="pe-2 fs-3" style={{ color: "gray" }} />
+                <span>Filter</span>
+              </Button>
+              <BsSearch
+                onClick={handleShow}
+                className="ms-3 fs-5"
+                style={{ cursor: "pointer", color: "#7126B5" }}
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      {/* <InputGroup style={{ width: "20rem" }}>
             <InputGroup.Text>
               <img src={IconSearch} alt="Search Icon" />
             </InputGroup.Text>
@@ -113,7 +149,8 @@ function Notifikasi() {
               onChange={(e) => setSearchText(e.target.value)}
             />
           </InputGroup> */}
-      <Container className="w-75"
+      <Container
+        className="w-75"
         style={{ maxHeight: "480px", overflowY: "auto" }}
       >
         {searchResults.map((result) => (
@@ -131,21 +168,21 @@ function Notifikasi() {
       </Container>
 
       <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton className='d-flex align-items-center' >
-                <InputGroup className="pe-3" >
-                    <InputGroup.Text id="basic-addon1"><BsSearch/></InputGroup.Text>
-                    <Form.Control
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="basic-addon1"
-                    value={searchText}
+        <Modal.Header closeButton className="d-flex align-items-center">
+          <InputGroup className="pe-3">
+            <InputGroup.Text id="basic-addon1">
+              <BsSearch />
+            </InputGroup.Text>
+            <Form.Control
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="basic-addon1"
+              value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-                    />
-                </InputGroup>
-            </Modal.Header>
-            
-        </Modal>
-
+            />
+          </InputGroup>
+        </Modal.Header>
+      </Modal>
     </>
   );
 }

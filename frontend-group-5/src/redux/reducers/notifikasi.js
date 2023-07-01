@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  getNotifikasi: [],
+  listNotifikasi: [],
 };
 
 const notifikasiSLicer = createSlice({
@@ -9,7 +9,7 @@ const notifikasiSLicer = createSlice({
   initialState,
   reducers: {
     setNotifikasi: (state, action) => {
-      state.notifikasi = action.payload;
+      state.listNotifikasi = action.payload;
     },
   },
 });

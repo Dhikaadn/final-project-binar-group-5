@@ -1,29 +1,25 @@
-import { setNotifikasi } from "../reducers/notifikasi";
 import axios from "axios";
+import { setNotifikasi } from "../reducers/notifikasi";
 import { toast } from "react-toastify";
 
-export const getNotifikasi = (value, navigate) => async (dispatch) => {
+export const getListNotifikasi = (uuidUser) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/api/notification`,
-      value
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/notification`,
+      {
+        params: {
+          uuidRequest: uuidUser,
+        },
+      }
     );
 
-    //   const { token } = response?.data;
-
-    //   dispatch(setToken(token));
-    //   dispatch(setIsLoggedIn(true));
-
-    // redirect to home, don't forget to useNavigate in the component
-    dispatch(setNotifikasi(response.value));
-    console.log(response.value);
-    navigate("/notifikasi");
+    console.log(response);
+    dispatch(setNotifikasi(response.data));
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      toast.error(error?.response?.value?.message);
+      toast.error(error?.response?.data?.message);
       return;
     }
-
-    toast.error(error.message);
+    toast.error(error?.message);
   }
 };

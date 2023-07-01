@@ -8,6 +8,7 @@ import formbiodata from "./formbiodata";
 import pemesanan from "./pemesanan";
 import kelas from "./kelas";
 import riwayat from "./riwayat";
+import notifikasi from "./notifikasi";
 
 export default combineReducers({
   post,
@@ -19,4 +20,5 @@ export default combineReducers({
   pemesanan,
   kelas,
   riwayat,
+  notifikasi,
 });
