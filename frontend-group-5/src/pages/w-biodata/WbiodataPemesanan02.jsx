@@ -35,6 +35,8 @@ const WbiodataPemesanan02 = () => {
   const { biodataPemesan, biodataPenumpang } = useSelector(
     (state) => state.formbiodata
   );
+  const { tokenFirebase } = useSelector((state) => state.notifikasi);
+  console.log(tokenFirebase);
 
   useEffect(() => {
     dispatch(getDetail());
@@ -92,21 +94,20 @@ const WbiodataPemesanan02 = () => {
   //   arrivalTime: detail.arrivalTime,
   //   flightCode: detail.airlineCode,
   // };
-  
 
-    // const airlineCode = detail.airlineCode;
-    // const flightClass = "Economy";
-    // const customers = biodataPemesan;
-    // const passengers = arrayBiodataPenumpang;
-    // const data = {airlineCode, flightClass, customers, passengers};
-    // console.log(data);
+  // const airlineCode = detail.airlineCode;
+  // const flightClass = "Economy";
+  // const customers = biodataPemesan;
+  // const passengers = arrayBiodataPenumpang;
+  // const data = {airlineCode, flightClass, customers, passengers};
+  // console.log(data);
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-    };
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
   const onBook = (e) => {
     e.preventDefault();
     const airlineCode = detail.airlineCode;
@@ -116,7 +117,17 @@ const WbiodataPemesanan02 = () => {
     const baby = penumpang.bayi;
     const customers = biodataPemesan;
     const passengers = arrayBiodataPenumpang;
-    const data = {uuidUser, airlineCode, flightClass, adult, child, baby, customers, passengers};
+    const data = {
+      uuidUser,
+      tokenFirebase,
+      airlineCode,
+      flightClass,
+      adult,
+      child,
+      baby,
+      customers,
+      passengers,
+    };
     console.log(data);
     dispatch(pesan(data, config, navigate));
   };
@@ -125,7 +136,7 @@ const WbiodataPemesanan02 = () => {
 
   return (
     <>
-      <NavbarCheckout2/>
+      <NavbarCheckout2 />
 
       <Container className="mt-3">
         <Row className="containerrr_form">
@@ -206,7 +217,6 @@ const WbiodataPemesanan02 = () => {
                         key={index}
                         value={biodataPenumpang[`title${index}`]}
                         disabled
-                        
                       >
                         <option value="Mr.">Mr.</option>
                         <option value="Mrs.">Mrs.</option>
@@ -319,7 +329,9 @@ const WbiodataPemesanan02 = () => {
                 <Card className="border-0 ">
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      <Card.Title className="fw-bold">Detail Penerbangan </Card.Title>
+                      <Card.Title className="fw-bold">
+                        Detail Penerbangan{" "}
+                      </Card.Title>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">
@@ -373,28 +385,28 @@ const WbiodataPemesanan02 = () => {
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
                       {penumpang.dewasa !== 0 && (
-                    <div className="d-flex align-items-center justify-content-between fs-6">
-                      <span className=" ">{penumpang.dewasa} Adults</span>
-                      <span className=" ">IDR {detail.adultPrice}</span>
-                    </div>
-                  )}
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.dewasa} Adults</span>
+                          <span className=" ">IDR {detail.adultPrice}</span>
+                        </div>
+                      )}
 
-                  {penumpang.anak !== 0 && (
-                    <div className="d-flex align-items-center justify-content-between fs-6">
-                      <span className=" ">{penumpang.anak} Children </span>
-                      <span className=" ">IDR {detail.childPrice}</span>
-                    </div>
-                  )}
-                  {penumpang.bayi !== 0 && (
-                    <div className="d-flex align-items-center justify-content-between fs-6">
-                      <span className=" ">{penumpang.bayi} Baby</span>
-                      <span className=" ">IDR {detail.infantPrice}</span>
-                    </div>
-                  )}
-                  <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
-                    <span className=" ">Tax </span>
-                    <span className="  ">IDR 300.000</span>
-                  </div>
+                      {penumpang.anak !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.anak} Children </span>
+                          <span className=" ">IDR {detail.childPrice}</span>
+                        </div>
+                      )}
+                      {penumpang.bayi !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.bayi} Baby</span>
+                          <span className=" ">IDR {detail.infantPrice}</span>
+                        </div>
+                      )}
+                      <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
+                        <span className=" ">Tax </span>
+                        <span className="  ">IDR 300.000</span>
+                      </div>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
@@ -409,7 +421,7 @@ const WbiodataPemesanan02 = () => {
                   className="w-100 mt-3"
                   style={{ background: "#FF0000", border: "none" }}
                   as={Link}
-                  onClick={(e)=>onBook(e)}
+                  onClick={(e) => onBook(e)}
                 >
                   Lanjut Bayar
                 </Button>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setNotifikasi } from "../reducers/notifikasi";
+import { setNotifikasi, setToken } from "../reducers/notifikasi";
 import { toast } from "react-toastify";
 
 export const getListNotifikasi = (uuidUser) => async (dispatch) => {
@@ -22,4 +22,8 @@ export const getListNotifikasi = (uuidUser) => async (dispatch) => {
     }
     toast.error(error?.message);
   }
+};
+
+export const getTokenFirebase = (token) => async (dispatch) => {
+  dispatch(setToken(token));
 };

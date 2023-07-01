@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
@@ -16,8 +21,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { messaging } from "./firebase";
 import { getToken } from "firebase/messaging";
+import { getTokenFirebase } from "./redux/actions/notifikasi";
 
 function App() {
+  const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.auth);
   const angka = 3;
   async function requestPermission() {
@@ -29,6 +36,7 @@ function App() {
           "BKSAul7W5evPo9kwEzk_t-tQjq-Unbceu5Tx8FwJxJhAx3M2LosayhYJZt_SsLpFRloe4eb03IJ5ofTPJfmPhU4",
       });
       console.log("Token Gen", token);
+      dispatch(getTokenFirebase(token));
       // Send this token  to server ( db)
     } else if (permission === "denied") {
       alert("You denied for the notification");
