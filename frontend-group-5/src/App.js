@@ -13,10 +13,32 @@ import WbiodataPemesanan02 from "./pages/w-biodata/WbiodataPemesanan02";
 import WPayment from "./pages/w-payment/WPayment";
 import DonePayment from "./pages/w-payment/DonePayment";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { messaging } from "./firebase";
+import { getToken } from "firebase/messaging";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const angka = 3;
+  async function requestPermission() {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      // Generate Token
+      const token = await getToken(messaging, {
+        vapidKey:
+          "BKSAul7W5evPo9kwEzk_t-tQjq-Unbceu5Tx8FwJxJhAx3M2LosayhYJZt_SsLpFRloe4eb03IJ5ofTPJfmPhU4",
+      });
+      console.log("Token Gen", token);
+      // Send this token  to server ( db)
+    } else if (permission === "denied") {
+      alert("You denied for the notification");
+    }
+  }
+
+  useEffect(() => {
+    // Req user for notification permission
+    requestPermission();
+  }, []);
   return (
     <div className="App">
       <Router>

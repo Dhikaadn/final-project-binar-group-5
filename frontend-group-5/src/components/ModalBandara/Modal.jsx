@@ -37,7 +37,7 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
     const Results = async () => {
       try {
         const response = await axios.get(
-          "https://backend-binar-final-project-production.up.railway.app/api/v1/airport/get-airport"
+          `${process.env.REACT_APP_BASE_URL}/api/v1/airport/get-airport`
         );
         setSearchResults(response?.data?.data);
         console.log(response?.data?.data);

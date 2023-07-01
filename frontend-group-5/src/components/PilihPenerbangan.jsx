@@ -17,8 +17,8 @@ function PilihPenerbangan() {
   const [showModal, setShowModal] = useState(false);
   const [showModalPenumpang, setShowModalPenumpang] = useState(false);
   const [showModalSeatClass, setShowModalSeatClass] = useState(false);
-  const [buttonText1, setButtonText1] = useState("Semarang");
-  const [buttonText2, setButtonText2] = useState("Banjarmasin");
+  const [buttonText1, setButtonText1] = useState("Jakarta");
+  const [buttonText2, setButtonText2] = useState("Denpasar");
   const [seatClass, setSeatClass] = useState({
     id: 1,
     nama: "Economy",

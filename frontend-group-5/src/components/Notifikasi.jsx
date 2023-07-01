@@ -6,7 +6,6 @@ import { BiFilterAlt } from 'react-icons/bi';
 import { BsSearch } from 'react-icons/bs';
 import IconNotif from "../img/notifikasi_icon.svg";
 import { Link } from "react-router-dom";
-
 function Notifikasi() {
 
   const [searchText, setSearchText] = useState("");
