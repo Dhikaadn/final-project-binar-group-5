@@ -26,10 +26,6 @@ export const Akun = () => {
     // ==== SHOW HIDE PASS
     const [showPassword, setShowPassword] = useState(false);
 
-
-    const handlePasswordChange = (e) => {
-      setShowPassword(e.target.value);
-    };
   
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
@@ -126,6 +122,7 @@ export const Akun = () => {
                       placeholder="Fullname"
                       id="fullName"
                       name="fullName"
+                      onChange={(e)=>setName(e.target.value)}
                       autoComplete="off"
                       required
                     />
@@ -143,6 +140,7 @@ export const Akun = () => {
                       placeholder="+62"
                       id="phoneNumber"
                       name="phoneNumber"
+                      onChange={(e)=>setPhoneNumber(e.target.value)}
                       autoComplete="off"
                       required
                     />
@@ -156,7 +154,7 @@ export const Akun = () => {
                     name="password"
                     placeholder="Masukkan Password"
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={(e)=>setPassword(e.target.value)}
                     required
                     autoComplete="off"
                   />

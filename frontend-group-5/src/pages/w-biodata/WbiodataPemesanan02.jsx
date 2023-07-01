@@ -372,18 +372,29 @@ const WbiodataPemesanan02 = () => {
 
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
-                      <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">{penumpang.dewasa} Adults </span>
-                        <span className=" ">IDR {detail.adultPrice}</span>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">{penumpang.anak} Children </span>
-                        <span className=" ">IDR {detail.childPrice}</span>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
-                        <span className=" ">Tax </span>
-                        <span className="  ">IDR 300.000</span>
-                      </div>
+                      {penumpang.dewasa !== 0 && (
+                    <div className="d-flex align-items-center justify-content-between fs-6">
+                      <span className=" ">{penumpang.dewasa} Adults</span>
+                      <span className=" ">IDR {detail.adultPrice}</span>
+                    </div>
+                  )}
+
+                  {penumpang.anak !== 0 && (
+                    <div className="d-flex align-items-center justify-content-between fs-6">
+                      <span className=" ">{penumpang.anak} Children </span>
+                      <span className=" ">IDR {detail.childPrice}</span>
+                    </div>
+                  )}
+                  {penumpang.bayi !== 0 && (
+                    <div className="d-flex align-items-center justify-content-between fs-6">
+                      <span className=" ">{penumpang.bayi} Baby</span>
+                      <span className=" ">IDR {detail.infantPrice}</span>
+                    </div>
+                  )}
+                  <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
+                    <span className=" ">Tax </span>
+                    <span className="  ">IDR 300.000</span>
+                  </div>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
