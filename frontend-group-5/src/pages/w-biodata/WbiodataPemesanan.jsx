@@ -11,24 +11,41 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import HideShowForm from "../../controller/HideShowForm";
-import { NavbarBeranda } from "../../components/NavbarBeranda";
+import { NavbarCheckout } from "../../components/Navbar/NavbarCheckout";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  BiodataPemesan,
+  BiodataPenumpang,
+} from "../../redux/actions/formbiodata";
 
-const WbiodataPemesanan = ({ jumlahPengulangan }) => {
+import { getDetail } from "../../redux/actions/detail";
+
+const WbiodataPemesanan = () => {
   // const jumlahPengulangan = 2;
+  // const detail = ["dewasa", "dewasa", "anak", "bayi"];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isFormValid, setIsFormValid] = useState(false);
+  const { detailPenumpang } = useSelector((state) => state.penumpang);
+  const { penumpang } = useSelector((state) => state.penumpang);
+  const { detail } = useSelector((state) => state.detail);
+
+  useEffect(() => {
+    dispatch(getDetail());
+  }, [dispatch]);
+
   const [dataPemesan, setDataPemesan] = useState({
-    name: "",
-    nameKeluarga: "",
-    noHp: "",
-    email: "",
+    fullName: '',
+    familyName: '',
+    phoneNumber: '',
+    email: '',
   });
-  const [formData, setFormData] = useState(null);
-  const [loopedItems, setLoopedItems] = useState(2);
-  const [showmodal, setShowModal] = useState(false);
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+
+  const [formData, setFormData] = useState({});
+
 
   const [isOn, setIsOn] = useState(false);
 
@@ -50,36 +67,46 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
+  const handleSubmit = () => {
+    dispatch(BiodataPemesan(dataPemesan, navigate));
+    dispatch(BiodataPenumpang(formData, navigate));
   };
 
   useEffect(() => {
-    const totalItems = Array.from(
-      { length: jumlahPengulangan },
-      (_, index) => index + 1
-    );
-
     const newFormData = {};
 
-    totalItems.map((item) => {
-      newFormData[`title${item}`] = "Mr.";
-      newFormData[`name${item}`] = "";
-      newFormData[`namaKeluarga${item}`] = "";
-      newFormData[`tanggalLahir${item}`] = "";
-      newFormData[`negara${item}`] = "";
-      newFormData[`identitas${item}`] = "";
-      newFormData[`penerbit${item}`] = "";
-      newFormData[`masaAktif${item}`] = "";
+    detailPenumpang.map((item, index) => {
+      // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
+
+      newFormData[`title${index}`] = "Mr.";
+      newFormData[`fullName${index}`] = '';
+      newFormData[`familyName${index}`] = '';
+      newFormData[`dob${index}`] = '';
+      newFormData[`nationality${index}`] = '';
+      newFormData[`identityNumber${index}`] = '';
+      newFormData[`identityIssuingCountry${index}`] = '';
+      newFormData[`expiredAt${index}`] = '';
     });
 
     // newFormData
     // {username1: "", phoneNumber1: "", username2: "", phoneNumber2: ""}
 
-    setLoopedItems(totalItems);
+    // setLoopedItems(totalItems);
     setFormData(newFormData);
-  }, [jumlahPengulangan]);
+  }, [detailPenumpang]);
+
+  useEffect(() => {
+    const isDataPemesanValid =
+      dataPemesan.fullName !== "" &&
+      dataPemesan.phoneNumber !== "" &&
+      dataPemesan.email !== "";
+
+    const isFormDataValid = Object.values(formData).every(
+      (value) => value !== ""
+    );
+
+    setIsFormValid(isDataPemesanValid && isFormDataValid);
+  }, [dataPemesan, formData]);
 
   console.log(formData);
   console.log(dataPemesan);
@@ -87,7 +114,7 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
   return (
     <>
       {/* ===== NAVBAR ====== */}
-      <NavbarBeranda />
+      <NavbarCheckout />
 
       <Container className="mt-2">
         <Row className="containerrr_form">
@@ -109,11 +136,12 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                       <Form.Control
                         type="text"
                         placeholder="Harry"
-                        id="name"
-                        name="name"
-                        value={dataPemesan["name"]}
+                        id="fullName"
+                        name="fullName"
+                        value={dataPemesan["fullName"]}
                         onChange={handleChange}
                         autoComplete="off"
+                        required
                       />
                     </Form.Group>
 
@@ -130,10 +158,11 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                         <Form.Control
                           type="text"
                           placeholder="Potter"
-                          id="nameKeluarga"
-                          name="nameKeluarga"
-                          value={dataPemesan["nameKeluarga"]}
+                          id="familyName"
+                          name="familyName"
+                          value={dataPemesan["familyName"]}
                           onChange={handleChange}
+                          required
                         />
                       </Form.Group>
                     </Accordion.Collapse>
@@ -144,10 +173,11 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                       <Form.Control
                         type="number"
                         placeholder="0812345678"
-                        id="noHp"
-                        name="noHp"
-                        value={dataPemesan["noHp"]}
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={dataPemesan["phoneNumber"]}
                         onChange={handleChange}
+                        required
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -159,6 +189,7 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                         name="email"
                         value={dataPemesan["email"]}
                         onChange={handleChange}
+                        required
                       />
                     </Form.Group>
                   </Form>
@@ -170,46 +201,47 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
               <Card.Title className="m-4 fw-bold">
                 Isi Data Penumpang
               </Card.Title>
-              {loopedItems.length > 0 &&
-                loopedItems.map((item) => (
-                  <Card.Body key={item}>
-                    <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
-                      Data Diri Penumpang {item} - Adult
-                    </Card.Text>
+              {detailPenumpang.map((item, index) => (
+                <Card.Body key={index}>
+                  <Card.Text className="title_card d-flex justify-content-start align-items-center rounded-top-4 ps-4">
+                    Data Diri Penumpang {index + 1} - {item}
+                  </Card.Text>
 
-                    <Form>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">Title</Form.Label>
-                        <Form.Select
-                          key={item}
-                          id={`title${item}`}
-                          name={`title${item}`}
-                          value={formData[`title${item}`]}
-                          onChange={handleInputChange}
-                        >
-                          <option value="Mr.">Mr.</option>
-                          <option value="Mrs.">Mrs.</option>
-                        </Form.Select>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label
-                          className="text_label"
-                          aria-label="Nama Lengkap"
-                        >
-                          Nama Lengkap
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Harry"
-                          id={`name${item}`}
-                          name={`name${item}`}
-                          value={formData[`name${item}`]}
-                          onChange={handleInputChange}
-                          autoComplete="off"
+                  <Form>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">Title</Form.Label>
+                      <Form.Select
+                        key={index}
+                        id={`title${index}`}
+                        name={`title${index}`}
+                        value={formData[`title${index}`]}
+                        onChange={handleInputChange}
+                        required
+                      >
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                      </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label
+                        className="text_label"
+                        aria-label="Nama Lengkap"
+                      >
+                        Nama Lengkap
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Harry"
+                        id={`fullName${index}`}
+                        name={`fullName${index}`}
+                        value={formData[`fullName${index}`]}
+                        onChange={handleInputChange}
+                        autoComplete="off"
+                        required                     
                         />
-                      </Form.Group>
+                    </Form.Group>
 
-                      {/* <Form.Group className="mb-3 d-flex justify-content-between">
+                    {/* <Form.Group className="mb-3 d-flex justify-content-between">
                           <Form.Label>Punya Nama Keluarga?</Form.Label>
                           <HideShowForm
                             eventKey={item.toString()}
@@ -217,158 +249,146 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                           />
                         </Form.Group> */}
 
-                      {/* <Accordion.Collapse eventKey={item.toString()}> */}
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Nama Keluarga
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Potter"
-                          id={`namaKeluarga${item}`}
-                          name={`namaKeluarga${item}`}
-                          value={formData[`namaKeluarga${item}`]}
-                          onChange={handleInputChange}
+                    {/* <Accordion.Collapse eventKey={item.toString()}> */}
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Nama Keluarga
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Potter"
+                        id={`familyName${index}`}
+                        name={`familyName${index}`}
+                        value={formData[`familyName${index}`]}
+                        onChange={handleInputChange}  
+                        required                    
                         />
-                      </Form.Group>
-                      {/* </Accordion.Collapse> */}
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Tanggal Lahir
-                        </Form.Label>
-                        <Form.Control
-                          type="date"
-                          placeholder="dd/mm/yyyy"
-                          id={`tanggalLahir${item}`}
-                          name={`tanggalLahir${item}`}
-                          value={formData[`tanggalLahir${item}`]}
-                          onChange={handleInputChange}
+                    </Form.Group>
+                    {/* </Accordion.Collapse> */}
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Tanggal Lahir
+                      </Form.Label>
+                      <Form.Control
+                        type="date"
+                        placeholder="dd/mm/yyyy"
+                        id={`dob${index}`}
+                        name={`dob${index}`}
+                        value={formData[`dob${index}`]}
+                        onChange={handleInputChange}
+                        required                     
+                         />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Kewarganegaraan
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Indonesia"
+                        id={`nationality${index}`}
+                        name={`nationality${index}`}
+                        value={formData[`nationality${index}`]}
+                        onChange={handleInputChange}
+                        required  />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">KTP/Paspor</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder=""
+                        id={`identityNumber${index}`}
+                        name={`identityNumber${index}`}
+                        value={formData[`identityNumber${index}`]}
+                        onChange={handleInputChange}
+                        required                   
                         />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Kewarganegaraan
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Indonesia"
-                          id={`negara${item}`}
-                          name={`negara${item}`}
-                          value={formData[`negara${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          KTP/Paspor
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder=""
-                          id={`identitas${item}`}
-                          name={`identitas${item}`}
-                          value={formData[`identitas${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Negara penerbit
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder=""
-                          id={`penerbit${item}`}
-                          name={`penerbit${item}`}
-                          value={formData[`penerbit${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="text_label">
-                          Berlaku Sampai
-                        </Form.Label>
-                        <Form.Control
-                          type="date"
-                          placeholder="dd/mm/yyyy"
-                          id={`masaAktif${item}`}
-                          name={`masaAktif${item}`}
-                          value={formData[`masaAktif${item}`]}
-                          onChange={handleInputChange}
-                        />
-                      </Form.Group>
-                    </Form>
-                  </Card.Body>
-                ))}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Negara penerbit
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        id={`identityIssuingCountry${index}`}
+                        name={`identityIssuingCountry${index}`}
+                        value={formData[`identityIssuingCountry${index}`]}
+                        onChange={handleInputChange}
+                        required                    />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="text_label">
+                        Berlaku Sampai
+                      </Form.Label>
+                      <Form.Control
+                        type="date"
+                        placeholder="dd/mm/yyyy"
+                        id={`expiredAt${index}`}
+                        name={`expiredAt${index}`}
+                        value={formData[`expiredAt${index}`]}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </Form.Group>
+                  </Form>
+                </Card.Body>
+              ))}
             </Card>
 
-            <div className="button-wrapper position-relative">
+            
               <Button
+                type = "submit"
                 className="my-5 w-100"
-                as={Link}
-                to={"/biodata_pemesanan2"}
+                onClick={() => handleSubmit()}
                 style={{ background: "#7126B5", border: "none" }}
+                disabled={!isFormValid}
               >
                 Simpan
               </Button>
-              <Button className="my-5 w-100" onClick={handleShowModal}>
-                Simpan Modal
-              </Button>
-            </div>
 
-            <Modal
-              show={showmodal}
-              onHide={handleCloseModal}
-              backdrop="static"
-              keyboard={false}
-              className="pt-5"
-            >
-              <div className="modal_content">
-                <span className="ps-2">Anda Harus Login Terlebih Dahulu!</span>
-                <CloseButton
-                  onClick={handleCloseModal}
-                  variant="white"
-                  aria-label="close"
-                  className="fs-6 ms-3"
-                />
-              </div>
-            </Modal>
           </Col>
 
           <Col>
             <Container>
-              <Col className="form_Detail">
-                <Card className="border-0 ">
+              <Col>
+                <Card className="border-0">
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      <p className="fw-bolder fs-4">Detail Penerbangan </p>
+                      <Card.Title className="fw-bold">Detail Penerbangan </Card.Title>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">
-                      <span className="fs-6 fw-bolder">07:00 </span>
+                      <span className="fs-6 fw-bolder">
+                        {detail.departureTime}
+                      </span>
                       <span className="text_paymentTitle2 ps-2 fw-bolder">
                         Keberangkatan
                       </span>
                     </div>
 
                     <div className="">
-                      <span className="fs-6">3 Maret 2023</span>
+                      <span className="fs-6">{detail.departureDate}</span>
                       <p className="fs-6 border-bottom pb-3">
-                        Soekarno Hatta - Terminal 1A Domestik
+                        {detail.departureAirport}
                       </p>
                     </div>
 
                     <div className="border-bottom">
                       <span className="fs-6 fw-bold ps-4">
-                        Jet Air - Economy
+                        {detail.airlineName}
                       </span>
-                      <p className="fs-6 fw-bold ps-4">JT - 203</p>
+                      <p className="fs-6 fw-bold ps-4">{detail.airlineCode}</p>
                       <div className="d-flex flex-column">
                         <span className="fs-6 fw-bold ">
                           <img src={paymentLogo} alt="paymentLogo" /> Informasi:
                         </span>
-                        <span className="fs-6 ps-4 pt-1">Baggage 20 kg</span>
-                        <span className="fs-6 ps-4">Cabin baggage 7 kg</span>
+                        <span className="fs-6 ps-4 pt-1">
+                          Baggage {detail.checkedBaggage} kg
+                        </span>
+                        <span className="fs-6 ps-4">
+                          Cabin baggage {detail.cabinBaggage} kg
+                        </span>
                         <span className="fs-6 pb-2 ps-4">
                           In Flight Entertainment
                         </span>
@@ -377,25 +397,49 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
 
                     <div className="border-bottom">
                       <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
-                        <span className=" fw-bolder">11:00 </span>
+                        <span className=" fw-bolder">{detail.arrivalTime}</span>
                         <span className="text_paymentTitle2 ps-2 fw-bolder ">
                           Kedatangan
                         </span>
                       </div>
-                      <span className="fs-6">3 Maret 2023</span>
-                      <p className="fs-6 ">Melbourne International Airport</p>
+                      <span className="fs-6">{detail.arrivalDate}</span>
+                      <p className="fs-6 ">{detail.arrivalAirport}</p>
                     </div>
 
                     <div className="pt-3 border-bottom">
                       <span className="pt-3 fw-bolder">Rincian Harga</span>
-                      <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">2 Adults </span>
-                        <span className=" ">IDR 9.550.000</span>
+                      {/* <div className="d-flex align-items-center justify-content-between fs-6">
+                        <span className=" ">{penumpang.dewasa} Adults </span>
+                        <span className=" ">IDR {detail.adultPrice}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span className=" ">1 Baby </span>
-                        <span className=" ">IDR 0</span>
+                        <span className=" ">{penumpang.anak} Children </span>
+                        <span className=" ">IDR {detail.childPrice}</span>
                       </div>
+                      <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
+                        <span className=" ">Tax </span>
+                        <span className="  ">IDR 300.000</span>
+                      </div> */}
+
+                      {penumpang.dewasa !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.dewasa} Adults</span>
+                          <span className=" ">IDR {detail.adultPrice}</span>
+                        </div>
+                      )}
+
+                      {penumpang.anak !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.anak} Children </span>
+                          <span className=" ">IDR {detail.childPrice}</span>
+                        </div>
+                      )}
+                      {penumpang.bayi !== 0 && (
+                        <div className="d-flex align-items-center justify-content-between fs-6">
+                          <span className=" ">{penumpang.bayi} Baby</span>
+                          <span className=" ">IDR {detail.infantPrice}</span>
+                        </div>
+                      )}
                       <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
                         <span className=" ">Tax </span>
                         <span className="  ">IDR 300.000</span>
@@ -405,7 +449,7 @@ const WbiodataPemesanan = ({ jumlahPengulangan }) => {
                     <div className="d-flex align-items-center justify-content-between pt-3 fs-6">
                       <span className=" fw-bolder">Total </span>
                       <span className="text_paymentTitle ps-2 fw-bolder fs-5 ">
-                        IDR 9.850.000
+                        IDR {detail.totalPrice}
                       </span>
                     </div>
                   </Card.Body>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import IconSearch from "../../img/fi_search.svg";
 import { Form, FormControl, InputGroup } from "react-bootstrap";
@@ -7,33 +8,52 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  // useEffect(() => {
+  //   // Lakukan pencarian berdasarkan searchText
+  //   // Misalnya, lakukan pencarian di database atau API
+  //   // dan perbarui state searchResults dengan hasil pencarian
+  //   const results = [
+  //     { id: 1, text: "Jakarta (JKTA)" },
+  //     { id: 2, text: "Melbourne (MLB)" },
+  //     { id: 3, text: "Surabaya (SBY)" },
+  //     { id: 4, text: "Jepang (JP)" },
+  //     { id: 5, text: "Australia (AU)" },
+  //     { id: 6, text: "Korea Selatan (KR)" },
+  //     { id: 7, text: "Amerika Serikat (US)" },
+  //     { id: 8, text: "Uni Emirat Arab (UEA)" },
+  //     { id: 9, text: "China (CH)" },
+  //     { id: 10, text: "Belanda (BL)" },
+  //   ];
+
+  //   // Filter hasil pencarian berdasarkan searchText
+  //   const filteredResults = results.filter((result) =>
+  //     result.text.toLowerCase().includes(searchText.toLowerCase())
+  //   );
+
+  //   setSearchResults(filteredResults);
+  // }, [searchText]);
+
   useEffect(() => {
-    // Lakukan pencarian berdasarkan searchText
-    // Misalnya, lakukan pencarian di database atau API
-    // dan perbarui state searchResults dengan hasil pencarian
-    const results = [
-      { id: 1, text: "Jakarta (JKTA)" },
-      { id: 2, text: "Melbourne (MLB)" },
-      { id: 3, text: "Surabaya (SBY)" },
-      { id: 4, text: "Jepang (JP)" },
-      { id: 5, text: "Australia (AU)" },
-      { id: 6, text: "Korea Selatan (KR)" },
-      { id: 7, text: "Amerika Serikat (US)" },
-      { id: 8, text: "Uni Emirat Arab (UEA)" },
-      { id: 9, text: "China (CH)" },
-      { id: 10, text: "Belanda (BL)" },
-    ];
+    const Results = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/api/v1/airport/get-airport`
+        );
+        setSearchResults(response?.data?.data);
+        console.log(response?.data?.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-    // Filter hasil pencarian berdasarkan searchText
-    const filteredResults = results.filter((result) =>
-      result.text.toLowerCase().includes(searchText.toLowerCase())
-    );
+    Results();
+  }, []);
 
-    setSearchResults(filteredResults);
-  }, [searchText]);
-
+  const filteredResults = searchResults.filter((result) =>
+    result.toLowerCase().includes(searchText.toLowerCase())
+  );
   const handleListClick = (result) => {
-    setButtonText(result.text);
+    setButtonText(result);
     handleClose();
   };
 
@@ -68,13 +88,13 @@ function CustomModal({ handleClose, buttonText, setButtonText }) {
           overflowY: "auto",
         }}
       >
-        {searchResults.map((result) => (
+        {filteredResults.map((result) => (
           <div
             key={result.id}
             onClick={() => handleListClick(result)}
-            className="modal-body-list"
+            className="border-bottom my-3" style={{cursor:"pointer"}}
           >
-            {result.text}
+            {result}
           </div>
         ))}
       </Modal.Body>

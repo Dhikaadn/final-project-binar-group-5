@@ -1,10 +1,9 @@
 .modal-body-list {
   display: flex;
   flex-direction: column;
-}
-
-.result-name {
-  margin-bottom: 5px; /* Jarak antara nama dan harga */
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .result-price {
@@ -12,10 +11,12 @@
 }
 
 .result-price-selected {
-  color: #ffff;
+  color: white;
 }
 
 .selected {
   background-color: #4b1979;
-  color: #ffff;
+  color: white;
+  border-radius: 5px;
+  padding: 0px 10px;
 }

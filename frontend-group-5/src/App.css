@@ -1,36 +1,71 @@
-/* <---Styling navbar beranda---> */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --neutral-black: #000000;
+  --neutral-white: #ffffff;
+  --neutral-gray: #8a8a8a;
+  --neutral-gray2: #3c3c3c;
+  --neutral-gray3: #eee;
+  --primary-color: #7126b5;
+  --primary-color2: #a06ece;
+  --alert-success: #73ca5c;
+  --alert-danger: #ff0000;
+  --alert-warning: #f9cc00;
+}
+
+/* ======= NAVBAR STYLE ========== */
 .navbar-beranda {
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 .icon-search {
   border-left: none;
-  background: #eeeeee;
+  background: var(--neutral-gray3);
   border-radius: 0px 15px 15px 0px;
 }
 
 .input-search-beranda {
   border-right: none;
   border-radius: 15px 0px 0px 15px;
-  background: #eeeeee;
+  background: var(--neutral-gray3);
+}
+/* ======= NAVBAR STYLE ========== */
+
+/* ======= LOGIN/REGISTER ======== */
+.linkLogin {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-left: 10px;
 }
 
-.container-input-beranda {
-  width: 450px;
+.imgLogin {
+  position: fixed;
+  width: 40%;
 }
 
-.bt-masuk {
-  background: #7126b5;
-  color: white;
-  border: none;
+.formLogin {
+  position: fixed;
+  width: 35%;
+  top: 35%;
 }
 
-.bt-masuk:hover {
-  background: #6d3d9a;
+.formRegis {
+  position: fixed;
+  width: 35%;
+  top: 20%;
 }
-/* <---Styling navbar beranda---> */
 
-/* banner */
+/* ======= PILIH PENERBANGAN STYLE ======== */
+/* --- BANNER ---- */
 .container-banner {
   position: relative;
   top: -9rem;
@@ -41,16 +76,14 @@
   position: relative;
   margin-top: 4rem;
   width: 100%;
-
   height: 6rem;
-
   background: linear-gradient(to right, #9e64d4, #e0c8f5);
 }
+/* --- BANNER ---- */
 
-/* pilih penerbangan */
+/* --- FORM INPUT USER --- */
 
 .card-pilih-penerbangan {
-  border-color: #d0d0d0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -67,26 +100,13 @@
 }
 
 .btn-pilih-penerbangan {
-  background-color: #ffff;
+  background-color: var(--neutral-white);
   border-width: 0;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid var(--neutral-gray);
   text-align: left;
   border-radius: 0;
   padding: 0;
   width: 100%;
-}
-
-.btn-utama-pilih-penerbangan {
-  position: absolute;
-  height: 40px;
-  left: 0;
-  right: 0;
-  border-width: 0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: #7126b5;
-  color: #ffffff;
-  font-weight: 600;
 }
 
 .icon-penerbangan {
@@ -100,52 +120,32 @@
   grid-template-columns: 3fr 2fr;
   gap: 1rem;
 }
+/* --- FORM INPUT USER --- */
 
-/* listCard */
+/* --- LIST CARD FAVORIT --- */
 
 .list_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
-
-/* modal */
-.modal-body-list {
-  cursor: pointer;
-  margin: 8px 0;
-  border-bottom: 1px solid #ccc;
+.card-subtitle {
+  font-size: 12px;
+  font-weight: 500;
 }
 
-/* <---Styling container hari---> */
-.container-detail {
-  /* margin: 40px; */
-  /* margin-left: 100px; */
-  padding: 40px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 40px;
+.card-maskapai {
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: bold;
 }
+/* --- LIST CARD FAVORIT --- */
+/* ======= PILIH PENERBANGAN STYLE ======== */
 
-.container-hari-top {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
 
-.bt-detail {
-  width: 550px;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-}
-
-.bt-pencarian {
-  background: #73ca5c;
-  border: none;
-  display: flex;
-  flex-direction: column;
-}
-
+/* ======= BERANDA STYLE ======== */
+/* BUTTON HARI */
 .bt-hari {
-  background: #7126b5;
+  background: var(--primary-color);
   border: none;
   display: flex;
   flex-direction: column;
@@ -158,183 +158,55 @@
   display: flex;
   flex-direction: column;
 }
-.title-pilih {
-  font-weight: bold;
+
+.bt-non-hari:hover {
+  background: var(--primary-color2);
+}
+
+.bt-non-hari.active{
+  background: var(--primary-color);
 }
 
 .container-hari-center {
   margin-top: 10px;
   flex-wrap: wrap;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
 .hari {
-  border-right: solid 1px black;
+  border-right: solid 1px var(--neutral-gray);
   padding-right: 10px;
 }
-/* <---Styling container hari---> */
+/* BUTTON HARI */
 
-/* Styling loading section in beranda */
-.LoadingBeranda {
-  text-align: center;
+/* FILTER BTN */
+.btFilter {
+  float: right;
 }
 
-.text-loading {
-  color: #8a8a8a;
+.boxBtnAcordi {
+  border-bottom: 2px solid rgba(0,0,0,0.23);
 }
+/* FILTER BTN */
 
-.text-loading-2 {
-  color: #8a8a8a;
-  font-size: 30px;
-}
-/* Styling loading section in beranda */
-
-/* Styling none section in beranda */
-.NoneSearch {
-  text-align: center;
-}
+/* NONE SEARCH */
 .text-coba {
-  color: #7126b5;
+  color: var(--primary-color);
 }
-/* Styling none section in beranda */
 
-/* Styling finished ticket */
 .TiketFinished {
   text-align: center;
 }
-/* Styling finished ticket */
 
-/* Styling accordion */
-.accordionnn {
-  width: 800px;
-}
+/* ======= PILIH BERANDA STYLE ======== */
 
-.accordion-header {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
 
-.accordion-item {
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.ReadyTicket {
-  display: flex;
-  justify-content: center;
-}
-
-.container-jam-kota {
-  display: flex;
-  flex-direction: column;
-  margin-left: 55px;
-}
-
-.jam {
-  font-weight: bold;
-}
-
-.container-garis {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-
-.container-detail-jadwal {
-  display: flex;
-  margin-top: 10px;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.garis-top {
-  border-bottom: solid 1px black;
-}
-
-.harga {
-  font-weight: bold;
-  color: #7126b5;
-}
-
-.container-harga {
-  margin-bottom: 10px;
-  text-align: center;
-  margin-left: 150px;
-}
-
-.bt-pilih {
-  background-color: #7126b5;
-  border: none;
-  width: 100px;
-}
-
-.container-keberangkatan {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-keberangkatan-right {
-  display: flex;
-  margin-top: 30px;
-  font-weight: bold;
-  color: #a06ece;
-}
-
-.title-detail {
-  color: #4b1979;
-  font-weight: bold;
-}
-
-.container-informasi-logo {
-  display: flex;
-}
-
-.informasi-bold {
-  font-weight: bold;
-  color: black;
-  margin-left: 10px;
-}
-
-.maskapai-bold {
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-.container-informasi {
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-kedatangan {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.container-kedatangan-right {
-  display: flex;
-  margin-top: 30px;
-  font-weight: bold;
-  color: #a06ece;
-}
-
-.harga-merah {
-  color: #ff0000;
-  font-weight: bold;
-}
-.ReadyTicket {
-  display: flex;
-  flex-wrap: wrap;
-}
-/* Styling accordion */
-
-/* notifikasi */
+/* ===== NOTIFIKASI STYLE ===== */
 .card-result {
   margin-top: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--neutral-gray);
   padding: 1rem;
   display: flex;
   flex-direction: row;
@@ -357,8 +229,8 @@
 }
 
 .tanggal {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 14px;
+  color: var(--neutral-gray);
   text-align: right;
   margin-bottom: 0.5rem;
 }
@@ -367,96 +239,79 @@
   text-align: left;
 }
 
-/* Styling akun page */
-.container-top-akun {
+/* ===== NOTIFIKASI STYLE ===== */
+
+/* ==== AKUN STYLE ===== */
+.textBtn_back2 {
+  background: var(--primary-color2);
+  color: var(--neutral-white);
+  border-radius: 14px;
   display: flex;
-  flex-direction: column;
-  padding: 40px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 40px;
+  align-items: center;
+  height: 50px;
+  padding-left: 15px;
+  font-size: 18px;
 }
 
-.akun-bold {
-  font-weight: bold;
-  margin-left: 100px;
-  font-size: 20px;
-}
-
-.bt-beranda-akun {
-  width: 70vw;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-}
-
-.container-button-beranda {
-  display: flex;
-  justify-content: center;
-}
-
-.container-bottom-akun {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 50px;
-  gap: 100px;
-}
-
-.card-akun {
-  width: 30rem;
+.iconAkun {
+  color: var(--primary-color);
+  font-size: 25px;
 }
 
 .bt-menu-akun {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--neutral-gray3);
   margin-top: 10px;
-  width: 300px;
+  width: 50%;
   cursor: pointer;
   padding: 10px;
 }
 
 .bt-menu-akun:hover {
-  background: #e5e5e5;
+  background: var(--neutral-gray3);
 }
 
-.title-profil-bold {
-  font-weight: bold;
+.title_card2 {
+  background: var(--primary-color2);
+  height: 40px;
+  color: var(--neutral-white);
+  font-weight: 500;
+  font-size: 16px;
 }
+/* ==== AKUN STYLE ===== */
 
-.text-update-profil {
-  font-weight: bold;
-  color: #4b1979;
-}
 
-.bt-simpan-akun {
-  background-color: #4b1979;
-  border: none;
-  width: 100px;
-}
-
-.container-simpan-akun {
-  display: flex;
-  justify-content: center;
-}
-
-.title-datadiri {
-  width: 100%;
-  color: white;
-  padding: 7px;
-  text-align: left;
-  background: #a06ece;
-  border: none;
-  border-radius: 10px 10px 0px 0px;
-}
-/* Styling akun page */
-
-/* Responsive website */
+/* ======= RESPONSIVE WEBSITE ======== */
 @media only screen and (max-width: 1025px) {
   .list_container {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+@media all and (min-width: 1024px) and (max-width: 1440px) {
+  .form_inputBiodata {
+    position: relative;
+  }
 
-@media only screen and (max-width: 812px) {
+  .form_Detail {
+    position: fixed;
+    width: 42%;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .form_inputBiodata {
+    position: relative;
+  }
+
+
+  .form_Detail {
+    position: fixed;
+    width: 42%;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
+  }
+
   .bt-pencarian {
     margin-top: 10px;
   }
@@ -472,10 +327,6 @@
     margin-bottom: -9rem;
   }
 
-  .list_container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .container-jam-kota {
     margin-left: 15px;
   }
@@ -489,7 +340,166 @@
   }
 }
 
-@media only screen and (max-width: 474px) {
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .form_inputBiodata {
+    position: relative;
+  }
+
+  .imgLogin{
+    position: absolute;
+    width: 100%;
+  }
+
+  .formLogin {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .LoginRegis{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formRegis {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .form_Detail {
+    position: fixed;
+    width: auto;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
+  }
+
+  .btn-back {
+    
+    margin: 10px 0px;
+  }
+
+  .btn-filter{
+    display: flex;
+    align-items: center;
+  }
+  
+  .bt-pencarian {
+    margin-top: 10px;
+  }
+
+  .container-detail-jadwal {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+
+  .container-banner {
+    top: -7rem;
+    margin-bottom: -9rem;
+  }
+
+  .container-jam-kota {
+    margin-left: 15px;
+  }
+  .container-harga {
+    margin-right: 20px;
+    margin-left: 0;
+  }
+  .accordion {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .list_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bt-menu-akun {
+    width: auto;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .imgLogin{
+    position: absolute;
+    width: 100%;
+  }
+
+  .formLogin {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .formRegis {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+  }
+
+  .LoginRegis{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar {
+    top: 0;
+    position: fixed;
+  }
+
+  .acordioRespon {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-back {
+    margin: 10px 0px;
+  }
+
+
+  .form_inputBiodata {
+    position: relative;
+  }
+
+  .containerrr_form {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .list_container {
+    grid-template-columns: 1fr;
+  }
+
+  .form_Detail {
+    position: relative;
+    width: auto;
+    border: 1px solid var(--neutral-gray);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
+  }
+
+  .btn_switch {
+    width: 50px;
+    height: 25px;
+  }
+
+  .btn_switchSlider {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 3px;
+  }
+
+  .alertNotif_danger {
+    text-align: center;
+  }
+
+  .modal_content {
+    padding: 10px 3px;
+  }
+
   .rectangle-banner {
     height: 3rem;
   }
@@ -512,10 +522,6 @@
     grid-template-columns: 1fr;
   }
 
-  .list_container {
-    grid-template-columns: 1fr;
-  }
-
   .button-passenger {
     grid-template-columns: 1fr;
   }
@@ -526,72 +532,18 @@
   .card-akun {
     width: 20rem;
   }
-}
 
-@media only screen and (max-width: 840px) {
-  .bt-pencarian {
-    margin-top: 10px;
+  .bt-menu-akun {
+    width: auto;
+  }
+
+
+  .textBtn_back span {
+    display: none;
+  }
+
+  .btn-filter span {
+    display: none;
   }
 }
-/* Responsive website */
-
-/* Styling login page */
-.img-left {
-  width: 700px;
-}
-
-.Login {
-  display: flex;
-}
-
-.masuk-bold {
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.form-login {
-  margin: 140px;
-  margin-top: 240px;
-}
-
-.eye-logo {
-  border: 1px solid black;
-}
-
-.input-password {
-  border-right: none;
-  border-radius: 15px 0px 0px 15px;
-  background: white;
-  border-color: #d0d0d0;
-}
-
-.icon-visible {
-  border-left: none;
-  background: white;
-  border-radius: 0px 15px 15px 0px;
-}
-
-.container-input-password {
-  width: 340px;
-  height: 40px;
-}
-
-.input-email {
-  border-radius: 15px 15px 15px 15px;
-  background: white;
-  border-color: #d0d0d0;
-}
-
-.container-input-email {
-  width: 340px;
-  height: 40px;
-}
-
-.bt-login-submit {
-  width: 340px;
-  border-radius: 15px 15px 15px 15px;
-  background: #7126b5;
-}
-/* Styling login page */
-
-
+/* ======= RESPONSIVE WEBSITE ======== */
