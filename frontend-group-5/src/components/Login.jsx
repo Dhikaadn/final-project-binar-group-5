@@ -63,76 +63,76 @@ export const Login = () => {
   //   dispatch(login(data, navigate));
   // };
 
-  console.log(password);
-  console.log(email);
+  // console.log(password);
+  // console.log(email);
   return (
     <>
-          <Row className="LoginRegis align-items-center">
-            <Col>
-            <img src={imgLeft} alt="img-left" className="imgLogin"/>
-            </Col>
-            <Col>
-              {/* onSubmit={onSubmit} */}
-              <Container className="formLogin">
-              <h3 className="fw-bold">Masuk</h3>
-              <Form onSubmit={handleSubmit} noValidate validated={validated}>
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
-                >
-                  <Form.Label>Email/No Telepon</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder="Contoh:johndoe@gmail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    autoComplete="off"
-                  />
-                </Form.Group>
+      <Row className="LoginRegis align-items-center">
+        <Col>
+          <img src={imgLeft} alt="img-left" className="imgLogin" />
+        </Col>
+        <Col>
+          {/* onSubmit={onSubmit} */}
+          <Container className="formLogin">
+            <h3 className="fw-bold">Masuk</h3>
+            <Form onSubmit={handleSubmit} noValidate validated={validated}>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Email/No Telepon</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Contoh:johndoe@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="off"
+                />
+              </Form.Group>
 
-                <Form.Label>Password</Form.Label>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    controlId="exampleForm.ControlInput2"
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Masukkan Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                    autoComplete="off"
-                  />
-                  <InputGroup.Text
-                    id="basic-addon1"
-                    style={{ cursor: "pointer" }}
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
-                  </InputGroup.Text>
-                </InputGroup>
-
-                <Button
-                  type="submit"
-                  id="submit"
-                  style={{ background: "#7126B5", border: "none" }}
-                  className="w-100"
+              <Form.Label>Password</Form.Label>
+              <InputGroup className="mb-3">
+                <Form.Control
+                  controlId="exampleForm.ControlInput2"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Masukkan Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                  autoComplete="off"
+                />
+                <InputGroup.Text
+                  id="basic-addon1"
+                  style={{ cursor: "pointer" }}
+                  onClick={togglePasswordVisibility}
                 >
-                  Masuk
-                </Button>
-                <div className="mt-3 d-flex justify-content-center ">
-                  <p>
-                    Belum punya akun?
-                    <NavLink to="/register" className="linkLogin">
-                      Daftar di sini
-                    </NavLink>
-                  </p>
-                </div>
-              </Form>
-              </Container>
-            </Col>
-          </Row>
+                  {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
+                </InputGroup.Text>
+              </InputGroup>
+
+              <Button
+                type="submit"
+                id="submit"
+                style={{ background: "#7126B5", border: "none" }}
+                className="w-100"
+              >
+                Masuk
+              </Button>
+              <div className="mt-3 d-flex justify-content-center ">
+                <p>
+                  Belum punya akun?
+                  <NavLink to="/register" className="linkLogin">
+                    Daftar di sini
+                  </NavLink>
+                </p>
+              </div>
+            </Form>
+          </Container>
+        </Col>
+      </Row>
     </>
   );
 };

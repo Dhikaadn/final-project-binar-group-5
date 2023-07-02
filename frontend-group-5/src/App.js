@@ -35,7 +35,7 @@ function App() {
         vapidKey:
           "BKSAul7W5evPo9kwEzk_t-tQjq-Unbceu5Tx8FwJxJhAx3M2LosayhYJZt_SsLpFRloe4eb03IJ5ofTPJfmPhU4",
       });
-      console.log("Token Gen", token);
+      // console.log("Token Gen", token);
       dispatch(getTokenFirebase(token));
       // Send this token  to server ( db)
     } else if (permission === "denied") {
