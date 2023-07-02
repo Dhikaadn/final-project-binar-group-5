@@ -17,7 +17,6 @@ export const getDetail = (data, navigate) => async (dispatch) => {
       }
     );
 
-    console.log(response.data);
     dispatch(setDetail(response.data));
 
     navigate("/biodata_pemesanan");

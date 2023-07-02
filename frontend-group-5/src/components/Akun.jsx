@@ -36,7 +36,6 @@ export const Akun = () => {
     e.preventDefault();
     const data = {uuidUser, name, phoneNumber, password}
     dispatch(update(data, navigate));
-    console.log(data)
   }
 
 

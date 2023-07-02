@@ -27,8 +27,6 @@ function ModalPenumpang({
     return arr;
   }, []);
 
-  console.log(penumpang);
-
   const handleIncrement = (type) => {
     if (type === "dewasa") {
       setDewasa((prevCount) => prevCount + 1);

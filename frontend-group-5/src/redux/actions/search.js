@@ -16,7 +16,6 @@ export const getListPenerbangan = (data, navigate) => async (dispatch) => {
       }
     );
 
-    console.log(response.data.data);
     dispatch(setListPenerbangan(response.data.data));
 
     navigate("/beranda");

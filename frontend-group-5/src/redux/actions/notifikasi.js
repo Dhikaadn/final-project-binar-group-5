@@ -13,7 +13,6 @@ export const getListNotifikasi = (uuidUser) => async (dispatch) => {
       }
     );
 
-    console.log(response);
     dispatch(setNotifikasi(response.data));
   } catch (error) {
     if (axios.isAxiosError(error)) {

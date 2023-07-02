@@ -18,7 +18,6 @@ export const pesan = (data, config, navigate) => async (dispatch) => {
 
     // redirect to home, don't forget to useNavigate in the component
     dispatch(setPemesanan(response.data));
-    console.log(response.data);
     navigate("/payment");
   } catch (error) {
     if (axios.isAxiosError(error)) {

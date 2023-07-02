@@ -44,12 +44,9 @@ export const ReadyTicket = () => {
         const babyPassenger = penumpang.bayi;
         const data = { airlineCode, flightClass, adultPassenger, childrenPassenger, babyPassenger };
         // const detail = { flightClass };
-        console.log(data)
         dispatch(getDetail(data, navigate));
         // dispatch(kelas(detail));
     }
-
-    console.log(uuidUser);
 
 
     return (

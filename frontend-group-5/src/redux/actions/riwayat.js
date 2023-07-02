@@ -13,7 +13,6 @@ export const getListRiwayat = (uuidUser) => async (dispatch) => {
       }
     );
 
-    console.log(response.data);
     dispatch(setListRiwayat(response.data));
   } catch (error) {
     if (axios.isAxiosError(error)) {

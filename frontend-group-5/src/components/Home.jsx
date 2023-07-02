@@ -15,8 +15,6 @@ const HomePage = () => {
 
   const { penumpang } = useSelector((state) => state.penumpang);
 
-  // console.log(penumpang);
-  // console.log(penumpang.anak);
 
   const handleButtonClick = (category) => {
     setActiveButton(category);

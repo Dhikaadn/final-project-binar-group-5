@@ -54,7 +54,6 @@ export const Beranda = () => {
   const handleDateSelect = (date) => {
     setSelectedDate(date);
   };
-  // console.log(data);
 
   useEffect(() => {
     const buttonText1 = dataAwal.buttonText1;
@@ -62,12 +61,9 @@ export const Beranda = () => {
     const seatClass = dataAwal.seatClass;
     const formattedDate = selectedDate;
     const data = { buttonText1, buttonText2, seatClass, formattedDate };
-    console.log(data);
     dispatch(dataNew(data));
     dispatch(getListPenerbangan(data, navigate));
   }, [selectedDate]);
-
-  // console.log(selectedDate);
 
   return (
     <>
@@ -137,18 +133,3 @@ export const Beranda = () => {
   );
 };
 
-{
-  /* <h4 className="fw-bold mb-4">Pilih Penerbangan</h4>
-        <div className="container-hari-top">
-            {listPenerbangan.length>0?
-            <Button className="bt-detail me-3">
-            <BiArrowBack className="me-3" />
-            {listPenerbangan[0].departureCity} {">"} {listPenerbangan[0].arrivalCity} - {countPenumpang}{" "}
-            Penumpang - {listPenerbangan[0].airlineClass}
-          </Button>
-            :<div></div>}
-          <Link to="/" style={{textDecoration:"none"}}>
-            <Button className="bt-pencarian">Ubah Pencarian</Button>
-          </Link>
-        </div> */
-}

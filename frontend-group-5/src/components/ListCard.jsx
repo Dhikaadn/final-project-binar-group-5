@@ -13,8 +13,6 @@ function ListCard({ category }) {
           `${process.env.REACT_APP_BASE_URL}/api/v1/schedule/favorite-destination`
         );
         const data = response?.data?.data;
-        console.log(response.data.data);
-
         // Filter hasil pencarian berdasarkan searchText
         let filteredResults = [];
 

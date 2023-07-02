@@ -17,7 +17,6 @@ export const login = (data, navigate) => async (dispatch) => {
 
     const { token } = response?.data?.data;
     const { uuidUser } = response?.data?.data;
-    console.log(response.data);
     dispatch(setToken(token));
     dispatch(setUuidUser(uuidUser));
     dispatch(setIsLoggedIn(true));
