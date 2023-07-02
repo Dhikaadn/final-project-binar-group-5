@@ -35,6 +35,29 @@ const Riwayat = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    // Filter hasil pencarian berdasarkan searchText, category, dan tanggal
+    const filteredResults = listRiwayat.filter((result) => {
+      const isMatch =
+        result.bookingCode.toLowerCase().includes(searchText.toLowerCase()) ||
+        result.departureAirport
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
+        result.departureDate.toLowerCase().includes(searchText.toLowerCase()) ||
+        result.arrivalAirport
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
+        result.arrivalDate1.toLowerCase().includes(searchText.toLowerCase()) ||
+        result.flightClass.toLowerCase().includes(searchText.toLowerCase());
+      return isMatch;
+    });
+
+    setSearchResults(filteredResults);
+  }, [listRiwayat, searchText]);
+
   return (
     <>
       <NavbarBeranda />
@@ -88,6 +111,8 @@ const Riwayat = () => {
               placeholder="Search"
               aria-label="Search"
               aria-describedby="basic-addon1"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
           </InputGroup>
         </Modal.Header>
@@ -107,7 +132,11 @@ const Riwayat = () => {
         </Modal.Body>
       </Modal>
 
-      {listRiwayat.length === 0 ? <RiwayatNull /> : <DetailRiwayat />}
+      {listRiwayat.length === 0 ? (
+        <RiwayatNull />
+      ) : (
+        <DetailRiwayat searchResults={searchResults} />
+      )}
     </>
   );
 };

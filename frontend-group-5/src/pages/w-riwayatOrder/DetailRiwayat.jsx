@@ -6,22 +6,24 @@ import arrowLogo from "./../../img/Thin (Stroke).png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const DetailRiwayat = () => {
+const DetailRiwayat = ({ searchResults }) => {
   const { listRiwayat } = useSelector((state) => state.riwayat) || [];
 
   const [showDetails, setShowDetails] = useState();
   const [bookingCode, setBookingCode] = useState("");
 
   useEffect(() => {
-    const latestBookingCode = listRiwayat[0]?.bookingCode; // Mengambil booking code terlama
+    const latestBookingCode = searchResults[0]?.bookingCode; // Mengambil booking code terlama
     if (latestBookingCode) {
-      const selectedData = listRiwayat.find(
+      const selectedData = searchResults.find(
         (data) => data.bookingCode === latestBookingCode
       );
       setShowDetails(selectedData);
       setBookingCode(latestBookingCode); // Menggunakan booking code terlama
     }
-  }, [listRiwayat]);
+  }, [searchResults]);
+
+  // console.log(searchResults);
 
   const handleOnClick = (bookingCode) => {
     const selectedData = listRiwayat.find(
@@ -30,26 +32,6 @@ const DetailRiwayat = () => {
     setShowDetails(selectedData);
     setBookingCode(selectedData.bookingCode);
   };
-
-  // useEffect(() => {
-  //   const latestBookingCode = listRiwayat[listRiwayat.length - 1]?.bookingCode;
-  //   if (latestBookingCode) {
-  //     const selectedData = listRiwayat.find(
-  //       (data) => data.bookingCode === latestBookingCode
-  //     );
-  //     setShowDetails(selectedData);
-  //     setBookingCode(bookingCode); // Tambahkan baris ini
-  //   }
-  // }, [listRiwayat]);
-
-  // const handleOnClick = (bookingCode) => {
-  //   const selectedData = listRiwayat.find(
-  //     (data) => data.bookingCode === bookingCode
-  //   );
-  //   setShowDetails(selectedData);
-  // };
-
-  // console.log(bookingCode);
 
   const handlePrintTicket = () => {
     const url = `https://backend-binar-final-project-production.up.railway.app/api/v1/invoice/${bookingCode}`;
@@ -61,7 +43,7 @@ const DetailRiwayat = () => {
       <Container className="mt-4">
         <Row>
           <Col>
-            {listRiwayat.map((data) => (
+            {searchResults.map((data) => (
               <Card
                 className="card_active mb-3"
                 onClick={() => handleOnClick(data.bookingCode)}
