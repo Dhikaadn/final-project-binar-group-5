@@ -36,7 +36,7 @@ const WbiodataPemesanan02 = () => {
     (state) => state.formbiodata
   );
   const { tokenFirebase } = useSelector((state) => state.notifikasi);
-  console.log(tokenFirebase);
+  // console.log(tokenFirebase);
 
   useEffect(() => {
     dispatch(getDetail());
@@ -82,7 +82,7 @@ const WbiodataPemesanan02 = () => {
     []
   );
 
-  console.log(arrayBiodataPenumpang);
+  // console.log(arrayBiodataPenumpang);
   // console.log(kelas)
 
   // const dataBooking = {
@@ -128,11 +128,11 @@ const WbiodataPemesanan02 = () => {
       customers,
       passengers,
     };
-    console.log(data);
+    // console.log(data);
     dispatch(pesan(data, config, navigate));
   };
 
-  console.log(uuidUser);
+  // console.log(uuidUser);
 
   return (
     <>

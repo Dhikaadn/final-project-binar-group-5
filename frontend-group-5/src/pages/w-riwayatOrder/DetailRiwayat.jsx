@@ -49,7 +49,7 @@ const DetailRiwayat = () => {
   //   setShowDetails(selectedData);
   // };
 
-  console.log(bookingCode);
+  // console.log(bookingCode);
 
   const handlePrintTicket = () => {
     const url = `https://backend-binar-final-project-production.up.railway.app/api/v1/invoice/${bookingCode}`;
@@ -123,22 +123,30 @@ const DetailRiwayat = () => {
 
           {showDetails && (
             <Col>
-              <Card className="border-0" onClick={() => handleOnClick(showDetails.bookingCode)}
-                key={showDetails.bookingCode}>
-                
+              <Card
+                className="border-0"
+                onClick={() => handleOnClick(showDetails.bookingCode)}
+                key={showDetails.bookingCode}
+              >
                 <Card.Body>
                   <div className="d-flex align-items-center justify-content-between">
                     <p className="fw-bold fs-5">Detail Pesanan </p>
                     <span>
-                    {showDetails.statusPayment === "ISSUED" && (
-                      <p className="pb-3 card_tittle">{showDetails.statusPayment}</p>
-                    )}
-                    {showDetails.statusPayment === "UNPAID" && (
-                      <p className="pb-3 card_unpaid">{showDetails.statusPayment}</p>
-                    )}
-                    {showDetails.statusPayment === "CANCELED" && (
-                      <p className="pb-3 card_canceled">{showDetails.statusPayment}</p>
-                    )}
+                      {showDetails.statusPayment === "ISSUED" && (
+                        <p className="pb-3 card_tittle">
+                          {showDetails.statusPayment}
+                        </p>
+                      )}
+                      {showDetails.statusPayment === "UNPAID" && (
+                        <p className="pb-3 card_unpaid">
+                          {showDetails.statusPayment}
+                        </p>
+                      )}
+                      {showDetails.statusPayment === "CANCELED" && (
+                        <p className="pb-3 card_canceled">
+                          {showDetails.statusPayment}
+                        </p>
+                      )}
                     </span>
                   </div>
                   <div className="d-flex align-items-center">
@@ -211,31 +219,25 @@ const DetailRiwayat = () => {
                     <span className="pt-3 fw-bolder">Rincian Harga</span>
                     {showDetails.adultPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6 pt-2">
-                        <span >
-                          {showDetails.adultPassenger} Adults{" "}
-                        </span>
-                        <span >IDR {showDetails.adultPrice}</span>
+                        <span>{showDetails.adultPassenger} Adults </span>
+                        <span>IDR {showDetails.adultPrice}</span>
                       </div>
                     )}
                     {showDetails.childPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span >
-                          {showDetails.childPassenger} Baby{" "}
-                        </span>
-                        <span >IDR {showDetails.childPrice}</span>
+                        <span>{showDetails.childPassenger} Baby </span>
+                        <span>IDR {showDetails.childPrice}</span>
                       </div>
                     )}
                     {showDetails.babyPassenger !== 0 && (
                       <div className="d-flex align-items-center justify-content-between fs-6">
-                        <span >
-                          {showDetails.babyPassenger} Baby{" "}
-                        </span>
-                        <span >IDR {showDetails.babyPrice}</span>
+                        <span>{showDetails.babyPassenger} Baby </span>
+                        <span>IDR {showDetails.babyPrice}</span>
                       </div>
                     )}
                     <div className="d-flex align-items-center justify-content-between fs-6 pb-3">
-                      <span >Tax </span>
-                      <span >IDR 300.000</span>
+                      <span>Tax </span>
+                      <span>IDR 300.000</span>
                     </div>
                   </div>
 
@@ -246,26 +248,26 @@ const DetailRiwayat = () => {
                     </span>
                   </div>
                 </Card.Body>
-                
+
                 {showDetails.statusPayment === "ISSUED" && (
-                      <Button
-                      className="py-2 mb-2"
-                      style={{ backgroundColor: "red", border: 0 }}
-                      as={Link} to="/payment"
-                    >
-                      Cetak Tiket
-                    </Button>
-                    )}
-                    {showDetails.statusPayment === "UNPAID" && (
-                      <Button
-                      className="py-2 mb-2"
-                      style={{ backgroundColor: "#7126B5", border: 0 }}
-                      onClick={handlePrintTicket}
-                    >
-                      Cetak Tiket
-                    </Button>
-                    )}
-                
+                  <Button
+                    className="py-2 mb-2"
+                    style={{ backgroundColor: "red", border: 0 }}
+                    as={Link}
+                    to="/payment"
+                  >
+                    Cetak Tiket
+                  </Button>
+                )}
+                {showDetails.statusPayment === "UNPAID" && (
+                  <Button
+                    className="py-2 mb-2"
+                    style={{ backgroundColor: "#7126B5", border: 0 }}
+                    onClick={handlePrintTicket}
+                  >
+                    Cetak Tiket
+                  </Button>
+                )}
               </Card>
             </Col>
           )}

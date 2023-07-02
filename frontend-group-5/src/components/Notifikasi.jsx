@@ -20,7 +20,7 @@ function Notifikasi() {
   const dispatch = useDispatch();
   const { uuidUser } = useSelector((state) => state.auth);
   const { listNotifikasi } = useSelector((state) => state.notifikasi);
-  console.log(listNotifikasi);
+  // console.log(listNotifikasi);
 
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -30,57 +30,6 @@ function Notifikasi() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    const results = [
-      {
-        id: 1,
-        category: "Promosi",
-        isi: "Dapatkan Potongan 50% Tiket!",
-        tanggal: "5 Maret, 14:04",
-      },
-      {
-        id: 2,
-        category: "Notifikasi",
-        isi: "Terdapat perubahan pada jadwal penerbangan kode booking 45GT6. Cek jadwal perjalanan Anda disini!",
-        tanggal: "20 Maret, 14:04",
-      },
-      {
-        id: 3,
-        category: "Promosi",
-        isi: "Diskon Spesial untuk Pelanggan Setia!",
-        tanggal: "10 Maret, 10:30",
-      },
-      {
-        id: 4,
-        category: "Notifikasi",
-        isi: "Kode booking 78HJ2 Anda telah dikonfirmasi. Cek email Anda untuk detail perjalanan.",
-        tanggal: "10 Maret, 09:15",
-      },
-      {
-        id: 5,
-        category: "Notifikasi",
-        isi: "Penerbangan dengan kode booking 23RT5 telah dibatalkan. Mohon hubungi layanan pelanggan untuk informasi lebih lanjut.",
-        tanggal: "15 Maret, 16:30",
-      },
-      {
-        id: 6,
-        category: "Promosi",
-        isi: "Promo Terbatas: Beli 1 Gratis 1!",
-        tanggal: "15 Maret, 12:15",
-      },
-      {
-        id: 7,
-        category: "Promosi",
-        isi: "Diskon Heboh Akhir Tahun!",
-        tanggal: "25 Maret, 09:45",
-      },
-      {
-        id: 8,
-        category: "Promosi",
-        isi: "Promo Spesial Hari Raya!",
-        tanggal: "20 Maret, 16:30",
-      },
-    ];
-
     // Filter hasil pencarian berdasarkan searchText, category, dan tanggal
     const filteredResults = listNotifikasi.filter((result) => {
       const isMatch =
@@ -91,11 +40,11 @@ function Notifikasi() {
     });
 
     setSearchResults(filteredResults);
-  }, [searchText]);
+  }, [listNotifikasi, searchText]);
 
   useEffect(() => {
     // Dispatch action saat halaman dimuat
-    console.log("hallo");
+    // console.log("hallo");
     dispatch(getListNotifikasi(uuidUser));
   }, []);
 

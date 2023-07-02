@@ -17,9 +17,6 @@ import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 
 export const Beranda = () => {
-
-
-
   // dispatch -> to change the global state in redux
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -70,7 +67,7 @@ export const Beranda = () => {
     dispatch(getListPenerbangan(data, navigate));
   }, [selectedDate]);
 
-  console.log(selectedDate);
+  // console.log(selectedDate);
 
   return (
     <>
@@ -82,11 +79,16 @@ export const Beranda = () => {
           </div>
           <Col
             className="d-flex justify-content-between align-items-center btn-back"
-            xs={12} md={9}
+            xs={12}
+            md={9}
           >
             <div className="textBtn_back w-100">
               {listPenerbangan.length > 0 ? (
-                <Button style={{ background: "none", border: "none" }} as={Link} to="/">
+                <Button
+                  style={{ background: "none", border: "none" }}
+                  as={Link}
+                  to="/"
+                >
                   <BiArrowBack className="me-3 fs-4" />{" "}
                   {listPenerbangan[0].departureCity} {">"}{" "}
                   {listPenerbangan[0].arrivalCity} - {countPenumpang} Penumpang
@@ -114,10 +116,10 @@ export const Beranda = () => {
           </Col>
         </Row>
 
-          <div className="container-hari-center mb-4">
+        <div className="container-hari-center mb-4">
           {futureDates.map((date, index) => (
             <div className="hari" key={index}>
-              <Button 
+              <Button
                 className={`bt-non-hari ${
                   selectedDate === date ? "active" : ""
                 }`}
@@ -129,16 +131,14 @@ export const Beranda = () => {
           ))}
         </div>
       </Container>
-      
-
 
       {listPenerbangan.length > 0 ? <ReadyTicket /> : <NoneSearch />}
     </>
   );
 };
 
-
-        {/* <h4 className="fw-bold mb-4">Pilih Penerbangan</h4>
+{
+  /* <h4 className="fw-bold mb-4">Pilih Penerbangan</h4>
         <div className="container-hari-top">
             {listPenerbangan.length>0?
             <Button className="bt-detail me-3">
@@ -150,4 +150,5 @@ export const Beranda = () => {
           <Link to="/" style={{textDecoration:"none"}}>
             <Button className="bt-pencarian">Ubah Pencarian</Button>
           </Link>
-        </div> */}
+        </div> */
+}

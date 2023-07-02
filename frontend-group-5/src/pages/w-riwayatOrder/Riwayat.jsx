@@ -13,8 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListRiwayat } from "../../redux/actions/riwayat";
 import axios from "axios";
 import RiwayatNull from "./RiwayatNull";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const Riwayat = () => {
   const navigate = useNavigate();
@@ -22,11 +21,11 @@ const Riwayat = () => {
   const { uuidUser } = useSelector((state) => state.auth);
 
   //   const [listRiwayat, setListRiwayat] = useState([]);
-  console.log(uuidUser);
+  // console.log(uuidUser);
 
   useEffect(() => {
     // Dispatch action saat halaman dimuat
-    console.log("hallo");
+    // console.log("hallo");
     dispatch(getListRiwayat(uuidUser));
   }, []);
 
@@ -47,8 +46,12 @@ const Riwayat = () => {
           </div>
           <Col className="d-flex justify-content-between align-items-center">
             <div className="textBtn_back">
-              <Button style={{ background: "none", border: "none" }} as={Link} to="/">
-                <HiArrowLeft  className='fs-5'/>
+              <Button
+                style={{ background: "none", border: "none" }}
+                as={Link}
+                to="/"
+              >
+                <HiArrowLeft className="fs-5" />
               </Button>{" "}
               <span>Beranda</span>
             </div>
@@ -63,8 +66,8 @@ const Riwayat = () => {
                 }}
               >
                 <BiFilterAlt className="pe-2 fs-3" style={{ color: "gray" }} />
-                <span>Filter
-              </span></Button>
+                <span>Filter</span>
+              </Button>
               <BsSearch
                 onClick={handleShow}
                 className="ms-3 fs-5"

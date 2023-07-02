@@ -38,14 +38,13 @@ const WbiodataPemesanan = () => {
   }, [dispatch]);
 
   const [dataPemesan, setDataPemesan] = useState({
-    fullName: '',
-    familyName: '',
-    phoneNumber: '',
-    email: '',
+    fullName: "",
+    familyName: "",
+    phoneNumber: "",
+    email: "",
   });
 
   const [formData, setFormData] = useState({});
-
 
   const [isOn, setIsOn] = useState(false);
 
@@ -79,13 +78,13 @@ const WbiodataPemesanan = () => {
       // const itemIndex = index + 1; // Anda dapat menggunakan `itemIndex` dalam penamaan properti
 
       newFormData[`title${index}`] = "Mr.";
-      newFormData[`fullName${index}`] = '';
-      newFormData[`familyName${index}`] = '';
-      newFormData[`dob${index}`] = '';
-      newFormData[`nationality${index}`] = '';
-      newFormData[`identityNumber${index}`] = '';
-      newFormData[`identityIssuingCountry${index}`] = '';
-      newFormData[`expiredAt${index}`] = '';
+      newFormData[`fullName${index}`] = "";
+      newFormData[`familyName${index}`] = "";
+      newFormData[`dob${index}`] = "";
+      newFormData[`nationality${index}`] = "";
+      newFormData[`identityNumber${index}`] = "";
+      newFormData[`identityIssuingCountry${index}`] = "";
+      newFormData[`expiredAt${index}`] = "";
     });
 
     // newFormData
@@ -108,8 +107,8 @@ const WbiodataPemesanan = () => {
     setIsFormValid(isDataPemesanValid && isFormDataValid);
   }, [dataPemesan, formData]);
 
-  console.log(formData);
-  console.log(dataPemesan);
+  // console.log(formData);
+  // console.log(dataPemesan);
 
   return (
     <>
@@ -237,8 +236,8 @@ const WbiodataPemesanan = () => {
                         value={formData[`fullName${index}`]}
                         onChange={handleInputChange}
                         autoComplete="off"
-                        required                     
-                        />
+                        required
+                      />
                     </Form.Group>
 
                     {/* <Form.Group className="mb-3 d-flex justify-content-between">
@@ -260,9 +259,9 @@ const WbiodataPemesanan = () => {
                         id={`familyName${index}`}
                         name={`familyName${index}`}
                         value={formData[`familyName${index}`]}
-                        onChange={handleInputChange}  
-                        required                    
-                        />
+                        onChange={handleInputChange}
+                        required
+                      />
                     </Form.Group>
                     {/* </Accordion.Collapse> */}
                     <Form.Group className="mb-3">
@@ -276,8 +275,8 @@ const WbiodataPemesanan = () => {
                         name={`dob${index}`}
                         value={formData[`dob${index}`]}
                         onChange={handleInputChange}
-                        required                     
-                         />
+                        required
+                      />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -290,7 +289,8 @@ const WbiodataPemesanan = () => {
                         name={`nationality${index}`}
                         value={formData[`nationality${index}`]}
                         onChange={handleInputChange}
-                        required  />
+                        required
+                      />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">KTP/Paspor</Form.Label>
@@ -301,8 +301,8 @@ const WbiodataPemesanan = () => {
                         name={`identityNumber${index}`}
                         value={formData[`identityNumber${index}`]}
                         onChange={handleInputChange}
-                        required                   
-                        />
+                        required
+                      />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -315,7 +315,8 @@ const WbiodataPemesanan = () => {
                         name={`identityIssuingCountry${index}`}
                         value={formData[`identityIssuingCountry${index}`]}
                         onChange={handleInputChange}
-                        required                    />
+                        required
+                      />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Label className="text_label">
@@ -336,17 +337,15 @@ const WbiodataPemesanan = () => {
               ))}
             </Card>
 
-            
-              <Button
-                type = "submit"
-                className="my-5 w-100"
-                onClick={() => handleSubmit()}
-                style={{ background: "#7126B5", border: "none" }}
-                disabled={!isFormValid}
-              >
-                Simpan
-              </Button>
-
+            <Button
+              type="submit"
+              className="my-5 w-100"
+              onClick={() => handleSubmit()}
+              style={{ background: "#7126B5", border: "none" }}
+              disabled={!isFormValid}
+            >
+              Simpan
+            </Button>
           </Col>
 
           <Col>
@@ -355,7 +354,9 @@ const WbiodataPemesanan = () => {
                 <Card className="border-0">
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      <Card.Title className="fw-bold">Detail Penerbangan </Card.Title>
+                      <Card.Title className="fw-bold">
+                        Detail Penerbangan{" "}
+                      </Card.Title>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-between">

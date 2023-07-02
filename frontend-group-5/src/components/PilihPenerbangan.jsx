@@ -44,7 +44,7 @@ function PilihPenerbangan() {
   // console.log(formattedDate);
   const data = { formattedDate, buttonText1, buttonText2, seatClass };
 
-  console.log(data);
+  // console.log(data);
 
   // modal pertama
   const handleButtonModal = (buttonNumber) => {
@@ -126,7 +126,9 @@ function PilihPenerbangan() {
         <div className="card-body">
           <h5 className="card-title">
             Pilih Jadwal Penerbangan spesial di{" "}
-            <span style={{ color: "#7126B5", fontWeight:"bold" }}>Tiketku!</span>
+            <span style={{ color: "#7126B5", fontWeight: "bold" }}>
+              Tiketku!
+            </span>
           </h5>
 
           {/* atas */}
@@ -252,11 +254,17 @@ function PilihPenerbangan() {
 
           {/* button */}
         </div>
-          <Button style={{background:"#7126B5", border:"none", height:"45px", borderRadius:"0"}}
-            onClick={() => handleButtonClick()}
-          >
-            Cari Penerbangan
-          </Button>
+        <Button
+          style={{
+            background: "#7126B5",
+            border: "none",
+            height: "45px",
+            borderRadius: "0",
+          }}
+          onClick={() => handleButtonClick()}
+        >
+          Cari Penerbangan
+        </Button>
       </div>
 
       {/* Modal */}
