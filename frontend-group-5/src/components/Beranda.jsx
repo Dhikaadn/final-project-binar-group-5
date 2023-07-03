@@ -25,9 +25,8 @@ export const Beranda = () => {
   const { listPenerbangan } = useSelector((state) => state.search);
   const { penumpang } = useSelector((state) => state.penumpang);
   const { dataAwal } = useSelector((state) => state.kelas);
-
   const [futureDates, setFutureDates] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(dataAwal.formattedDate);
 
   useEffect(() => {
     dispatch(getListPenerbangan(), Penumpang());
