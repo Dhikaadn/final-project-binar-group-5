@@ -4,11 +4,9 @@ import {
   Accordion,
   Button,
   Card,
-  CloseButton,
   Col,
   Container,
   Form,
-  Modal,
   Row,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";

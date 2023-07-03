@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./stylePayment.css";
 import {
-  Accordion,
   Alert,
   Button,
   Card,
@@ -18,19 +17,17 @@ import payPalLogo from "./../../img/paypal logo.png";
 import AmexLogo from "./../../img/amex logo.png";
 import paymentLogo from "./../../img/Image.png";
 import notifLogo from "./../../img/notif.png";
-import { NavbarBeranda } from "../../components/NavbarBeranda";
 import { useDispatch, useSelector } from "react-redux";
 import { pesan } from "../../redux/actions/pemesanan";
 import { getDetail } from "../../redux/actions/detail";
-import { useNavigate } from "react-router-dom";
 import { Penumpang } from "../../redux/actions/penumpang";
+import { NavbarCheckout3 } from "../../components/Navbar/NavbarCheckout";
 
 // import Countdown from '../w-biodata/Countdown'
 
 const WPayment = () => {
   const [showAlert, setShowAlert] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { pemesanan } = useSelector((state) => state.pemesanan);
   const { detail } = useSelector((state) => state.detail);
   const { penumpang } = useSelector((state) => state.penumpang);
@@ -64,19 +61,8 @@ const handleSwitch = () => {
   const dates = getFutureDate();
   return (
     <>
-      <NavbarBeranda />
-      <Container className="border-bottom ">
-        <Row>
-          <Container className="pt-4">
-            <p className="alertNotif_danger d-flex justify-content-center align-items-center">
-              Selesaikan Pembayaran Anda Sebelum Tanggal {dates.future}
-            </p>
-            {/* <div className="countdown">
-                            <Countdown seconds={2} />
-                        </div> */}
-          </Container>
-        </Row>
-      </Container>
+      <NavbarCheckout3 />
+
 
       <Container className="mt-4">
         <Row className="container_form">
@@ -294,7 +280,7 @@ const handleSwitch = () => {
       </Container>
 
       {showAlert && (
-        <div className="alert-payment ">
+        <div className="alert-payment">
           <Alert variant="light" onClose={!setShowAlert} dismissible>
             <div className="border-bottom pb-4"></div>
             <div className="py-2 d-flex justify-content-between align-items-center text-alert">

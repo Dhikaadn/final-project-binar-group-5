@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../redux/actions/auth";
-import { toast } from "react-toastify";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 export const Register = () => {

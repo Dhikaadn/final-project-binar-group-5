@@ -21,10 +21,6 @@ body {
   --alert-warning: #f9cc00;
 }
 
-.balik{
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 /* ======= NAVBAR STYLE ========== */
 .navbar-beranda {
@@ -350,6 +346,13 @@ body {
     position: relative;
   }
 
+  .navbarItems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
+  }
+
   .imgLogin{
     position: absolute;
     width: 100%;
@@ -435,18 +438,25 @@ body {
   .formLogin {
     position: absolute;
     width: 100%;
-    top: 100%;
+    top: 70%;
   }
 
   .formRegis {
     position: absolute;
     width: 100%;
-    top: 100%;
+    top: 70%;
   }
 
   .LoginRegis{
     display: flex;
     flex-direction: column;
+  }
+
+  .navbarItems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
   }
 
   .navbar {
@@ -474,6 +484,8 @@ body {
   }
   .list_container {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
   .form_Detail {
@@ -506,11 +518,12 @@ body {
   }
 
   .rectangle-banner {
-    height: 3rem;
+    height: 2rem;
+    top: -2rem;
   }
 
   .container-banner {
-    top: -4rem;
+    top: -5rem;
     margin-bottom: -5rem;
   }
 
@@ -542,13 +555,19 @@ body {
     width: auto;
   }
 
-
   .textBtn_back span {
-    display: none;
+    width: 110px;
   }
 
   .btn-filter span {
     display: none;
+  }
+
+  .btn_destinasi {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 /* ======= RESPONSIVE WEBSITE ======== */
