@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../redux/actions/auth";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
   // ==== VALIDATION FORM
@@ -133,6 +135,7 @@ export const Login = () => {
           </Container>
         </Col>
       </Row>
+      <ToastContainer position="bottom-right" theme="colored"/>
     </>
   );
 };

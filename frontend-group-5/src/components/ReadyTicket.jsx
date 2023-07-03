@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import paymentLogo from "../img/Image.png";
-import time from '../img/time.jpg';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from '../redux/actions/detail';
 import { getListPenerbangan } from '../redux/actions/search';
-import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Penumpang } from "../redux/actions/penumpang";
-import { Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { BsBox, BsHeart, BsArrowDownUp } from 'react-icons/bs';
 import { FiDollarSign } from 'react-icons/fi';
 import { IoIosArrowForward } from 'react-icons/io';

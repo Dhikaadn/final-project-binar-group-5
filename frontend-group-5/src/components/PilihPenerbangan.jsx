@@ -42,7 +42,7 @@ function PilihPenerbangan() {
   const formattedDate = selectedDate ? `${year}-${month}-${date}` : null;
 
   // console.log(formattedDate);
-  const data = { formattedDate, buttonText1, buttonText2, seatClass };
+  // const data = { formattedDate, buttonText1, buttonText2, seatClass };
 
   // console.log(data);
 
@@ -136,7 +136,7 @@ function PilihPenerbangan() {
             <div>
               <div className="input-group mb-3 card-input-pilih-penerbangan">
                 <div className="icon-penerbangan">
-                  <img src={IconPesawat} />
+                  <img src={IconPesawat} alt="iconpesawat"/>
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
                       from
@@ -158,7 +158,7 @@ function PilihPenerbangan() {
             <div>
               <div className="input-group mb-3 card-input-pilih-penerbangan">
                 <div className=" icon-penerbangan">
-                  <img src={IconPesawat} />
+                  <img src={IconPesawat} alt="iconpesawat"/>
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
                       to
@@ -183,7 +183,7 @@ function PilihPenerbangan() {
             <div>
               <div className="input-group mb-3 card-input-pilih-penerbangan">
                 <div className=" input-group-prepend icon-penerbangan">
-                  <img src={IconDate} />
+                  <img src={IconDate} alt="icontgl"/>
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
                       Date
@@ -203,7 +203,7 @@ function PilihPenerbangan() {
             <div>
               <div className="input-group mb-3 card-input-pilih-penerbangan">
                 <div className="input-group-prepend icon-penerbangan">
-                  <img src={IconPerson} />
+                  <img src={IconPerson} alt="iconorang"/>
                   <div>
                     <p className="m-0 text-center" style={{ color: "#8A8A8A" }}>
                       to

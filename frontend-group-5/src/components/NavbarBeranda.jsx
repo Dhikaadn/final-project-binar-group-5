@@ -10,7 +10,7 @@ import { BsListUl } from "react-icons/bs";
 import { BiBell } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import InputGroup from "react-bootstrap/InputGroup";
-import Logo from "../img/logo.jpg";
+import Logo from "../img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfile, logout } from "../redux/actions/auth";
