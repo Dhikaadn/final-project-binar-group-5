@@ -42,7 +42,7 @@ const DetailRiwayat = ({ searchResults }) => {
     <>
       <Container className="mt-4">
         <Row>
-          <Col>
+          <Col className="balik">
             {searchResults.map((data) => (
               <Card
                 className="card_active mb-3"
