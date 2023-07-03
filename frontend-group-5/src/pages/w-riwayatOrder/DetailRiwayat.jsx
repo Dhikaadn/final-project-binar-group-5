@@ -13,13 +13,14 @@ const DetailRiwayat = ({ searchResults }) => {
   const [bookingCode, setBookingCode] = useState("");
 
   useEffect(() => {
-    const latestBookingCode = searchResults[0]?.bookingCode; // Mengambil booking code terlama
-    if (latestBookingCode) {
+    if (searchResults.length > 0) {
+      const latestBookingCode =
+        searchResults[searchResults.length - 1].bookingCode;
       const selectedData = searchResults.find(
         (data) => data.bookingCode === latestBookingCode
       );
       setShowDetails(selectedData);
-      setBookingCode(latestBookingCode); // Menggunakan booking code terlama
+      setBookingCode(latestBookingCode);
     }
   }, [searchResults]);
 
@@ -43,7 +44,7 @@ const DetailRiwayat = ({ searchResults }) => {
       <Container className="mt-4">
         <Row>
           <Col>
-            {searchResults.map((data) => (
+            {[...searchResults].reverse().map((data) => (
               <Card
                 className="card_active mb-3"
                 onClick={() => handleOnClick(data.bookingCode)}
