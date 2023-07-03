@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useNavigate,
+  BrowserRouter,
 } from "react-router-dom";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
@@ -49,7 +50,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -97,7 +98,7 @@ function App() {
             element={isLoggedIn ? <RiwayatNull /> : <Login />}
           />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

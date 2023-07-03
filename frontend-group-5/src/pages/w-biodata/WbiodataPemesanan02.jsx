@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styleBiodata.css";
 import {
-  Accordion,
   Button,
   Card,
   Col,
@@ -11,9 +10,6 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
-import HideShowForm from "../../controller/HideShowForm";
-import { NavbarBeranda } from "../../components/NavbarBeranda";
-
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail } from "../../redux/actions/detail";
 import { pesan } from "../../redux/actions/pemesanan";
@@ -418,7 +414,7 @@ const WbiodataPemesanan02 = () => {
                   </Card.Body>
                 </Card>
                 <Button
-                  className="w-100 mt-3"
+                  className="w-100 my-3"
                   style={{ background: "#FF0000", border: "none" }}
                   as={Link}
                   onClick={(e) => onBook(e)}

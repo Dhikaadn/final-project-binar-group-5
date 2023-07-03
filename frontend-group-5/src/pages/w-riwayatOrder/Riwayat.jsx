@@ -8,15 +8,12 @@ import { BiFilterAlt } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { NavbarBeranda } from "../../components/NavbarBeranda";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getListRiwayat } from "../../redux/actions/riwayat";
-import axios from "axios";
 import RiwayatNull from "./RiwayatNull";
 import { Link } from "react-router-dom";
 
 const Riwayat = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { uuidUser } = useSelector((state) => state.auth);
 
@@ -116,20 +113,7 @@ const Riwayat = () => {
             />
           </InputGroup>
         </Modal.Header>
-        <Modal.Body>
-          <div className="d-flex justify-content-between">
-            <p>Pencarian Terkini</p>
-            <p style={{ color: "red" }}>Hapus</p>
-          </div>
-          <div className="d-flex justify-content-between border-bottom pt-3">
-            <p>2313123</p>
-            <AiOutlineClose />
-          </div>
-          <div className="d-flex justify-content-between border-bottom pt-2">
-            <p>2313123</p>
-            <AiOutlineClose />
-          </div>
-        </Modal.Body>
+        
       </Modal>
 
       {listRiwayat.length === 0 ? (

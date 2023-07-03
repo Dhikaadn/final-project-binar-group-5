@@ -34,7 +34,7 @@ const HomePage = () => {
             <h4 className="fw-bold">Destinasi Favorit</h4>
             <Col>
               <Button
-                className="py-2 me-3 my-1"
+                className="py-2 me-3 my-1 btn_destinasi"
                 onClick={() => handleButtonClick("Semua")}
                 style={{
                   backgroundColor:
@@ -47,7 +47,7 @@ const HomePage = () => {
                 Semua
               </Button>
               <Button
-                className="py-2 me-3 my-1"
+                className="py-2 me-3 my-1 btn_destinasi"
                 onClick={() => handleButtonClick("Asia")}
                 style={{
                   backgroundColor:
@@ -60,7 +60,7 @@ const HomePage = () => {
                 Asia
               </Button>
               <Button
-                className="py-2 me-3 my-1"
+                className="py-2 me-3 my-1 btn_destinasi"
                 onClick={() => handleButtonClick("Amerika")}
                 style={{
                   backgroundColor:
@@ -73,7 +73,7 @@ const HomePage = () => {
                 Amerika
               </Button>
               <Button
-                className="py-2 me-3 my-1"
+                className="py-2 me-3 my-1 btn_destinasi"
                 onClick={() => handleButtonClick("Australia")}
                 style={{
                   backgroundColor:
@@ -86,7 +86,7 @@ const HomePage = () => {
                 Australia
               </Button>
               <Button
-                className="py-2 me-3 my-1"
+                className="py-2 me-3 my-1 btn_destinasi"
                 onClick={() => handleButtonClick("Eropa")}
                 style={{
                   backgroundColor:
