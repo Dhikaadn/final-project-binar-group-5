@@ -54,6 +54,7 @@
 }
 
 .alert-payment {
+
   position: absolute;
   background: white;
   top: 35%;
@@ -133,3 +134,4 @@
     width: 80% !important;
   }
 }
+
