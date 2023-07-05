@@ -84,6 +84,7 @@ function App() {
           <Route
             path="/payment"
             element={isLoggedIn ? <WPayment /> : <Login />}
+            // element={<WPayment /> }
           />
           <Route
             path="/paymentdone"

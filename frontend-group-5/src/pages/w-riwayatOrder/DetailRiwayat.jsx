@@ -175,7 +175,8 @@ const DetailRiwayat = ({ searchResults }) => {
                           className="fs-6 ps-4 d-flex flex-column"
                         >
                           <span style={{ color: "#7126B5" }}>
-                            Penumpang {index + 1}: {passenger.fullName}
+                            Penumpang {index + 1}: {passenger.fullName}{" "}
+                            {passenger.familyName}
                           </span>
                           <div>ID: {passenger.passengerId}</div>
                         </div>

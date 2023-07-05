@@ -1,144 +1,137 @@
-
-
 :root {
-    --neutral-black: #000000;
-    --neutral-white: #FFFFFF;
-    --neutral-gray: #8A8A8A;
-    --neutral-gray2: #3C3C3C;
-    --primary-color: #7126B5;
-    --primary-color2: #A06ECE;
-    --alert-success: #73CA5C;
-    --alert-danger: #FF0000;
-    --alert-warning: #F9CC00;
+  --neutral-black: #000000;
+  --neutral-white: #ffffff;
+  --neutral-gray: #8a8a8a;
+  --neutral-gray2: #3c3c3c;
+  --primary-color: #7126b5;
+  --primary-color2: #a06ece;
+  --alert-success: #73ca5c;
+  --alert-danger: #ff0000;
+  --alert-warning: #f9cc00;
 }
 
 /* ========== Payment Done CSS ========== */
 .alertNotif_success {
-    background: var(--alert-success);
-    border-radius: 12px;
-    height: 50px;
-    font-weight: 500;
-    color: var(--neutral-white);
-    font-size: 16px;
+  background: var(--alert-success);
+  border-radius: 12px;
+  height: 50px;
+  font-weight: 500;
+  color: var(--neutral-white);
+  font-size: 16px;
 }
 
 .text-bio {
-    color: var(--neutral-gray);
+  color: var(--neutral-gray);
 }
 
 .text-done {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .form_payment {
-    background: var(--neutral-gray2);
-    color: var(--neutral-white);
-    height: 50px;
-    font-weight: 500;
-    font-size: 16px;
+  background: var(--neutral-gray2);
+  color: var(--neutral-white);
+  height: 50px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .form_payment.off {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 .img_payment {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .text_paymentTitle {
-    color: var(--primary-color) ;
-    font-size: 20px;
+  color: var(--primary-color);
+  font-size: 20px;
 }
 
 .text_paymentTitle2 {
-    color: var(--primary-color2) ;
+  color: var(--primary-color2);
 }
 
 .alert-payment {
-    position: absolute;
-    background: white;
-    top: 35%;
-    left: 62%;
-    width: 30%;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
-    border-radius: 15px;
+
+  position: absolute;
+  background: white;
+  top: 35%;
+  left: 62%;
+  width: 30%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 }
 
 .arow.off {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 @media all and (min-width: 1024px) and (max-width: 1440px) {
-
-    .alert-payment {
-        position: absolute;
-        background: white;
-        top: 19%;
-        left: 51%;
-        width: 44%;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
-        border-radius: 15px;
-    }
+  .alert-payment {
+    position: absolute;
+    background: white;
+    top: 35%;
+    left: 60%;
+    width: 35%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+  }
 }
 
-@media all and (min-width: 768px) and (max-width: 1024px) { 
-
-    .alert-payment {
-        position: absolute;
-        background: white;
-        top: 30%;
-        left: 51%;
-        width: 45%;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
-        border-radius: 15px;
-    }
-
-
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .alert-payment {
+    position: absolute;
+    background: white;
+    top: 35%;
+    left: 51%;
+    width: 45%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+  }
 }
 
-@media all and (min-width: 480px) and (max-width: 768px) { 
-
-    .alert-payment {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        width: 90%;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
-        left: 5%;
-        top: 35%;
-    }   
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .alert-payment {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 90%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    left: 5%;
+    top: 38%;
+  }
 }
 
 @media all and (max-width: 480px) {
+  .alert-payment {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 90%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    left: 5%;
+    top: 40%;
+  }
 
-    .alert-payment {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        width: 90%;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
-        left: 5%;
-        top: 35%;
-    }
+  .alert-payment P {
+    text-align: center;
+  }
 
-    .alert-payment P {
-        text-align: center;
-    }
-    
-    .text-alert {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
+  .text-alert {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
 
-    .alertNotif_success{
-        text-align: center;
-    }
+  .alertNotif_success {
+    text-align: center;
+  }
 
-    .btn-done{
-        width: 80% !important;
-    }
- }
+  .btn-done {
+    width: 80% !important;
+  }
+}
 
