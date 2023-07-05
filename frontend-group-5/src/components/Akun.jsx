@@ -23,21 +23,19 @@ export const Akun = () => {
   const [password, setPassword] = useState("");
   const { isLoggedIn, token, user } = useSelector((state) => state.auth);
 
-    // ==== SHOW HIDE PASS
-    const [showPassword, setShowPassword] = useState(false);
+  // ==== SHOW HIDE PASS
+  const [showPassword, setShowPassword] = useState(false);
 
-  
-    const togglePasswordVisibility = () => {
-      setShowPassword(!showPassword);
-    };
-    // ==== SHOW HIDE PASS
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  // ==== SHOW HIDE PASS
 
-  const onUpdate = (e) =>{
+  const onUpdate = (e) => {
     e.preventDefault();
-    const data = {uuidUser, name, phoneNumber, password}
+    const data = { uuidUser, name, phoneNumber, password };
     dispatch(update(data, navigate));
-  }
-
+  };
 
   // ==== VALIDATION FORM
   const [validated, setValidated] = useState(false);
@@ -63,7 +61,11 @@ export const Akun = () => {
           </div>
           <Col className="d-flex justify-content-between align-items-center">
             <div className="textBtn_back2 w-100">
-              <Button style={{ background: "none", border: "none" }} as={Link} to="/">
+              <Button
+                style={{ background: "none", border: "none" }}
+                as={Link}
+                to="/"
+              >
                 <BiArrowBack className="fs-5" />
               </Button>{" "}
               Beranda
@@ -75,28 +77,21 @@ export const Akun = () => {
           <Col>
             <Card className=" border-0">
               <Card.Body>
-                
-                    <div className="bt-menu-akun">
-                      <AiOutlineEdit
-                        className="me-2 iconAkun"
-                      />
-                      Ubah Profil
-                    </div>
-                    <div className="bt-menu-akun">
-                      <CiSettings
-                        className="me-2 iconAkun"
-                      />
-                      Pengaturan Akun
-                    </div>
-                    <div
-                      className="bt-menu-akun"
-                      onClick={() => dispatch(logout(navigate))}
-                    >
-                      <BsBoxArrowRight
-                        className="me-2 iconAkun"
-                      />
-                      Keluar
-                    </div>
+                <div className="bt-menu-akun">
+                  <AiOutlineEdit className="me-2 iconAkun" />
+                  Ubah Profil
+                </div>
+                <div className="bt-menu-akun">
+                  <CiSettings className="me-2 iconAkun" />
+                  Pengaturan Akun
+                </div>
+                <div
+                  className="bt-menu-akun"
+                  onClick={() => dispatch(logout(navigate))}
+                >
+                  <BsBoxArrowRight className="me-2 iconAkun" />
+                  Keluar
+                </div>
               </Card.Body>
             </Card>
           </Col>
@@ -113,7 +108,7 @@ export const Akun = () => {
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                   <Form.Group
                     className="mb-3"
-                    controlId="exampleForm.ControlInput1"
+                    controlId="exampleForm.ControlInput0"
                   >
                     <Form.Label className="text_label">Nama Lengkap</Form.Label>
                     <Form.Control
@@ -121,7 +116,7 @@ export const Akun = () => {
                       placeholder="Fullname"
                       id="fullName"
                       name="fullName"
-                      onChange={(e)=>setName(e.target.value)}
+                      onChange={(e) => setName(e.target.value)}
                       autoComplete="off"
                       required
                     />
@@ -129,7 +124,7 @@ export const Akun = () => {
 
                   <Form.Group
                     className="mb-3"
-                    controlId="exampleForm.ControlInput2"
+                    controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label className="text_label">
                       Nomor Telepon
@@ -139,36 +134,36 @@ export const Akun = () => {
                       placeholder="+62"
                       id="phoneNumber"
                       name="phoneNumber"
-                      onChange={(e)=>setPhoneNumber(e.target.value)}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                       autoComplete="off"
                       required
                     />
                   </Form.Group>
 
                   <Form.Label className="text_label">Password</Form.Label>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    controlId="exampleForm.ControlInput2"
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Masukkan Password"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                    required
-                    autoComplete="off"
-                  />
-                  <InputGroup.Text
-                    id="basic-addon1"
-                    style={{ cursor: "pointer" }}
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
-                  </InputGroup.Text>
-                </InputGroup>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                      controlId="exampleForm.ControlInput2"
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Masukkan Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      autoComplete="off"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      style={{ cursor: "pointer" }}
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
+                    </InputGroup.Text>
+                  </InputGroup>
 
                   <div className="d-flex justify-content-center align-items-center">
                     <Button
-                    onClick={(e)=>onUpdate(e)}
+                      onClick={(e) => onUpdate(e)}
                       type="submit"
                       id="submit"
                       style={{ background: "#4B1979", border: "none" }}
