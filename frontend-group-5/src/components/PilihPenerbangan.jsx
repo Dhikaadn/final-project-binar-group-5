@@ -113,6 +113,11 @@ function PilihPenerbangan() {
   // };
 
   const handleButtonClick = () => {
+    if (!passengerCount) {
+      // Jika passengerCount tidak ada isinya, tampilkan pesan atau lakukan tindakan yang sesuai
+      alert("Harap isi penumpang terlebih dahulu!");
+      return;
+    }
     const data = { formattedDate, buttonText1, buttonText2, seatClass };
     dispatch(getListPenerbangan(data, navigate));
 
