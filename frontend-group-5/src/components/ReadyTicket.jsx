@@ -25,6 +25,7 @@ export const ReadyTicket = () => {
     const { listPenerbangan } = useSelector((state) => state.search);
     const { penumpang } = useSelector((state) => state.penumpang);
     const { uuidUser } = useSelector((state) => state.auth);
+    console.log(uuidUser);
     useEffect(() => {
         dispatch(getListPenerbangan(), Penumpang());
     }, [dispatch]);
@@ -45,7 +46,6 @@ export const ReadyTicket = () => {
         dispatch(getDetail(data, navigate));
         // dispatch(kelas(detail));
     }
-    console.log(uuidUser);
 
     return (
         <Container >
