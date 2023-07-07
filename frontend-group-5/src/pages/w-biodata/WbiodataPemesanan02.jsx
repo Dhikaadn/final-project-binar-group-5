@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styleBiodata.css";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  Row,
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -106,6 +99,9 @@ const WbiodataPemesanan02 = () => {
   };
   const onBook = (e) => {
     e.preventDefault();
+    const firebaseToken = tokenFirebase
+      ? tokenFirebase
+      : "PA91bFZzEzQt41YhM7-INV-4Ssv0x1et_FoKhyE2Pr9VQCP8DrYXdVVQKQ4yIAKEFdy-YmkCcS0E5RHBwyIob4ZaPcFCmeBKGHf90LfVEU8yqi6ZJYN6WRlLpydsXubf2JD3iAhB5dk";
     const airlineCode = detail.airlineCode;
     const flightClass = detail.flightClass;
     const adult = penumpang.dewasa;
@@ -115,7 +111,7 @@ const WbiodataPemesanan02 = () => {
     const passengers = arrayBiodataPenumpang;
     const data = {
       uuidUser,
-      tokenFirebase,
+      tokenFirebase: firebaseToken,
       airlineCode,
       flightClass,
       adult,
