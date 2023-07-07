@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styleBiodata.css";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  Row,
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import paymentLogo from "./../../img/Image.png";
 import { useSelector, useDispatch } from "react-redux";

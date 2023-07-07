@@ -54,7 +54,7 @@ function Notifikasi() {
       <Container className="border-bottom">
         <Row className="mb-4 btn-back">
           <div className="title_pesanan">
-            <p className="fw-bold mt-5 fs-4">Riwayat Pemesanan</p>
+            <p className="fw-bold mt-5 fs-4">Notifikasi</p>
           </div>
           <Col className="d-flex justify-content-between align-items-center">
             <div className="textBtn_back">
@@ -104,7 +104,7 @@ function Notifikasi() {
         className="w-75"
         style={{ maxHeight: "480px", overflowY: "auto" }}
       >
-        {searchResults.map((result) => (
+        {[...searchResults].reverse().map((result) => (
           <div key={result.id} className="card-result">
             <img src={IconNotif} className="notifikasi_img" />
             <div className="w-100">
