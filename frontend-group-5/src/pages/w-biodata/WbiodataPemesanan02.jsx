@@ -99,9 +99,6 @@ const WbiodataPemesanan02 = () => {
   };
   const onBook = (e) => {
     e.preventDefault();
-    const firebaseToken = tokenFirebase
-      ? tokenFirebase
-      : "PA91bFZzEzQt41YhM7-INV-4Ssv0x1et_FoKhyE2Pr9VQCP8DrYXdVVQKQ4yIAKEFdy-YmkCcS0E5RHBwyIob4ZaPcFCmeBKGHf90LfVEU8yqi6ZJYN6WRlLpydsXubf2JD3iAhB5dk";
     const airlineCode = detail.airlineCode;
     const flightClass = detail.flightClass;
     const adult = penumpang.dewasa;
@@ -111,7 +108,7 @@ const WbiodataPemesanan02 = () => {
     const passengers = arrayBiodataPenumpang;
     const data = {
       uuidUser,
-      tokenFirebase: firebaseToken,
+      tokenFirebase,
       airlineCode,
       flightClass,
       adult,
