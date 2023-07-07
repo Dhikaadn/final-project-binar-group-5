@@ -45,7 +45,7 @@ export const ReadyTicket = () => {
         dispatch(getDetail(data, navigate));
         // dispatch(kelas(detail));
     }
-
+    console.log(uuidUser);
 
     return (
         <Container >
